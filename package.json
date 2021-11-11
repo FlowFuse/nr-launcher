@@ -1,0 +1,23 @@
+{
+  "name": "@flowforge/nr-launcher",
+  "version": "0.0.1",
+  "description": "Wraper for starting Node-RED",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flowforge"
+  ],
+  "author": "ben@flowforge.com",
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "@flowforge/nr-auth": "file:../flowforge-nr-auth",
+    "@flowforge/nr-logger": "file:../flowforge-audit-logger",
+    "@flowforge/nr-storage": "file:../flowforge-http-storage",
+    "express": "^4.17.1",
+    "got": "^11.8.2",
+    "node-red": "^2.1.3",
+    "ws": "^8.2.3"
+  }
+}
