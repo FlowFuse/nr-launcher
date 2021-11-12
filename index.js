@@ -100,15 +100,15 @@ async function setup() {
   Object.assign(defaultSettings, settings)
 
   RED.init(server,defaultSettings);
-
-  // Serve the editor UI from /red
   app.use(defaultSettings.httpAdminRoot,RED.httpAdmin);
-
-  // Serve the http nodes UI from /api
   app.use(defaultSettings.httpNodeRoot,RED.httpNode);
 
   app.get('/flowforge/logs', (request, response) => {
     response.send(logBuffer);
+  })
+
+  app.get('/flowforge/health-check', (request, response) => {
+    response.sendStatus(200);
   })
 
 
@@ -118,9 +118,20 @@ async function setup() {
 
   server.on('upgrade', (req, socket, head) => {
     if (req.url === '/flowforge/logs'){
-      wss.handleUpgrade(req, socket, head, (ws) => {
-        wss.emit('connection', ws, req);
-      })
+      // if (req.headers["authorization"]) {
+        wss.handleUpgrade(req, socket, head, (ws) => {
+          wss.emit('connection', ws, req);
+        })
+      // } else {
+      //should check for a auth header here or deny with
+      // socket.write('HTTP/1.1 401 Web Socket Protocol Handshake\r\n' +
+      //           'Upgrade: WebSocket\r\n' +
+      //           'Connection: Upgrade\r\n' +
+      //           '\r\n');
+      //           socket.close();
+      //           socket.destroy();
+      //           return;
+      // }
     }
   });
 
