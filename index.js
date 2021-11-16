@@ -58,6 +58,7 @@ async function setup() {
       baseURL: process.env['FORGE_STORAGE_URL'],
       token: process.env['FORGE_STORAGE_TOKEN'],
     },
+    uiPort: 1880,
     httpAdminRoot: '/',
     httpNodeRoot: '/',
     userDir: 'userDir',

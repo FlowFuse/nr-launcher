@@ -17,7 +17,7 @@
   "dependencies": {
     "@flowforge/nr-auth": "file:../flowforge-nr-auth",
     "@flowforge/nr-logger": "file:../flowforge-audit-logger",
-    "@flowforge/nr-storage": "file:../flowforge-http-storage",
+    "@flowforge/nr-storage": "file:../flowforge-nr-storage",
     "express": "^4.17.1",
     "got": "^11.8.2",
     "node-red": "^2.1.3",
