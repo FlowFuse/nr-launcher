@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const RED = require('node-red');
 const http = require('http');
 const express = require('express');
@@ -43,28 +44,30 @@ async function setup() {
 
   }
 
+  //should container Env Var bundle as well as settings
+
   console.log(settings);
 
   const app = express();
   const server = http.createServer(app);
 
   var defaultSettings = {
-    // storageModule: require('@flowforge/nr-storage'),
-    // httpStorage: {
-    //   projectID: `${FORGE_PROJECT_ID}`,
-    //   baseURL: process.env['FORGE_STORAGE_URL'],
-    //   token: process.env['FORGE_STORAGE_TOKEN'],
-    // },
+    storageModule: require('@flowforge/nr-storage'),
+    httpStorage: {
+      projectID: `${FORGE_PROJECT_ID}`,
+      baseURL: process.env['FORGE_STORAGE_URL'],
+      token: process.env['FORGE_STORAGE_TOKEN'],
+    },
     httpAdminRoot: '/',
     httpNodeRoot: '/',
     userDir: 'userDir',
     flowFilePretty: true,
-    // adminAuth: require("@flowforge/nr-auth")({
-    //   baseURL: process.env["BASE_URL"],//'http://localhost:1880',
-    //   forgeURL: process.env["FORGE_URL"],//'http://localhost:3000',
-    //   clientID: process.env["FORGE_CLIENT_ID"],//'ffp_c3Q_9joF21JiAEUopN9RKc4sJbGZbkmFOM13mT3nlEg',
-    //   clientSecret: process.env["FORGE_CLIENT_SECRET"]//'XjS2D7fYYhFW2yUj5mdDm0Oys8zVRVd0EKIla2iEpgP-vXSBkSy6-qEujLqIf7Og'
-    // }),
+    adminAuth: require("@flowforge/nr-auth")({
+      baseURL: process.env["BASE_URL"],//'http://localhost:1880',
+      forgeURL: process.env["FORGE_URL"],//'http://localhost:3000',
+      clientID: process.env["FORGE_CLIENT_ID"],//'ffp_c3Q_9joF21JiAEUopN9RKc4sJbGZbkmFOM13mT3nlEg',
+      clientSecret: process.env["FORGE_CLIENT_SECRET"]//'XjS2D7fYYhFW2yUj5mdDm0Oys8zVRVd0EKIla2iEpgP-vXSBkSy6-qEujLqIf7Og'
+    }),
     functionGlobalContext: {},
     logging: {
       // console:{
@@ -112,7 +115,7 @@ async function setup() {
   })
 
 
-  server.listen(8000);
+  server.listen(defaultSettings.uiPort);
 
   const wss = new ws.Server({ clientTracking: false, noServer: true });
 
