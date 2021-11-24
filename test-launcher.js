@@ -41,6 +41,7 @@ if (!options.execPath) {
 }
 
 const settingsURL = `${options.forgeURL}/api/v1/project/${options.project}/settings`
+console.log(settingsURL)
 
 var proc
 const logEmmiter = new EventEmitter();
@@ -57,6 +58,7 @@ async function getSettings() {
         authorization: `Bearer ${options.token}`
       }
     }).json()
+    console.log("getSettings", settings)
   } catch (exp) {
     console.log("Failed to get settings\n",exp);
     // process.exit(1);
@@ -67,8 +69,7 @@ async function getSettings() {
 
 async function start(settings){
 
-
-  console.log(settings.settings)
+  console.log(settings)
   if (settings.settings) {
     //should write a settings file
     let settingsPath = path.join(settings.rootDir, settings.userDir, "settings.js")
@@ -226,6 +227,9 @@ async function main() {
 
 
   let settings = await getSettings()
+
+  console.log("starting")
+  console.log(settings)
 
   await start(settings)
 }
