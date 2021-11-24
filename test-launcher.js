@@ -27,7 +27,7 @@ options.logBufferMax = options.logBufferMax || 1000
 
 options.execPath = undefined
 for (let i=0; i<process.mainModule.paths.length; i++) {
-  let execPath = path.join(process.mainModule.paths[i], '.bin', 'test-node-red')
+  let execPath = path.join(process.mainModule.paths[i], '.bin', 'node-red')
   if (fs.existsSync(execPath)) {
     options.execPath = execPath
     break
