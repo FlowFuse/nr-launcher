@@ -88,7 +88,7 @@ async function start(settings){
     cwd: settings.rootDir,
     //env: env,
     stdio: ['ignore', 'pipe', 'pipe'],
-    cwd: path.joint(settings.rootDir, settings.userDir)
+    cwd: path.join(settings.rootDir, settings.userDir)
   }
 
   proc = childProcess.spawn(options.execPath, [
