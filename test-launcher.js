@@ -157,13 +157,8 @@ async function main() {
         await stop();
       } 
 
-      //let settings = await getSettings()
-      await start({
-          rootDir: "rootDir",
-          userDir: 'userDir',
-          port: 1880,
-          settings: ""
-        });
+      let settings = await getSettings()
+      await start(settings);
         response.send({})
 
     } else if (request.body.cmd == "start") {
@@ -217,14 +212,9 @@ async function main() {
   })
 
 
-  //let settings = await getSettings()
+  let settings = await getSettings()
 
-  await start({
-    rootDir: "rootDir",
-    userDir: 'userDir',
-    port: 1880,
-    settings: "module.exports = { flowFile: 'flows.json', flowFilePretty: true, editorTheme: { page: {title: 'FlowForge'}, header: {title: 'FlowForge'} } }"
-  })
+  await start(settings)
 }
 
 
