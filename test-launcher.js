@@ -93,7 +93,7 @@ async function start(settings){
 
   proc = childProcess.spawn(options.execPath, [
       "-u",
-      settings.userDir,
+      path.join(settings.rootDir,settings.userDir),
       "-p",
       settings.port
     ],
