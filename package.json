@@ -11,7 +11,7 @@
   ],
   "bin": {
     "flowforge-node-red": "./index.js",
-    "test-node-red": "./test-laucher.js"
+    "test-node-red": "./test-launcher.js"
   },
   "author": "ben@flowforge.com",
   "license": "SEE LICENSE IN LICENSE",
