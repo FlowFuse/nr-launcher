@@ -25,7 +25,20 @@ options.project = options.project || process.env["FORGE_PROJECT_ID"]
 options.token = options.token || process.env["FORGE_PROJECT_TOKEN"]
 options.logBufferMax = options.logBufferMax || 1000
 
-options.execPath = path.join(__dirname,"node_modules/.bin/node-red")
+options.execPath = undefined
+for (let i=0; i<process.mainModule.paths.length; i++) {
+  let execPath = path.join(process.mainModule.paths[i], '.bin', 'test-node-red')
+  if (fs.existsSync(execPath)) {
+    options.execPath = execPath
+    break
+  }
+}
+
+if (!options.execPath) {
+  console.log(process.mainModule.paths)
+  console.log("executable not found")
+  process.exit(1)
+}
 
 const settingsURL = `${options.forgeURL}/api/v1/project/${options.project}/settings`
 
