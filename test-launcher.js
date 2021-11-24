@@ -79,13 +79,16 @@ async function start(settings){
 
   let env = {}
 
-  env[""]
+  if (settings.env) {
+    Object.assign(env, settings.env)
+  }
 
   let processOptions = {
     windowsHide: true,
     cwd: settings.rootDir,
-    env: env,
-    stdio: ['ignore', 'pipe', 'pipe']
+    //env: env,
+    stdio: ['ignore', 'pipe', 'pipe'],
+    cwd: path.joint(settings.rootDir, settings.userDir)
   }
 
   proc = childProcess.spawn(options.execPath, [
@@ -104,6 +107,7 @@ async function start(settings){
 
   proc.on('close', (code, signal)=> {
     console.log("node-red closed with", code)
+    console.log(proc)
   })
 
   proc.on('exit', (code, signal) =>{
