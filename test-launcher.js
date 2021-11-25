@@ -122,7 +122,7 @@ async function start(settings){
     console.log(proc)
   })
 
-  proc.on('exit', (code, signal) =>{
+  proc.on('exit', async (code, signal) =>{
     console.log("node-red exited with", code)
     running = false;
     if (code == 0) {
