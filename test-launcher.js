@@ -47,7 +47,12 @@ var proc
 const logEmmiter = new EventEmitter();
 var logBuffer = []
 
-var running = false;
+var running = false
+var state = "stopped"
+var startTime = []
+const minRestartTime = 10000 //10 seconds
+const maxRestartCount = 5
+var restartCount = 0
 
 async function getSettings() {
   let settigns = {}
@@ -99,10 +104,17 @@ async function start(settings){
     ],
     processOptions)
 
+  state = "starting"
+
   proc.on('spawn', () => {
     //only works at NodeJS 16+
     console.log("node-red spawned")
     running = true
+    state = "started"
+    startTime.push(Date.now())
+    if (startTime.length > maxRestartCount) {
+      startTime.shift()
+    }
   })
 
   proc.on('close', (code, signal)=> {
@@ -113,6 +125,35 @@ async function start(settings){
   proc.on('exit', (code, signal) =>{
     console.log("node-red exited with", code)
     running = false;
+    if (code == 0) {
+      state = "stopped"
+    } else {
+      state = "crashed"
+    }
+
+    if (startTime.length == maxRestartCount) {
+      //check restart interval
+      let avg = 0
+      for (var i = startTime.length-1; i>0; i--) {
+        avg += (startTime[i] - startTime[i-1])
+      }
+      avg /= maxRestartCount
+      console.log("restart average", avg)
+      if (avg < minRestartTime) {
+        //too fast
+        console.log("restarting too quickly")
+        state="crashed (restart loop)"
+      } else {
+        //restart
+        let newSettings = await getSettings()
+        start(newSettings)
+      }
+    } else {
+      //restart
+      let newSettings = await getSettings()
+      start(newSettings)
+    }
+
   })
 
   proc.on('error', (err) => {
@@ -148,6 +189,15 @@ async function main() {
 
   app.use(bodyParser.json({}))
   app.use(bodyParser.text({}))
+
+  app.get('/flowforge/info', (request, response) => {
+    let info = {
+      id: options.project,
+      status: state
+    }
+
+    response.send(info)
+  })
 
   app.get('/flowforge/logs', (request, response) => {
     response.send(logBuffer);
