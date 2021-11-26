@@ -181,6 +181,7 @@ async function stop() {
 
 function exitWhenStopped() {
   stop()
+  process.exit(0)
 }
 
 async function main() {
@@ -257,8 +258,7 @@ async function main() {
         response.send({})
       }
     } else if (request.body.cmd == "shutdown") {
-      stop();
-      process.exit(0);
+      exitWhenStopped
     } else {
       response.status(404).send({})
     }
