@@ -108,7 +108,7 @@ async function start(settings){
 
   proc.on('spawn', () => {
     //only works at NodeJS 16+
-    console.log("node-red spawned")
+    console.log("node-red spawned, ", proc.pid)
     running = true
     state = "started"
     startTime.push(Date.now())
@@ -179,7 +179,13 @@ async function stop() {
   proc = undefined
 }
 
+function exitWhenStopped() {
+  stop()
+}
+
 async function main() {
+
+  process.on('SIGTERM', exitWhenStopped);
 
   console.log(options)
 
