@@ -110,7 +110,7 @@ async function start(settings){
     //only works at NodeJS 16+
     console.log("node-red spawned, ", proc.pid)
     running = true
-    state = "started"
+    state = "running"
     startTime.push(Date.now())
     if (startTime.length > maxRestartCount) {
       startTime.shift()
@@ -199,7 +199,7 @@ async function main() {
   app.get('/flowforge/info', (request, response) => {
     let info = {
       id: options.project,
-      status: state,
+      state: state,
       lastStartTime: startTime.length != 0 ? startTime[startTime.length-1] : -1
     }
 
