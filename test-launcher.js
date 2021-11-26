@@ -127,6 +127,15 @@ async function start(settings){
     running = false;
     if (code == 0) {
       state = "stopped"
+      got.post(options.forgeURL + "/logging/" + options.project + "/audit", {
+          json: {
+            timestamp: Date.now,
+            event: "stopped"
+          },
+          headers: {
+            authorization: "Bearer " + options.token
+          }
+        })
     } else {
       state = "crashed"
       if (startTime.length == maxRestartCount) {
@@ -141,6 +150,15 @@ async function start(settings){
           //too fast
           console.log("restarting too quickly")
           state="crashed (restart loop)"
+          got.post(options.forgeURL + "/logging/" + options.project + "/audit", {
+          json: {
+            timestamp: Date.now,
+            event: "crashed"
+          },
+          headers: {
+            authorization: "Bearer " + options.token
+          }
+        })
         } else {
           //restart
           let newSettings = await getSettings()
@@ -148,6 +166,16 @@ async function start(settings){
         }
       } else {
         //restart
+        got.post(options.forgeURL + "/logging/" + options.project + "/audit", {
+          json: {
+            timestamp: Date.now,
+            event: "crashed"
+          },
+          headers: {
+            authorization: "Bearer " + options.token
+          }
+        })
+
         let newSettings = await getSettings()
         start(newSettings)
       }
@@ -253,7 +281,8 @@ async function main() {
         response.send({})
       }
     } else if (request.body.cmd == "shutdown") {
-      exitWhenStopped
+      exitWhenStopped()
+      respond.send({})
     } else {
       response.status(404).send({})
     }
