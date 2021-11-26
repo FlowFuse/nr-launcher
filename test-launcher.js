@@ -256,6 +256,9 @@ async function main() {
         })
         response.send({})
       }
+    } else if (request.body.cmd == "shutdown") {
+      stop();
+      process.exit(0);
     } else {
       response.status(404).send({})
     }
