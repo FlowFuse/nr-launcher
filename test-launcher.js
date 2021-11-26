@@ -63,7 +63,7 @@ async function getSettings() {
         authorization: `Bearer ${options.token}`
       }
     }).json()
-    console.log("getSettings", settings)
+    //console.log("getSettings", settings)
   } catch (exp) {
     console.log("Failed to get settings\n",exp);
     // process.exit(1);
@@ -74,11 +74,11 @@ async function getSettings() {
 
 async function start(settings){
 
-  console.log(settings)
+  //console.log(settings)
   if (settings.settings) {
     //should write a settings file
     let settingsPath = path.join(settings.rootDir, settings.userDir, "settings.js")
-    console.log(settingsPath)
+    //console.log(settingsPath)
     fs.writeFileSync(settingsPath, settings.settings)
   }
 
@@ -119,7 +119,7 @@ async function start(settings){
 
   proc.on('close', (code, signal)=> {
     console.log("node-red closed with", code)
-    console.log(proc)
+    //console.log(proc)
   })
 
   proc.on('exit', async (code, signal) =>{
@@ -129,30 +129,29 @@ async function start(settings){
       state = "stopped"
     } else {
       state = "crashed"
-    }
-
-    if (startTime.length == maxRestartCount) {
-      //check restart interval
-      let avg = 0
-      for (var i = startTime.length-1; i>0; i--) {
-        avg += (startTime[i] - startTime[i-1])
-      }
-      avg /= maxRestartCount
-      console.log("restart average", avg)
-      if (avg < minRestartTime) {
-        //too fast
-        console.log("restarting too quickly")
-        state="crashed (restart loop)"
+      if (startTime.length == maxRestartCount) {
+        //check restart interval
+        let avg = 0
+        for (var i = startTime.length-1; i>0; i--) {
+          avg += (startTime[i] - startTime[i-1])
+        }
+        avg /= maxRestartCount
+        console.log("restart average", avg)
+        if (avg < minRestartTime) {
+          //too fast
+          console.log("restarting too quickly")
+          state="crashed (restart loop)"
+        } else {
+          //restart
+          let newSettings = await getSettings()
+          start(newSettings)
+        }
       } else {
         //restart
         let newSettings = await getSettings()
         start(newSettings)
       }
-    } else {
-      //restart
-      let newSettings = await getSettings()
-      start(newSettings)
-    }
+    } 
 
   })
 
@@ -193,7 +192,8 @@ async function main() {
   app.get('/flowforge/info', (request, response) => {
     let info = {
       id: options.project,
-      status: state
+      status: state,
+      lastStartTime: startTime.length != 0 ? startTime[startTime.length-1] : -1
     }
 
     response.send(info)
@@ -225,9 +225,16 @@ async function main() {
         await stop();
       } 
 
-      let settings = await getSettings()
-      await start(settings);
+      setTimeout(async ()=> {
+        let settings = await getSettings()
+        if (request.body.safe) {
+          console.log("safemode")
+          settings.settings = settings.settings.replace(/ }$/, ', "safeMode": true }')
+          console.log(settings)
+        }
+        await start(settings);
         response.send({})
+      }, 2000);
 
     } else if (request.body.cmd == "start") {
       if (running) {
@@ -281,10 +288,6 @@ async function main() {
 
 
   let settings = await getSettings()
-
-  console.log("starting")
-  console.log(settings)
-
   await start(settings)
 }
 
