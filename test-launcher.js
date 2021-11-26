@@ -247,14 +247,9 @@ async function main() {
       if (running) {
         response.status(409).send({err: "Already running"})
       } else {
-        //let settings = await getSettings()
+        let settings = await getSettings()
 
-        await start({
-          rootDir: "rootDir",
-          userDir: 'userDir',
-          port: 1880,
-          settings: "module.exports = { flowFile: 'flows.json', flowFilePretty: true }"
-        })
+        await start(settings)
         response.send({})
       }
     } else if (request.body.cmd == "shutdown") {
