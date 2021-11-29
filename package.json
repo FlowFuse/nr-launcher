@@ -10,8 +10,7 @@
     "flowforge"
   ],
   "bin": {
-    "flowforge-node-red": "./index.js",
-    "test-node-red": "./test-launcher.js"
+    "flowforge-node-red": "./index.js"
   },
   "author": "ben@flowforge.com",
   "license": "SEE LICENSE IN LICENSE",
