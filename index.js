@@ -40,7 +40,7 @@ if (!options.execPath) {
   process.exit(1)
 }
 
-const settingsURL = `${options.forgeURL}/api/v1/project/${options.project}/settings`
+const settingsURL = `${options.forgeURL}/api/v1/projects/${options.project}/settings`
 console.log(settingsURL)
 
 var proc
