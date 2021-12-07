@@ -16,7 +16,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "@flowforge/nr-auth": "file:../flowforge-nr-auth",
-    "@flowforge/nr-logger": "file:../flowforge-nr-audit-logger",
+    "@flowforge/nr-audit-logger": "file:../flowforge-nr-audit-logger",
     "@flowforge/nr-storage": "file:../flowforge-nr-storage",
     "body-parser": "^1.19.0",
     "command-line-args": "^5.2.0",
