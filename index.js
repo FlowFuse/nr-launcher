@@ -46,6 +46,8 @@ console.log(settingsURL)
 var proc
 const logEmmiter = new EventEmitter();
 var logBuffer = []
+var lastLogTimestamp = 0;
+var lastLogTimestampCount = 0;
 
 var running = false
 var state = "stopped"
@@ -55,7 +57,7 @@ const maxRestartCount = 5
 var restartCount = 0
 
 async function getSettings() {
-  let settigns = {}
+  let settings = {}
 
   try {
     settings = await got(settingsURL,{
@@ -63,7 +65,7 @@ async function getSettings() {
         authorization: `Bearer ${options.token}`
       }
     }).json()
-    //console.log("getSettings", settings)
+    console.log("getSettings", settings)
   } catch (exp) {
     console.log("Failed to get settings\n",exp);
     // process.exit(1);
@@ -179,7 +181,7 @@ async function start(settings){
         let newSettings = await getSettings()
         start(newSettings)
       }
-    } 
+    }
 
   })
 
@@ -189,7 +191,14 @@ async function start(settings){
   })
 
   proc.stdout.on('data', (data) => {
-    logBuffer.push(data.toString());
+    let now = Date.now();
+    if (now == lastLogTimestamp) {
+        lastLogTimestampCount++
+    } else {
+        lastLogTimestamp = now
+        lastLogTimestampCount = 0
+    }
+    logBuffer.push({ ts: now+(""+lastLogTimestampCount).padStart(4,"0"), msg: data.toString()});
     if (logBuffer.length > options.logBufferMax) {
       logBuffer.shift()
     }
@@ -258,7 +267,7 @@ async function main() {
     } else if (request.body.cmd == "restart") {
       if (running) {
         await stop();
-      } 
+      }
 
       setTimeout(async ()=> {
         let settings = await getSettings()
