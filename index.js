@@ -9,6 +9,7 @@ const EventEmitter = require('events')
 const bodyParser = require('body-parser')
 const childProcess = require('child_process')
 const commandLineArgs = require('command-line-args')
+const LogBuffer = require("./logBuffer")
 
 const cmdLineOptions = [
   { name: "port", alias: "p", type: Number },
@@ -45,9 +46,7 @@ console.log(settingsURL)
 
 var proc
 const logEmmiter = new EventEmitter();
-var logBuffer = []
-var lastLogTimestamp = 0;
-var lastLogTimestampCount = 0;
+const logBuffer = new LogBuffer(1000);
 
 var running = false
 var state = "stopped"
@@ -75,7 +74,7 @@ async function getSettings() {
 }
 
 async function start(settings){
-
+  logBuffer.add(" - [system] Starting Node-RED Launcher");
   //console.log(settings)
   if (settings.settings) {
     //should write a settings file
@@ -125,6 +124,7 @@ async function start(settings){
   })
 
   proc.on('exit', async (code, signal) =>{
+    logBuffer.add(" - [system] Node-RED exited rc="+code);
     console.log("node-red exited with", code)
     running = false;
     if (code == 0) {
@@ -186,23 +186,14 @@ async function start(settings){
   })
 
   proc.on('error', (err) => {
+    logBuffer.add(" - [system] "+err.toString());
     console.log("error", err)
     running = false
   })
 
   proc.stdout.on('data', (data) => {
-    let now = Date.now();
-    if (now == lastLogTimestamp) {
-        lastLogTimestampCount++
-    } else {
-        lastLogTimestamp = now
-        lastLogTimestampCount = 0
-    }
-    logBuffer.push({ ts: now+(""+lastLogTimestampCount).padStart(4,"0"), msg: data.toString()});
-    if (logBuffer.length > options.logBufferMax) {
-      logBuffer.shift()
-    }
-    logEmmiter.emit('log', data.toString());
+    const entry = logBuffer.add(data.toString());
+    logEmmiter.emit('log', entry);
   })
 
 }
@@ -244,7 +235,7 @@ async function main() {
   })
 
   app.get('/flowforge/logs', (request, response) => {
-    response.send(logBuffer);
+    response.send(logBuffer.toArray());
   })
 
   app.get('/flowforge/health-check', (request, response) => {
@@ -311,7 +302,7 @@ async function main() {
 
 
   wss.on('connection', (ws, req) => {
-    logBuffer.forEach(log => {
+    logBuffer.toArray().forEach(log => {
       if (log) {
         ws.send(log)
       }
