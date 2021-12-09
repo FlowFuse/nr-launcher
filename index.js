@@ -25,9 +25,11 @@ options.project = options.project || process.env["FORGE_PROJECT_ID"]
 options.token = options.token || process.env["FORGE_PROJECT_TOKEN"]
 options.logBufferMax = options.logBufferMax || 1000
 
+let ext = process.platform == "win32" ? ".cmd" : ""
+
 options.execPath = undefined
 for (let i=0; i<process.mainModule.paths.length; i++) {
-  let execPath = path.join(process.mainModule.paths[i], '.bin', 'node-red')
+  let execPath = path.join(process.mainModule.paths[i], '.bin', `node-red${ext}`)
   if (fs.existsSync(execPath)) {
     options.execPath = execPath
     break
