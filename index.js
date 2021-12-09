@@ -9,6 +9,7 @@ const EventEmitter = require('events')
 const bodyParser = require('body-parser')
 const childProcess = require('child_process')
 const commandLineArgs = require('command-line-args')
+const LogBuffer = require("./logBuffer")
 
 const cmdLineOptions = [
   { name: "port", alias: "p", type: Number },
@@ -45,7 +46,7 @@ console.log(settingsURL)
 
 var proc
 const logEmmiter = new EventEmitter();
-var logBuffer = []
+const logBuffer = new LogBuffer(1000);
 
 var running = false
 var state = "stopped"
@@ -55,7 +56,7 @@ const maxRestartCount = 5
 var restartCount = 0
 
 async function getSettings() {
-  let settigns = {}
+  let settings = {}
 
   try {
     settings = await got(settingsURL,{
@@ -63,7 +64,7 @@ async function getSettings() {
         authorization: `Bearer ${options.token}`
       }
     }).json()
-    //console.log("getSettings", settings)
+    console.log("getSettings", settings)
   } catch (exp) {
     console.log("Failed to get settings\n",exp);
     // process.exit(1);
@@ -73,7 +74,7 @@ async function getSettings() {
 }
 
 async function start(settings){
-
+  logBuffer.add(" - [system] Starting Node-RED Launcher");
   //console.log(settings)
   if (settings.settings) {
     //should write a settings file
@@ -123,6 +124,7 @@ async function start(settings){
   })
 
   proc.on('exit', async (code, signal) =>{
+    logBuffer.add(" - [system] Node-RED exited rc="+code);
     console.log("node-red exited with", code)
     running = false;
     if (code == 0) {
@@ -179,21 +181,19 @@ async function start(settings){
         let newSettings = await getSettings()
         start(newSettings)
       }
-    } 
+    }
 
   })
 
   proc.on('error', (err) => {
+    logBuffer.add(" - [system] "+err.toString());
     console.log("error", err)
     running = false
   })
 
   proc.stdout.on('data', (data) => {
-    logBuffer.push(data.toString());
-    if (logBuffer.length > options.logBufferMax) {
-      logBuffer.shift()
-    }
-    logEmmiter.emit('log', data.toString());
+    const entry = logBuffer.add(data.toString());
+    logEmmiter.emit('log', entry);
   })
 
 }
@@ -235,7 +235,7 @@ async function main() {
   })
 
   app.get('/flowforge/logs', (request, response) => {
-    response.send(logBuffer);
+    response.send(logBuffer.toArray());
   })
 
   app.get('/flowforge/health-check', (request, response) => {
@@ -258,7 +258,7 @@ async function main() {
     } else if (request.body.cmd == "restart") {
       if (running) {
         await stop();
-      } 
+      }
 
       setTimeout(async ()=> {
         let settings = await getSettings()
@@ -302,7 +302,7 @@ async function main() {
 
 
   wss.on('connection', (ws, req) => {
-    logBuffer.forEach(log => {
+    logBuffer.toArray().forEach(log => {
       if (log) {
         ws.send(log)
       }
