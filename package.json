@@ -12,8 +12,18 @@
   "bin": {
     "flowforge-node-red": "./index.js"
   },
-  "author": "ben@flowforge.com",
-  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flowforge/flowforge-nr-launcher.git"
+  },
+  "author": {
+    "name": "FlowFlow Inc."
+  },
+  "license": "SEE LICENSE IN ./LICENSE",
+  "bugs": {
+      "url": "https://github.com/flowforge/flowforge-nr-launcher/issues"
+  },
+  "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
   "dependencies": {
     "@flowforge/nr-auth": "file:../flowforge-nr-auth",
     "@flowforge/nr-audit-logger": "file:../flowforge-nr-audit-logger",
