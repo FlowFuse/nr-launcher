@@ -25,8 +25,8 @@ options.logBufferMax = options.logBufferMax || 1000
 let ext = process.platform == "win32" ? ".cmd" : ""
 
 options.execPath = undefined
-for (let i=0; i<process.mainModule.paths.length; i++) {
-  let execPath = path.join(process.mainModule.paths[i], '.bin', `node-red${ext}`)
+for (let i=0; i<require.main.paths.length; i++) {
+  let execPath = path.join(require.main.paths[i], '.bin', `node-red${ext}`)
   if (fs.existsSync(execPath)) {
     options.execPath = execPath
     break
