@@ -27,7 +27,11 @@ const ext = process.platform === 'win32' ? '.cmd' : ''
 options.execPath = undefined
 if (process.env.FORGE_NR_PATH) {
     options.execPath = path.join(process.env.FORGE_NR_PATH, 'node_modules', '.bin', `node-red${ext}`)
-} else {
+    if (!fs.existsSync(options.execPath)) {
+        options.execPath = undefined
+    }
+}
+if (!options.execPath) {
     // Find the bundled version
     for (let i = 0; i < require.main.paths.length; i++) {
         const execPath = path.join(require.main.paths[i], '.bin', `node-red${ext}`)
