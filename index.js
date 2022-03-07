@@ -25,11 +25,16 @@ options.logBufferMax = options.logBufferMax || 1000
 const ext = process.platform === 'win32' ? '.cmd' : ''
 
 options.execPath = undefined
-for (let i = 0; i < require.main.paths.length; i++) {
-    const execPath = path.join(require.main.paths[i], '.bin', `node-red${ext}`)
-    if (fs.existsSync(execPath)) {
-        options.execPath = execPath
-        break
+if (process.env.FORGE_NR_PATH) {
+    options.execPath = path.join(process.env.FORGE_NR_PATH, 'node_modules', '.bin', `node-red${ext}`)
+} else {
+    // Find the bundled version
+    for (let i = 0; i < require.main.paths.length; i++) {
+        const execPath = path.join(require.main.paths[i], '.bin', `node-red${ext}`)
+        if (fs.existsSync(execPath)) {
+            options.execPath = execPath
+            break
+        }
     }
 }
 
