@@ -1,44 +1,44 @@
 {
-  "name": "@flowforge/nr-launcher",
-  "version": "0.2.0",
-  "description": "Wraper for starting Node-RED",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint -c .eslintrc *.js",
-    "lint:fix": "eslint -c .eslintrc *.js --fix"
-  },
-  "keywords": [
-    "flowforge"
-  ],
-  "bin": {
-    "flowforge-node-red": "./index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/flowforge/flowforge-nr-launcher.git"
-  },
-  "author": {
-    "name": "FlowFlow Inc."
-  },
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/flowforge/flowforge-nr-launcher/issues"
-  },
-  "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
-  "dependencies": {
-    "@flowforge/nr-audit-logger": "^0.2.0",
-    "@flowforge/nr-auth": "^0.2.0",
-    "@flowforge/nr-storage": "^0.2.0",
-    "body-parser": "^1.19.0",
-    "command-line-args": "^5.2.0",
-    "express": "^4.17.1",
-    "got": "^11.8.2",
-    "node-red": "^2.2.1",
-    "ws": "^8.2.3"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3"
-  }
+    "name": "@flowforge/nr-launcher",
+    "version": "0.3.0",
+    "description": "Wraper for starting Node-RED",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint -c .eslintrc *.js",
+        "lint:fix": "eslint -c .eslintrc *.js --fix"
+    },
+    "keywords": [
+        "flowforge"
+    ],
+    "bin": {
+        "flowforge-node-red": "./index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/flowforge/flowforge-nr-launcher.git"
+    },
+    "author": {
+        "name": "FlowFlow Inc."
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/flowforge/flowforge-nr-launcher/issues"
+    },
+    "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
+    "dependencies": {
+        "@flowforge/nr-audit-logger": "^0.3.0",
+        "@flowforge/nr-auth": "^0.3.0",
+        "@flowforge/nr-storage": "^0.3.0",
+        "body-parser": "^1.19.0",
+        "command-line-args": "^5.2.0",
+        "express": "^4.17.1",
+        "got": "^11.8.2",
+        "node-red": "^2.2.1",
+        "ws": "^8.2.3"
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-config-standard": "^16.0.3"
+    }
 }
