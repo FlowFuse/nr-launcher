@@ -5,8 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint -c .eslintrc *.js",
-        "lint:fix": "eslint -c .eslintrc *.js --fix"
+        "lint": "eslint -c .eslintrc *.js lib/*.js",
+        "lint:fix": "eslint -c .eslintrc *.js lib/*.js --fix"
     },
     "keywords": [
         "flowforge"
