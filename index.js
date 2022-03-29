@@ -2,7 +2,6 @@
 const fs = require('fs')
 const path = require('path')
 const commandLineArgs = require('command-line-args')
-// const LogBuffer = require('./logBuffer')
 
 const { Launcher } = require('./lib/launcher')
 const { AdminInterface } = require('./lib/admin')
