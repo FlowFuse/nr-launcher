@@ -1,5 +1,8 @@
 #### 0.4.0: Release
 
+ - Update project automation (#28) @knolleary
+ - Remove unused logBuffer code (#27) @knolleary
+ - Fix lint rules to apply to lib dir (#26) @hardillb
 
 #### 0.3.0: Release
 
