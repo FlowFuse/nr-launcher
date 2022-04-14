@@ -1,3 +1,6 @@
+#### 0.4.0: Release
+
+
 #### 0.3.0: Release
 
  - Apply project settings to settings.js (#23) @knolleary
