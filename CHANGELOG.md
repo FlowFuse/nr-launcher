@@ -1,3 +1,9 @@
+#### 0.5.0: Release
+
+ - Redirect user back to ff platform on logout (#34) @knolleary
+ - Add palette/module allowList/denyList (#32) @hardillb
+ - Put NR into safemode when crash loop detected (#33) @knolleary
+
 #### 0.4.0: Release
 
  - Update project automation (#28) @knolleary
