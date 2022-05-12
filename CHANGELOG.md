@@ -1,7 +1,5 @@
 #### 0.5.0: Release
 
- - Update version to 0.5.0
- - Update CHANGELOG for 0.5.0
  - Redirect user back to ff platform on logout (#34) @knolleary
  - Add palette/module allowList/denyList (#32) @hardillb
  - Put NR into safemode when crash loop detected (#33) @knolleary
