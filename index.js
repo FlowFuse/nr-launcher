@@ -12,7 +12,8 @@ const cmdLineOptions = [
     { name: 'project', type: String },
     { name: 'token', type: String },
     { name: 'buffer', alias: 'b', type: Number },
-    { name: 'nodeRedPath', alias: 'n', type: String }
+    { name: 'nodeRedPath', alias: 'n', type: String },
+    { name: 'credentialSecret', type: String }
 ]
 
 const options = commandLineArgs(cmdLineOptions)
@@ -22,6 +23,7 @@ options.project = options.project || process.env.FORGE_PROJECT_ID
 options.token = options.token || process.env.FORGE_PROJECT_TOKEN
 options.logBufferMax = options.logBufferMax || 1000
 options.nodeRedPath = options.nodeRedPath || process.env.FORGE_NR_PATH
+options.credentialSecret = options.credentialSecret || process.env.FORGE_NR_SECRET
 
 const ext = process.platform === 'win32' ? '.cmd' : ''
 
