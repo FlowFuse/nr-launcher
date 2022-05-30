@@ -59,8 +59,6 @@ options.versions = {
 
 // Go find Node-RED's package.json
 const nrModulePath = path.relative(__dirname, path.join(path.dirname(options.execPath), '..', 'node-red', 'package.json'))
-console.log(__dirname)
-console.log(nrModulePath)
 try {
     const nrPkg = require(nrModulePath)
     options.versions['node-red'] = nrPkg.version
