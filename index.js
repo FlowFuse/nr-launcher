@@ -51,6 +51,23 @@ if (!options.execPath) {
     process.exit(1)
 }
 
+// Gather versions numbers for reporting to the platform
+options.versions = {
+    node: process.version.replace(/^v/, ''),
+    launcher: require('./package.json').version
+}
+
+// Go find Node-RED's package.json
+const nrModulePath = path.relative(__dirname, path.join(path.dirname(options.execPath), '..', 'node-red', 'package.json'))
+console.log(__dirname)
+console.log(nrModulePath)
+try {
+    const nrPkg = require(nrModulePath)
+    options.versions['node-red'] = nrPkg.version
+} catch (err) {
+    options.versions['node-red'] = err.toString()
+}
+
 async function main () {
     const launcher = new Launcher(options)
     const adminInterface = new AdminInterface(options, launcher)
