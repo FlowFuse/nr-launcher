@@ -12,7 +12,8 @@ const cmdLineOptions = [
     { name: 'project', type: String },
     { name: 'token', type: String },
     { name: 'buffer', alias: 'b', type: Number },
-    { name: 'nodeRedPath', alias: 'n', type: String }
+    { name: 'nodeRedPath', alias: 'n', type: String },
+    { name: 'credentialSecret', type: String }
 ]
 
 const options = commandLineArgs(cmdLineOptions)
@@ -22,6 +23,7 @@ options.project = options.project || process.env.FORGE_PROJECT_ID
 options.token = options.token || process.env.FORGE_PROJECT_TOKEN
 options.logBufferMax = options.logBufferMax || 1000
 options.nodeRedPath = options.nodeRedPath || process.env.FORGE_NR_PATH
+options.credentialSecret = options.credentialSecret || process.env.FORGE_NR_SECRET
 
 const ext = process.platform === 'win32' ? '.cmd' : ''
 
@@ -47,6 +49,21 @@ if (!options.execPath) {
     console.log(require.main.paths)
     console.log('executable not found')
     process.exit(1)
+}
+
+// Gather versions numbers for reporting to the platform
+options.versions = {
+    node: process.version.replace(/^v/, ''),
+    launcher: require('./package.json').version
+}
+
+// Go find Node-RED's package.json
+const nrModulePath = path.relative(__dirname, path.join(path.dirname(options.execPath), '..', 'node-red', 'package.json'))
+try {
+    const nrPkg = require(nrModulePath)
+    options.versions['node-red'] = nrPkg.version
+} catch (err) {
+    options.versions['node-red'] = err.toString()
 }
 
 async function main () {
