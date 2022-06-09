@@ -1,3 +1,6 @@
+#### 0.6.0: Release
+
+
 #### 0.5.0: Release
 
  - Redirect user back to ff platform on logout (#34) @knolleary
