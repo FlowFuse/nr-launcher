@@ -1,3 +1,11 @@
+#### 0.6.0: Release
+
+ - Map FlowForge logout to nodered auth/revoke (#40) @Steve-Mcl
+ - Update dependencies (#41) @knolleary
+ - Report node/nr/launcher versions in /info endpoint response (#39) @knolleary
+ - Fix win32 stopping projects and "crash" status (#38) @Steve-Mcl
+ - Auto generate credential secret for NR project to remove warnings in log (#36) @Steve-Mcl
+
 #### 0.5.0: Release
 
  - Redirect user back to ff platform on logout (#34) @knolleary
