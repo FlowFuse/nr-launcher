@@ -16,8 +16,9 @@ describe('Runtime Settings', function () {
     async function loadSettings (content) {
         // Need to fix the node path inside the content to ensure it can find
         // the @flowforge/nr- modules it tries to load
-        content = `module.paths.unshift('${path.join(__dirname, '../../../node_modules')}'); ${content}`
-        const fn = path.join(TMPDIR, `${Math.random().toString(36).substring(2)}.js`)
+        const nmPath = path.normalize(path.join(__dirname, '../../../node_modules')).split(path.sep).join('/')
+        content = `module.paths.unshift('${nmPath}'); ${content}`
+        const fn = path.normalize(path.join(TMPDIR, `${Math.random().toString(36).substring(2)}.js`)).split(path.sep).join('/')
         await fs.writeFile(fn, content)
         return require(fn)
     }
