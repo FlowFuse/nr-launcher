@@ -4,7 +4,7 @@
     "description": "Wraper for starting Node-RED",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "mocha 'test/unit/**/*_spec.js'",
         "lint": "eslint -c .eslintrc *.js lib/*.js",
         "lint:fix": "eslint -c .eslintrc *.js lib/*.js --fix"
     },
@@ -39,6 +39,8 @@
     },
     "devDependencies": {
         "eslint": "^7.32.0",
-        "eslint-config-standard": "^16.0.3"
+        "eslint-config-standard": "^16.0.3",
+        "mocha": "^10.0.0",
+        "should": "^13.2.3"
     }
 }
