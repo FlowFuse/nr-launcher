@@ -1,3 +1,11 @@
+#### 0.7.0: Release
+
+ - Add some initial tests (#49) @knolleary
+ - Remove Node-RED as a direct dependency (#48) @hardillb
+ - Fix node denyList and set up module denyList (#46) @hardillb
+ - Initial theming support (#37) @Steve-Mcl
+ - Add "trust proxy" to settings.js to improve client IP detection (#45) @Steve-Mcl
+
 #### 0.6.0: Release
 
  - Map FlowForge logout to nodered auth/revoke (#40) @Steve-Mcl
