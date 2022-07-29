@@ -77,9 +77,6 @@ async function main () {
         await launcher.stop()
         process.exit(0)
     })
-    await new Promise(resolve => setTimeout(resolve, 10000))
-    // eslint-disable-next-line no-debugger
-    debugger
     await launcher.loadSettings()
     await launcher.start()
 
