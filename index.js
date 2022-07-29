@@ -9,6 +9,7 @@ const { AdminInterface } = require('./lib/admin')
 const cmdLineOptions = [
     { name: 'port', alias: 'p', type: Number },
     { name: 'forgeURL', type: String },
+    { name: 'team', alias: 't', type: String },
     { name: 'project', type: String },
     { name: 'token', type: String },
     { name: 'buffer', alias: 'b', type: Number },
@@ -19,6 +20,7 @@ const cmdLineOptions = [
 const options = commandLineArgs(cmdLineOptions)
 
 options.forgeURL = options.forgeURL || process.env.FORGE_URL
+options.team = options.team || process.env.FORGE_TEAM_ID
 options.project = options.project || process.env.FORGE_PROJECT_ID
 options.token = options.token || process.env.FORGE_PROJECT_TOKEN
 options.logBufferMax = options.logBufferMax || 1000
@@ -75,7 +77,9 @@ async function main () {
         await launcher.stop()
         process.exit(0)
     })
-
+    await new Promise(resolve => setTimeout(resolve, 10000))
+    // eslint-disable-next-line no-debugger
+    debugger
     await launcher.loadSettings()
     await launcher.start()
 
