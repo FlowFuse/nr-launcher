@@ -27,6 +27,14 @@ options.logBufferMax = options.logBufferMax || 1000
 options.nodeRedPath = options.nodeRedPath || process.env.FORGE_NR_PATH
 options.credentialSecret = options.credentialSecret || process.env.FORGE_NR_SECRET
 
+if (process.env.FORGE_BROKER_URL && process.env.FORGE_BROKER_USERNAME && process.env.FORGE_BROKER_PASSWORD) {
+    options.broker = {
+        url: process.env.FORGE_BROKER_URL,
+        username: process.env.FORGE_BROKER_USERNAME,
+        password: process.env.FORGE_BROKER_PASSWORD
+    }
+}
+
 const ext = process.platform === 'win32' ? '.cmd' : ''
 
 options.execPath = undefined

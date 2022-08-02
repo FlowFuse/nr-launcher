@@ -57,6 +57,12 @@ describe('Runtime Settings', function () {
             settings.externalModules.modules.should.have.property('denyList', [])
             settings.externalModules.modules.should.have.property('allowList', ['*'])
             settings.should.have.property('functionExternalModules', true)
+
+            settings.should.have.property('flowforge')
+            settings.flowforge.should.have.property('forgeURL')
+            settings.flowforge.should.have.property('teamID')
+            settings.flowforge.should.have.property('projectID')
+            settings.flowforge.should.have.property('projectLink')
         })
         it('allows settings are set by project', async function () {
             const result = runtimeSettings.getSettingsFile({
@@ -65,11 +71,17 @@ describe('Runtime Settings', function () {
                 baseURL: 'BASEURL',
                 forgeURL: 'FORGEURL',
                 auditURL: 'AUDITURL',
+                teamID: 'TEAMID',
                 clientID: 'CLIENTID',
                 clientSecret: 'CLIENTSECRET',
                 projectID: 'PROJECTID',
                 projectToken: 'PROJECTTOKEN',
                 storageURL: 'STORAGEURL',
+                broker: {
+                    url: 'BROKERURL',
+                    username: 'BROKERUSERNAME',
+                    password: 'BROKERPASSWORD'
+                },
                 settings: {
                     httpAdminRoot: '/red',
                     disableEditor: true,
@@ -143,6 +155,17 @@ describe('Runtime Settings', function () {
             settings.externalModules.modules.should.have.property('allowList', ['ma', 'mb', 'mc'])
             settings.externalModules.modules.should.have.property('denyList', ['m1', 'm2', 'm3'])
             settings.should.have.property('functionExternalModules', false)
+
+            settings.should.have.property('flowforge')
+            settings.flowforge.should.have.property('forgeURL', 'FORGEURL')
+            settings.flowforge.should.have.property('teamID', 'TEAMID')
+            settings.flowforge.should.have.property('projectID', 'PROJECTID')
+            settings.flowforge.should.have.property('projectLink')
+            settings.flowforge.projectLink.should.have.property('token', 'PROJECTTOKEN')
+            settings.flowforge.projectLink.should.have.property('broker')
+            settings.flowforge.projectLink.broker.should.have.property('url', 'BROKERURL')
+            settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
+            settings.flowforge.projectLink.broker.should.have.property('password', 'BROKERPASSWORD')
         })
     })
 })
