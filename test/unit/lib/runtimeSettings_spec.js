@@ -161,7 +161,7 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.have.property('teamID', 'TEAMID')
             settings.flowforge.should.have.property('projectID', 'PROJECTID')
             settings.flowforge.should.have.property('projectLink')
-            settings.flowforge.projectLink.should.have.property('projectToken', 'PROJECTTOKEN')
+            settings.flowforge.projectLink.should.have.property('token', 'PROJECTTOKEN')
             settings.flowforge.projectLink.should.have.property('broker')
             settings.flowforge.projectLink.broker.should.have.property('url', 'BROKERURL')
             settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
