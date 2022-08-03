@@ -62,10 +62,11 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.have.property('forgeURL')
             settings.flowforge.should.have.property('teamID')
             settings.flowforge.should.have.property('projectID')
-            settings.flowforge.should.have.property('projectLink')
+            settings.flowforge.should.not.have.property('projectLink')
         })
-        it('allows settings are set by project', async function () {
+        it('allows settings are set for the project', async function () {
             const result = runtimeSettings.getSettingsFile({
+                licenseType: 'ee',
                 credentialSecret: 'foo',
                 nodesDir: ['a', 'b'],
                 baseURL: 'BASEURL',
@@ -166,6 +167,60 @@ describe('Runtime Settings', function () {
             settings.flowforge.projectLink.broker.should.have.property('url', 'BROKERURL')
             settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
             settings.flowforge.projectLink.broker.should.have.property('password', 'BROKERPASSWORD')
+        })
+        it('does not include projectLink if licenseType not ee', async function () {
+            const result = runtimeSettings.getSettingsFile({
+                // licenseType: 'ee', << no license type
+                credentialSecret: 'foo',
+                nodesDir: ['a', 'b'],
+                baseURL: 'BASEURL',
+                forgeURL: 'FORGEURL',
+                auditURL: 'AUDITURL',
+                teamID: 'TEAMID',
+                clientID: 'CLIENTID',
+                clientSecret: 'CLIENTSECRET',
+                projectID: 'PROJECTID',
+                projectToken: 'PROJECTTOKEN',
+                storageURL: 'STORAGEURL',
+                broker: {
+                    url: 'BROKERURL',
+                    username: 'BROKERUSERNAME',
+                    password: 'BROKERPASSWORD'
+                },
+                settings: {
+                    httpAdminRoot: '/red',
+                    disableEditor: true,
+                    codeEditor: 'ace',
+                    theme: 'forge-dark',
+                    page: {
+                        title: 'PAGE_TITLE',
+                        favicon: 'PAGE_FAVICON'
+                    },
+                    header: {
+                        title: 'HEADER_TITLE',
+                        url: 'url: "HEADER_URL",'
+                    },
+                    palette: {
+                        allowInstall: false,
+                        nodesExcludes: 'abc,def',
+                        allowList: ['a', 'b', 'c'],
+                        denyList: ['1', '2', '3']
+                    },
+                    modules: {
+                        allowInstall: false,
+                        allowList: ['ma', 'mb', 'mc'],
+                        denyList: ['m1', 'm2', 'm3']
+                    }
+                }
+            })
+
+            const settings = await loadSettings(result)
+
+            settings.should.have.property('flowforge')
+            settings.flowforge.should.have.property('forgeURL', 'FORGEURL')
+            settings.flowforge.should.have.property('teamID', 'TEAMID')
+            settings.flowforge.should.have.property('projectID', 'PROJECTID')
+            settings.flowforge.should.not.have.property('projectLink')
         })
     })
 })
