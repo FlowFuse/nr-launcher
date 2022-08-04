@@ -1,3 +1,12 @@
+#### 0.8.0: Release
+
+ - add runtimeState (#58) @sammachin
+ - add dep @flowforge/nr-project-nodes (#56) @Steve-Mcl
+ - Add FORGE_LICENSE_TYPE env so launcher can enable EE only features (#59) @knolleary
+ - Ensure broker details are passed through to settings file (#57) @knolleary
+ - Map through settings for project links (#53) @Steve-Mcl
+ - Fix search path for theme (#52) @hardillb
+
 #### 0.7.0: Release
 
  - Add some initial tests (#49) @knolleary
