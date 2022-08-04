@@ -1,6 +1,6 @@
 {
     "name": "@flowforge/nr-launcher",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "description": "Wraper for starting Node-RED",
     "main": "index.js",
     "scripts": {
@@ -27,9 +27,9 @@
     },
     "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
     "dependencies": {
-        "@flowforge/nr-audit-logger": "^0.7.0",
-        "@flowforge/nr-auth": "^0.7.0",
-        "@flowforge/nr-storage": "^0.7.0",
+        "@flowforge/nr-audit-logger": "^0.8.0",
+        "@flowforge/nr-auth": "^0.8.0",
+        "@flowforge/nr-storage": "^0.8.0",
         "@flowforge/nr-theme": "^0.1.1",
         "@flowforge/nr-project-nodes": "^0.1.0",
         "body-parser": "^1.20.0",
