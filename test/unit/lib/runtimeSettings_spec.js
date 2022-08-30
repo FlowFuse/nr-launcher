@@ -29,6 +29,7 @@ describe('Runtime Settings', function () {
             const settings = await loadSettings(result)
             settings.should.not.have.property('credentialSecret')
             settings.should.not.have.property('httpAdminRoot')
+            settings.should.not.have.property('ui') // dashboardUI
             settings.should.not.have.property('disableEditor')
             settings.should.not.have.property('nodesDir')
             settings.should.have.property('editorTheme')
@@ -85,6 +86,7 @@ describe('Runtime Settings', function () {
                 },
                 settings: {
                     httpAdminRoot: '/red',
+                    dashboardUI: '/dash',
                     disableEditor: true,
                     codeEditor: 'ace',
                     theme: 'forge-dark',
@@ -113,6 +115,7 @@ describe('Runtime Settings', function () {
             const settings = await loadSettings(result)
             settings.should.have.property('credentialSecret', 'foo')
             settings.should.have.property('httpAdminRoot', '/red')
+            settings.should.have.property('ui', { path: '/dash' })
             settings.should.have.property('disableEditor', true)
 
             settings.should.have.property('httpStorage', {
