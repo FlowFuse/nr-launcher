@@ -1,3 +1,8 @@
+#### 0.9.0: Release
+
+ - permit custom dashboard path to be set from FF (#62) @Steve-Mcl
+ - Add launcherVersion for both front and backend (#61) @Steve-Mcl
+
 #### 0.8.0: Release
 
  - add runtimeState (#58) @sammachin
