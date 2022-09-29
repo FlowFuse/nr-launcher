@@ -1,3 +1,6 @@
+#### 0.1.0: Release
+
+
 #### 0.9.0: Release
 
  - permit custom dashboard path to be set from FF (#62) @Steve-Mcl
