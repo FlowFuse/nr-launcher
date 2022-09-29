@@ -1,3 +1,10 @@
+#### 0.10.0: Release
+
+ - Only write httpNodeAuth if non-blank user/pass are provided (#67) @knolleary
+ - Add flag to disable Node-RED Welcome Tours (#66) @hardillb
+ - Allow the setting of httpNodeAuth (#64) @hardillb
+ - Improve accuracy of the stopped/running status indicator following a restart (#65) @Steve-Mcl
+
 #### 0.9.0: Release
 
  - permit custom dashboard path to be set from FF (#62) @Steve-Mcl
