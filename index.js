@@ -85,8 +85,11 @@ async function main () {
         await launcher.stop()
         process.exit(0)
     })
-    await launcher.loadSettings()
-    await launcher.start()
+    try {
+        await launcher.loadSettings()
+        await launcher.start()
+    } catch (err) {
+    }
 
     // const wss = new ws.Server({ clientTracking: false, noServer: true })
     //
