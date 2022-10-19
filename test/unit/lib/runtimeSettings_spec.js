@@ -16,8 +16,11 @@ describe('Runtime Settings', function () {
     async function loadSettings (content) {
         // Need to fix the node path inside the content to ensure it can find
         // the @flowforge/nr- modules it tries to load
+        // nmPath - when nr-auth is installed in our local node_modules
         const nmPath = path.normalize(path.join(__dirname, '../../../node_modules')).split(path.sep).join('/')
-        content = `module.paths.unshift('${nmPath}'); ${content}`
+        // nmPath2 - when running inside flowforge-dev-env, need to go higher in the tree
+        const nmPath2 = path.normalize(path.join(__dirname, '../../../../../node_modules')).split(path.sep).join('/')
+        content = `module.paths.unshift('${nmPath}', '${nmPath2}'); ${content}`
         const fn = path.normalize(path.join(TMPDIR, `${Math.random().toString(36).substring(2)}.js`)).split(path.sep).join('/')
         await fs.writeFile(fn, content)
         return require(fn)
@@ -47,7 +50,7 @@ describe('Runtime Settings', function () {
 
             settings.should.have.property('nodesExcludes', [])
             settings.should.have.property('externalModules')
-            settings.externalModules.should.have.property('autoInstall', true)
+            settings.externalModules.should.not.have.property('autoInstall')
             settings.externalModules.should.have.property('palette')
             settings.externalModules.palette.should.have.property('allowInstall', true)
             settings.externalModules.palette.should.have.property('allowUpload', false)
@@ -146,7 +149,7 @@ describe('Runtime Settings', function () {
             settings.should.have.property('nodesExcludes', ['abc', 'def'])
 
             settings.should.have.property('externalModules')
-            settings.externalModules.should.have.property('autoInstall', true)
+            settings.externalModules.should.not.have.property('autoInstall')
 
             settings.externalModules.should.have.property('palette')
             settings.externalModules.palette.should.have.property('allowInstall', false)
