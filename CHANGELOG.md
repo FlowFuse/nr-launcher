@@ -1,3 +1,15 @@
+#### 1.0.0: Release
+
+ - Closes a timing window on slow starting systems (#79) @hardillb
+ - Fix npm on windows (#78) @Steve-Mcl
+ - Npm install starting (#75) @hardillb
+ - Remove unwanted debug (#76) @knolleary
+ - Have loadSettings fail gracefully (#74) @hardillb
+ - Update eslint (#73) @knolleary
+ - Get the list of package.json modules from project settings (#72) @knolleary
+ - Back out #70 (#71) @hardillb
+ - Remove the explicit paths to theme (#70) @hardillb
+
 #### 0.10.0: Release
 
  - Only write httpNodeAuth if non-blank user/pass are provided (#67) @knolleary
