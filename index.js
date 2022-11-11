@@ -14,7 +14,9 @@ const cmdLineOptions = [
     { name: 'token', type: String },
     { name: 'buffer', alias: 'b', type: Number },
     { name: 'nodeRedPath', alias: 'n', type: String },
-    { name: 'credentialSecret', type: String }
+    { name: 'credentialSecret', type: String },
+    { name: 'no-tcp-in', alias: 'T', type: Boolean },
+    { name: 'no-udp-in', alias: 'U', type: Boolean }
 ]
 
 const options = commandLineArgs(cmdLineOptions)
@@ -25,7 +27,18 @@ options.project = options.project || process.env.FORGE_PROJECT_ID
 options.token = options.token || process.env.FORGE_PROJECT_TOKEN
 options.logBufferMax = options.logBufferMax || 1000
 options.nodeRedPath = options.nodeRedPath || process.env.FORGE_NR_PATH
-options.credentialSecret = options.credentialSecret || process.env.FORGE_NR_SECRET
+
+// Boolean Options
+const parseBoolean = (val, _default) => {
+    if (val === true || val === false) { return val }
+    if (val === 'true' || val === 'TRUE') { return true }
+    if (val === 'false' || val === 'FALSE') { return false }
+    return _default
+}
+const noTcp = parseBoolean(options['no-tcp-in'], parseBoolean(process.env.FORGE_NR_NO_TCP_IN), undefined)
+const noUdp = parseBoolean(options['no-udp-in'], parseBoolean(process.env.FORGE_NR_NO_UDP_IN), undefined)
+options.allowInboundTcp = noTcp === undefined ? undefined : !noTcp
+options.allowInboundUdp = noUdp === undefined ? undefined : !noTcp
 
 if (process.env.FORGE_BROKER_URL && process.env.FORGE_BROKER_USERNAME && process.env.FORGE_BROKER_PASSWORD) {
     options.broker = {
