@@ -1,3 +1,10 @@
+#### 1.1.0: Release
+
+ - Bump nr-file-node version (#84) @hardillb
+ - Add nr-file-nodes as dep (#83) @hardillb
+ -  Add fileStore settings for @flowforge/file-storage (#82) @Steve-Mcl
+ - Implement tcp/udp allow/inhibit settings (#81) @Steve-Mcl
+
 #### 1.0.0: Release
 
  - Closes a timing window on slow starting systems (#79) @hardillb
