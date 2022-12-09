@@ -1,3 +1,7 @@
+#### 1.1.1: Release
+
+ - Ensure allow/deny lists default to proper values (backport #87) (#88) @knolleary
+
 #### 1.1.0: Release
 
  - Bump nr-file-node version (#84) @hardillb
