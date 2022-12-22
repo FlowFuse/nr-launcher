@@ -1,3 +1,9 @@
+#### 1.2.0: Release
+
+ - Bump plugin versions (#90) @hardillb
+ - Ensure allow/deny lists default to proper values (#87) @knolleary
+ - Add settings for persistent storage (#86) @Steve-Mcl
+
 #### 1.1.0: Release
 
  - Bump nr-file-node version (#84) @hardillb
