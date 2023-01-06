@@ -67,6 +67,9 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.have.property('teamID')
             settings.flowforge.should.have.property('projectID')
             settings.flowforge.should.not.have.property('projectLink')
+
+            settings.should.not.have.property('httpNodeAuth')
+            settings.should.not.have.property('httpNodeMiddleware')
         })
         it('allows settings are set for the project', async function () {
             const result = runtimeSettings.getSettingsFile({
@@ -228,5 +231,27 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.have.property('projectID', 'PROJECTID')
             settings.flowforge.should.not.have.property('projectLink')
         })
+    })
+    it('includes httpNodeAuth if user/pass provided', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            settings: {
+                httpNodeAuth: { user: 'fred', pass: 'secret' }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('httpNodeAuth')
+        settings.httpNodeAuth.should.eql({ user: 'fred', pass: 'secret' })
+        settings.should.not.have.property('httpNodeMiddleware')
+    })
+    it('includes httpNodeMiddle if flowforge-user auth type set', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            settings: {
+                httpNodeAuth: { type: 'flowforge-user' }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.not.have.property('httpNodeAuth')
+        settings.should.have.property('httpNodeMiddleware')
+        ;(typeof settings.httpNodeMiddleware).should.equal('function')
     })
 })
