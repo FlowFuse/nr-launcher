@@ -62,6 +62,9 @@ describe('Runtime Settings', function () {
             settings.externalModules.modules.should.have.property('allowList', ['*'])
             settings.should.have.property('functionExternalModules', true)
 
+            // Default should not have editorTheme.library as it is an EE feature
+            settings.editorTheme.should.not.have.property('library')
+
             settings.should.have.property('flowforge')
             settings.flowforge.should.have.property('forgeURL')
             settings.flowforge.should.have.property('teamID')
@@ -71,7 +74,7 @@ describe('Runtime Settings', function () {
             settings.should.not.have.property('httpNodeAuth')
             settings.should.not.have.property('httpNodeMiddleware')
         })
-        it('allows settings are set for the project', async function () {
+        it('includes ee-only settings when license applied', async function () {
             const result = runtimeSettings.getSettingsFile({
                 licenseType: 'ee',
                 credentialSecret: 'foo',
@@ -148,6 +151,9 @@ describe('Runtime Settings', function () {
             settings.editorTheme.logout.should.have.property('redirect')
             settings.editorTheme.should.have.property('codeEditor')
             settings.editorTheme.codeEditor.should.have.property('lib', 'ace')
+
+            // Default should not have editorTheme.library as it is an EE feature
+            settings.editorTheme.should.have.property('library')
 
             settings.should.have.property('nodesExcludes', ['abc', 'def'])
 
