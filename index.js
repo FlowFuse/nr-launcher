@@ -101,7 +101,8 @@ async function main () {
     try {
         await launcher.loadSettings()
         await launcher.start()
-    } catch (err) {
+    } catch (error) {
+        await launcher.logAuditEvent('start-failed', { error })
     }
 
     // const wss = new ws.Server({ clientTracking: false, noServer: true })
