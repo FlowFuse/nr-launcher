@@ -152,7 +152,7 @@ describe('Runtime Settings', function () {
             settings.editorTheme.should.have.property('codeEditor')
             settings.editorTheme.codeEditor.should.have.property('lib', 'ace')
 
-            // Default should not have editorTheme.library as it is an EE feature
+            // Should have editorTheme.library as it is an EE feature
             settings.editorTheme.should.have.property('library')
 
             settings.should.have.property('nodesExcludes', ['abc', 'def'])
