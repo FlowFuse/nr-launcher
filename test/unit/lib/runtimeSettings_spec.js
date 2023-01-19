@@ -249,7 +249,7 @@ describe('Runtime Settings', function () {
         settings.httpNodeAuth.should.eql({ user: 'fred', pass: 'secret' })
         settings.should.not.have.property('httpNodeMiddleware')
     })
-    it('includes httpNodeMiddle if flowforge-user auth type set', async function () {
+    it('includes httpNodeMiddleware if flowforge-user auth type set', async function () {
         const result = runtimeSettings.getSettingsFile({
             settings: {
                 httpNodeAuth: { type: 'flowforge-user' }
@@ -260,6 +260,29 @@ describe('Runtime Settings', function () {
             settings.should.not.have.property('httpNodeAuth')
             settings.should.have.property('httpNodeMiddleware')
             ;(typeof settings.httpNodeMiddleware).should.equal('function')
+            settings.should.have.property('ui')
+            settings.ui.should.not.have.property('path')
+            settings.ui.should.have.property('middleware')
+            ;(typeof settings.ui.middleware).should.equal('function')
+        } catch (err) {
+            // Temporary fix as this module will not be found when running in CI
+            // until we publish the release of the new nr-auth module.
+            err.toString().should.match(/Cannot find module '@flowforge\/nr-auth\/middleware'/)
+        }
+    })
+    it('includes httpNodeMiddleware if flowforge-user auth type set and dashboard ui set', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            settings: {
+                dashboardUI: '/foo',
+                httpNodeAuth: { type: 'flowforge-user' }
+            }
+        })
+        try {
+            const settings = await loadSettings(result)
+            settings.should.have.property('ui')
+            settings.ui.should.have.property('path', '/foo')
+            settings.ui.should.have.property('middleware')
+            ;(typeof settings.ui.middleware).should.equal('function')
         } catch (err) {
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
