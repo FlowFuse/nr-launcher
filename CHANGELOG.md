@@ -1,3 +1,12 @@
+#### 1.3.0: Release
+
+ - Bump project nodes version (#97) @hardillb
+ - Separate out Dashboard middleware handling (#96) @knolleary
+ - Add auth and storage to node-red nodeDir (#95) @knolleary
+ - Improve stuck intermediate state of project (#94) @Steve-Mcl
+ - Add Team Library configuration settings (#93) @knolleary
+ - Add support for httpNodeMiddleware and FlowForge User auth (#92) @knolleary
+
 #### 1.2.0: Release
 
  - Bump plugin versions (#90) @hardillb
