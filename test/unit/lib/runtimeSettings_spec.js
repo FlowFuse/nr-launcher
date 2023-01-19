@@ -289,5 +289,4 @@ describe('Runtime Settings', function () {
             err.toString().should.match(/Cannot find module '@flowforge\/nr-auth\/middleware'/)
         }
     })
-    
 })
