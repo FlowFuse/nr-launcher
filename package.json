@@ -12,13 +12,17 @@
     "node-red": {
         "plugins": {
             "flowforge-auth": "lib/auth/httpAuthPlugin.js",
-            "flowforge-library": "lib/storage/libraryPlugin.js"
+            "flowforge-library": "lib/storage/libraryPlugin.js",
+            "forge-light": "lib/theme/forge-light/forge-light.js",
+            "forge-dark": "lib/theme/forge-dark/forge-dark.js"
+
         }
     },
     "scripts": {
         "test": "mocha 'test/unit/**/*_spec.js'",
         "lint": "eslint -c .eslintrc *.js lib/*.js test/**/*.js",
-        "lint:fix": "eslint -c .eslintrc *.js lib/*.js test/**/*.js --fix"
+        "lint:fix": "eslint -c .eslintrc *.js lib/*.js test/**/*.js --fix",
+        "build-theme": "node lib/theme/scripts/build.js "
     },
     "keywords": [
         "flowforge"
@@ -56,6 +60,7 @@
         "eslint": "^8.25.0",
         "eslint-config-standard": "^17.0.0",
         "mocha": "^10.0.0",
+        "sass": "1.51.0",
         "should": "^13.2.3"
     }
 }
