@@ -1,12 +1,28 @@
 {
     "name": "@flowforge/nr-launcher",
     "version": "1.3.0",
-    "description": "Wraper for starting Node-RED",
-    "main": "index.js",
+    "description": "FlowForge Launcher for running Node-RED",
+    "exports": {
+        "./auditLogger": "./lib/auditLogger/index.js",
+        "./adminAuth": "./lib/auth/adminAuth.js",
+        "./authMiddleware": "./lib/auth/httpAuthMiddleware.js",
+        "./storage": "./lib/storage/index.js"
+
+    },
+    "node-red": {
+        "plugins": {
+            "flowforge-auth": "lib/auth/httpAuthPlugin.js",
+            "flowforge-library": "lib/storage/libraryPlugin.js",
+            "forge-light": "lib/theme/forge-light/forge-light.js",
+            "forge-dark": "lib/theme/forge-dark/forge-dark.js"
+
+        }
+    },
     "scripts": {
         "test": "mocha 'test/unit/**/*_spec.js'",
         "lint": "eslint -c .eslintrc *.js lib/*.js test/**/*.js",
-        "lint:fix": "eslint -c .eslintrc *.js lib/*.js test/**/*.js --fix"
+        "lint:fix": "eslint -c .eslintrc *.js lib/*.js test/**/*.js --fix",
+        "build-theme": "node lib/theme/scripts/build.js "
     },
     "keywords": [
         "flowforge"
@@ -27,10 +43,6 @@
     },
     "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
     "dependencies": {
-        "@flowforge/nr-audit-logger": "^1.3.0",
-        "@flowforge/nr-auth": "^1.3.0",
-        "@flowforge/nr-storage": "^1.3.0",
-        "@flowforge/nr-theme": "^0.1.3",
         "@flowforge/nr-project-nodes": "^0.2.0",
         "@flowforge/nr-file-nodes": "^0.0.3",
         "@flowforge/nr-persistent-context": "^0.0.3",
@@ -38,12 +50,16 @@
         "command-line-args": "^5.2.1",
         "express": "^4.18.1",
         "got": "^11.8.5",
+        "passport": "0.6.0",
+        "passport-oauth2": "^1.6.1",
+        "oauth": "^0.9.15",
         "ws": "^8.7.0"
     },
     "devDependencies": {
         "eslint": "^8.25.0",
         "eslint-config-standard": "^17.0.0",
         "mocha": "^10.0.0",
+        "sass": "1.51.0",
         "should": "^13.2.3"
     }
 }

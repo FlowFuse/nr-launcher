@@ -20,6 +20,10 @@ describe('Runtime Settings', function () {
         const nmPath = path.normalize(path.join(__dirname, '../../../node_modules')).split(path.sep).join('/')
         // nmPath2 - when running inside flowforge-dev-env, need to go higher in the tree
         const nmPath2 = path.normalize(path.join(__dirname, '../../../../../node_modules')).split(path.sep).join('/')
+        // Rewrite any requires for exports of this module
+        content = content.replace(/'(@flowforge\/nr-launcher\/.*)'/g, (match, p1) => {
+            return `'${require.resolve(p1)}'`
+        })
         content = `module.paths.unshift('${nmPath}', '${nmPath2}'); ${content}`
         const fn = path.normalize(path.join(TMPDIR, `${Math.random().toString(36).substring(2)}.js`)).split(path.sep).join('/')
         await fs.writeFile(fn, content)

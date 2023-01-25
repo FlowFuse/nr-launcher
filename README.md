@@ -1,6 +1,10 @@
-# FlowForge Wrapper for Node-RED
+# FlowForge Launcher for Node-RED
 
-Custom launcher to start Node-RED is a loadable set of settings and to capture logs so they can be streamed to the admin app
+This is the launcher FlowForge uses to run instances of Node-RED. It dynamically
+generates the Node-RED settings based on the associated Project's settings.
+
+The launcher starts its own HTTP service to allow the FlowForge platform to remotely
+control it.
 
 ### Configure
 
