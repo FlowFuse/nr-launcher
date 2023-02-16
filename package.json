@@ -1,13 +1,12 @@
 {
     "name": "@flowforge/nr-launcher",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "description": "FlowForge Launcher for running Node-RED",
     "exports": {
         "./auditLogger": "./lib/auditLogger/index.js",
         "./adminAuth": "./lib/auth/adminAuth.js",
         "./authMiddleware": "./lib/auth/httpAuthMiddleware.js",
         "./storage": "./lib/storage/index.js"
-
     },
     "node-red": {
         "plugins": {
@@ -15,7 +14,6 @@
             "flowforge-library": "lib/storage/libraryPlugin.js",
             "forge-light": "lib/theme/forge-light/forge-light.js",
             "forge-dark": "lib/theme/forge-dark/forge-dark.js"
-
         }
     },
     "scripts": {
