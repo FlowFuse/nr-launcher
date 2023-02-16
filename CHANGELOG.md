@@ -1,3 +1,8 @@
+#### 1.4.0: Release
+
+ - Bump nr-peresistent-context nodes (#103) @hardillb
+ - Move storage/auth/auditLogger/theme into launcher (#100) @knolleary
+
 #### 1.3.0: Release
 
  - Bump project nodes version (#97) @hardillb
