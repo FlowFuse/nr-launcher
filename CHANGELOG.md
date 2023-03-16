@@ -1,3 +1,8 @@
+#### 1.5.0: Release
+
+ - Improve crash loop detection (#106) @Steve-Mcl
+ - Allow Private CA Certs bundle to be passed to Node-RED (#105) @hardillb
+
 #### 1.4.0: Release
 
  - Bump nr-peresistent-context nodes (#103) @hardillb
