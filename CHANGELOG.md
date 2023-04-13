@@ -1,3 +1,7 @@
+#### 1.6.0: Release
+
+ - Resolve theme selection issue (#108) @Steve-Mcl
+
 #### 1.5.0: Release
 
  - Improve crash loop detection (#106) @Steve-Mcl
