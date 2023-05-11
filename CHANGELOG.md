@@ -1,3 +1,9 @@
+#### 1.7.0: Release
+
+ - Allow more failed pings during startup to avoid slow starts getting killed (#113) @knolleary
+ - Detect hung node-red via regularly polling (#112) @knolleary
+ - Ensure Node-RED process is stopped before attempting restart (#111) @knolleary
+
 #### 1.6.0: Release
 
  - Resolve theme selection issue (#108) @Steve-Mcl
