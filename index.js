@@ -3,6 +3,12 @@ const fs = require('fs')
 const path = require('path')
 const commandLineArgs = require('command-line-args')
 
+const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
+if (NODE_MAJOR_VERSION > 14) {
+    const dns = require('node:dns')
+    dns.setDefaultResultOrder('ipv4first')
+}
+
 const { Launcher } = require('./lib/launcher')
 const { AdminInterface } = require('./lib/admin')
 
