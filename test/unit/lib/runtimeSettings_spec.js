@@ -293,4 +293,15 @@ describe('Runtime Settings', function () {
             err.toString().should.match(/Cannot find module '@flowforge\/nr-auth\/middleware'/)
         }
     })
+    it('test HA settings disable editor', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            settings: {
+                ha: {
+                    replicas: 2
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('disableEditor', true)
+    })
 })
