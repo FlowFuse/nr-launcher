@@ -186,6 +186,7 @@ describe('Runtime Settings', function () {
             settings.flowforge.projectLink.broker.should.have.property('url', 'BROKERURL')
             settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
             settings.flowforge.projectLink.broker.should.have.property('password', 'BROKERPASSWORD')
+            settings.flowforge.projectLink.should.not.have.property('useSharedSubscriptions')
         })
         it('does not include projectLink if licenseType not ee', async function () {
             const result = runtimeSettings.getSettingsFile({
@@ -293,8 +294,14 @@ describe('Runtime Settings', function () {
             err.toString().should.match(/Cannot find module '@flowforge\/nr-auth\/middleware'/)
         }
     })
-    it('test HA settings disable editor', async function () {
+    it('includes HA settings when enabled', async function () {
         const result = runtimeSettings.getSettingsFile({
+            licenseType: 'ee',
+            broker: {
+                url: 'BROKERURL',
+                username: 'BROKERUSERNAME',
+                password: 'BROKERPASSWORD'
+            },
             settings: {
                 ha: {
                     replicas: 2
@@ -303,5 +310,7 @@ describe('Runtime Settings', function () {
         })
         const settings = await loadSettings(result)
         settings.should.have.property('disableEditor', true)
+        settings.flowforge.should.have.property('projectLink')
+        settings.flowforge.projectLink.should.have.property('useSharedSubscriptions', true)
     })
 })
