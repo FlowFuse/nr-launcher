@@ -1,3 +1,13 @@
+#### 1.8.0: Release
+
+ - Update dependencies (#124) @hardillb
+ - Pass HA flag to project nodes if enabled (#123) @knolleary
+ - Disable the editor if HA enabled (#122) @hardillb
+ - Set IPv4 first flag (#120) @hardillb
+ - Make NR listen on IPv6 as well as IPv4 (#119) @hardillb
+ - Ensure HOME env var set if present (#118) @hardillb
+ - Increase number of startup polls allowed to fail for hang detection (#116) @knolleary
+
 #### 1.7.0: Release
 
  - Allow more failed pings during startup to avoid slow starts getting killed (#113) @knolleary
