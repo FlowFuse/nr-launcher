@@ -1,3 +1,9 @@
+#### 1.8.1: Release
+
+ - Update health poll to use 127.0.0.1 address (#130) @knolleary
+ - Log the health URL (#128) @hardillb
+ - Ensure that reason for fail poll logged (#127) @hardillb
+
 #### 1.8.0: Release
 
  - Update dependencies (#124) @hardillb
