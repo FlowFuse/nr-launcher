@@ -1,0 +1,54 @@
+{
+    "name": "@flowforge/nr-theme",
+    "version": "0.2.0",
+    "description": "FlowForge themes for Node-RED",
+    "scripts": {
+        "prepack": "node scripts/prepack.mjs",
+        "postpack": "node scripts/postpack.mjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/flowforge/flowforge-nr-launcher.git"
+    },
+    "keywords": [
+        "node-red",
+        "flowforge",
+        "nodered",
+        "forge",
+        "theme",
+        "themes",
+        "plugin",
+        "plugins",
+        "light",
+        "dark",
+        "lowcode"
+    ],
+    "author": {
+        "name": "FlowForge Inc."
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/flowforge/flowforge-nr-launcher/issues"
+    },
+    "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
+    "node-red": {
+        "version": ">=2.2.0",
+        "plugins": {
+            "forge-light": "lib/theme/forge-light/forge-light.js",
+            "forge-dark": "lib/theme/forge-dark/forge-dark.js"
+        }
+    },
+    "engines": {
+        "node": ">=14.x"
+    },
+    "files": [
+        "lib/theme/**/*.js",
+        "lib/theme/**/*.css",
+        "lib/theme/**/*.json",
+        "resources",
+        "package.json",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md"
+    ]
+}

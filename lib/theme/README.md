@@ -11,8 +11,8 @@ A set of custom Node-RED themes used when running inside the FlowForge platform.
 
 To modify the theme, edit the appropriate theme `scss` file:
 
- - `/lib/theme/forge-light/forge-light-theme.scss`
- - `/lib/theme/forge-dark/forge-dark-theme.scss`
+ - `forge-light/forge-light-theme.scss`
+ - `forge-dark/forge-dark-theme.scss`
  
 Then run the build to regenerate the theme css. This requires the Node-RED source
 repository checked out somewhere local:

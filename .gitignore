@@ -1,2 +1,6 @@
 node_modules/
 userDir/
+lib/theme/lib/
+lib/theme/resources/
+lib/theme/node_modules/
+*.tgz
