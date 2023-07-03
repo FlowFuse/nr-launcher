@@ -2,6 +2,10 @@
     "name": "@flowforge/nr-theme",
     "version": "0.1.4",
     "description": "FlowForge themes for Node-RED",
+    "scripts": {
+        "prepack": "node scripts/prepack.mjs",
+        "postpack": "node scripts/postpack.mjs"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/flowforge/flowforge-nr-launcher.git"
