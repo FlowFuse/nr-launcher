@@ -30,8 +30,8 @@
     "node-red": {
         "version": ">=2.2.0",
         "plugins": {
-            "forge-light": "forge-light/forge-light.js",
-            "forge-dark": "forge-dark/forge-dark.js"
+            "forge-light": "lib/theme/forge-light/forge-light.js",
+            "forge-dark": "lib/theme/forge-dark/forge-dark.js"
         }
     },
     "engines": {
