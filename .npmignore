@@ -1,1 +1,10 @@
+.gitignore
+.github/
+.eslintrc
+*.tgz
+test/
+lib/theme/lib/
+lib/theme/resources/
+lib/theme/scripts/
 lib/theme/package.json
+lib/theme/**/*.scss
