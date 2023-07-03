@@ -1,0 +1,12 @@
+scripts/
+temp/
+node_modules/
+common/
+forge-light/
+forge-dark/
+**/*.scss
+*.tgz
+.github
+.gitmodules
+.browserslistrc
+.gitignore
