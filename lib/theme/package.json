@@ -42,7 +42,10 @@
         "node": ">=14.x"
     },
     "files": [
-        "lib",
+        "lib/theme/**/*.js",
+        "lib/theme/**/*.css",
+        "lib/theme/**/*.json",
+        "resources",
         "package.json",
         "README.md",
         "LICENSE",
