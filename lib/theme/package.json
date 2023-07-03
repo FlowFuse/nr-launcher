@@ -40,5 +40,12 @@
     },
     "engines": {
         "node": ">=14.x"
-    }
+    },
+    "files": [
+        "lib",
+        "package.json",
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md"
+    ]
 }
