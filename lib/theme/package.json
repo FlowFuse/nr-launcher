@@ -1,6 +1,6 @@
 {
     "name": "@flowforge/nr-theme",
-    "version": "0.2.0",
+    "version": "1.8.0",
     "description": "FlowForge themes for Node-RED",
     "scripts": {
         "prepack": "node scripts/prepack.mjs",
