@@ -1,3 +1,12 @@
+#### 1.9.0: Release
+
+ - Version bump sub project `nr-theme` for initial (manual) publish (#137) @Steve-Mcl
+ - Publish theme as seperate package (#136) @hardillb
+ - Add package lock.json (#135) @hardillb
+ - Add src attribute to launcher log entries (#133) @hardillb
+ - Change oauth scope for httpNode middleware requests (#132) @knolleary
+ - Update health poll to use 127.0.0.1 address (#129) @knolleary
+
 #### 1.8.0: Release
 
  - Update dependencies (#124) @hardillb
