@@ -23,7 +23,7 @@ jobs:
           repository: node-red/node-red
           path: node-red
       - name: Build Theme
-        run: npm run build-theme --src=node-red
+        run: npm run build-theme -- --src=node-red
       - name: clean up
         run: rm -rf node-red
       - name: Publish Theme
