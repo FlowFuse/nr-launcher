@@ -1,6 +1,6 @@
 {
     "name": "@flowforge/nr-launcher",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "FlowForge Launcher for running Node-RED",
     "exports": {
         "./auditLogger": "./lib/auditLogger/index.js",
