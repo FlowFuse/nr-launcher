@@ -23,14 +23,14 @@ jobs:
           npm version prerelease --preid `git rev-parse --short HEAD`-`date +%Y%m%d` --no-git-tag-version
           cd ../..
       - name: "Publish flowforge-nr-launcher"
-        uses: JS-DevTools/npm-publish@v2.1.0
+        uses: JS-DevTools/npm-publish@v2.2.1
         with:
           tag: ${{ env.release_name }}
           package: ./package.json
           registry: https://npm.pkg.github.com
           token: ${{ secrets.GITHUB_TOKEN }}  
       - name: "Publish flowforge-nr-theme"
-        uses: JS-DevTools/npm-publish@v2.2.0
+        uses: JS-DevTools/npm-publish@v2.2.1
         with:
           tag: ${{ env.release_name }}
           package: ./lib/theme/package.json
