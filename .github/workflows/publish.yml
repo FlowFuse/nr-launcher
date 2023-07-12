@@ -1,0 +1,40 @@
+name: Publish
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  push:
+    branches:
+      - 'feature/*' 
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set nigthly release
+        if: ${{ github.event_name == 'schedule' }}
+        run: echo "release_name=nightly" >> $GITHUB_ENV
+      - name: "Set versions"
+        working-directory: ./flowforge-nr-launcher
+        run: |
+          npm version prerelease --preid `git rev-parse --short HEAD`-`date +%Y%m%d` --no-git-tag-version
+          cat package.json | jq '.dependencies["@flowforge/nr-project-nodes"] = "${{ env.release_name }}" | .dependencies["@flowforge/nr-file-nodes"] = "${{ env.release_name }}" | .dependencies["@flowforge/nr-persistent-context"] = "${{ env.release_name }}" ' > package.json-patched
+          mv package.json-patched package.json
+          cd lib/theme
+          npm version prerelease --preid `git rev-parse --short HEAD`-`date +%Y%m%d` --no-git-tag-version
+          cd ../..
+      - name: "Publish flowforge-nr-launcher"
+        uses: JS-DevTools/npm-publish@v2.1.0
+        with:
+          tag: ${{ env.release_name }}
+          package: ./package.json
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}  
+      - name: "Publish flowforge-nr-theme"
+        uses: JS-DevTools/npm-publish@v2.2.0
+        with:
+          tag: ${{ env.release_name }}
+          package: ./lib/theme/package.json
+          ignore-scripts: false
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}
