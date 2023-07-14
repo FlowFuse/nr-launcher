@@ -22,3 +22,7 @@ The following Environment Variables can be used instead of the cmd line args...
 `FORGE_URL`, `FORGE_TEAM_ID`, `FORGE_PROJECT_ID`, `FORGE_PROJECT_TOKEN`, `FORGE_NR_PATH`, `FORGE_NR_NO_TCP_IN`, `FORGE_NR_NO_UDP_IN`
 
 NOTE: cmd line args take precedent if both are provided
+
+The suggested enhancement is to enable the transfer of environment variables from the host process to Node-RED. 
+This modification, for example, would allow cloud solutions developed within Node-RED to adopt the web identity 
+configurations set on the hosting machines.
