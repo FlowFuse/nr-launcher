@@ -173,7 +173,7 @@ describe('Runtime Settings', function () {
             settings.externalModules.palette.should.have.property('allowUpload', false)
             settings.externalModules.palette.should.have.property('allowList', ['a', 'b', 'c'])
             settings.externalModules.palette.should.have.property('denyList', ['1', '2', '3'])
-            settings.externalModules.palette.should.have.property('catalogues', ["https://foo.bar/list.json", "https://example.com/catalogue.json"])
+            settings.externalModules.palette.should.have.property('catalogues', ['https://foo.bar/list.json', 'https://example.com/catalogue.json'])
 
             settings.externalModules.should.have.property('modules')
             settings.externalModules.modules.should.have.property('allowInstall', false)
