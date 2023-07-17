@@ -13,8 +13,7 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: Set nigthly release
         # if: ${{ github.event_name == 'schedule' }}
         run: echo "release_name=nightly" >> $GITHUB_ENV
@@ -26,10 +25,18 @@ jobs:
           cd lib/theme
           npm version prerelease --preid `git rev-parse --short HEAD`-`date +%Y%m%d` --no-git-tag-version
           cd ../..
-      - name: "publish flowforge-driver-localfs"
-        uses: JS-DevTools/npm-publish@v2
+      - name: "Publish flowforge-nr-launcher"
+        uses: JS-DevTools/npm-publish@v2.2.1
         with:
           tag: ${{ env.release_name }}
           package: ./package.json
+          registry: https://npm.pkg.github.com
+          token: ${{ secrets.GITHUB_TOKEN }}  
+      - name: "Publish flowforge-nr-theme"
+        uses: JS-DevTools/npm-publish@v2.2.1
+        with:
+          tag: ${{ env.release_name }}
+          package: ./lib/theme/package.json
+          ignore-scripts: false
           registry: https://npm.pkg.github.com
           token: ${{ secrets.GITHUB_TOKEN }}
