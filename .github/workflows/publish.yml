@@ -40,3 +40,16 @@ jobs:
           ignore-scripts: false
           registry: https://npm.pkg.github.com
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate a token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_BOT_APP_ID }}
+          private_key: ${{ secrets.GH_BOT_APP_KEY }}
+      - name: Trigger localfs rebuild
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          repository: flowforge/flowforge-driver-localfs
+          event-type: nr-launcher-trigger
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "nr_launcher_release_name": "${{ env.release_name }}"}'
