@@ -53,4 +53,4 @@ jobs:
           repo: flowforge/flowforge-driver-localfs
           ref: feat-publish-pipeline-poc
           token: ${{ steps.generate_token.outputs.token }}
-          inputs: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "nr_launcher_release_name": "${{ env.release_name }}"}'
+          inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ env.release_name }}"}'
