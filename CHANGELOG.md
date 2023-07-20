@@ -1,3 +1,7 @@
+#### 1.9.2: Release
+
+ - Fix wait on deferredStop when trying to start a stopping instance (#148) @knolleary
+
 #### 1.9.0: Release
 
  - Version bump sub project `nr-theme` for initial (manual) publish (#137) @Steve-Mcl
