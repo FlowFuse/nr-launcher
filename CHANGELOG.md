@@ -1,3 +1,13 @@
+#### 1.10.0: Release
+
+ - Ensure TimeZone is passed to NR (#151) @hardillb
+ - Fix node_path when running in dev-env (#150) @knolleary
+ - Fix wait on deferredStop when trying to start a stopping instance (#147) @knolleary
+ - settings: Inject custom catalogues into NR settings (#146) @ZJvandeWeg
+ - Chore: Set root flag in eslint (#142) @Pezmc
+ - Prevent NODE_RED_ENABLE_PROJECTS (#141) @hardillb
+ - Fix theme build step (#139) @hardillb
+
 #### 1.9.0: Release
 
  - Version bump sub project `nr-theme` for initial (manual) publish (#137) @Steve-Mcl
