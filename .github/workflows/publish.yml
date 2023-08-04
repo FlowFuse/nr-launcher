@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - 'feat-*'
+      - 'feature/*'
 
 jobs:
   nrLauncherPackage:
