@@ -19,6 +19,7 @@ jobs:
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-launcher
+      publish_package: true
       package_dependencies: |
         @flowforge/nr-project-nodes
         @flowforge/nr-file-nodes
@@ -29,6 +30,7 @@ jobs:
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-theme
+      publish_package: true
       working_directory: ./lib/theme
       publish_ignore_scripts: false
 
