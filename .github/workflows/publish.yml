@@ -3,16 +3,19 @@ name: Build and push packages
 on:
   schedule:
     - cron: '0 23 * * *'
+  pull_request:
+    branches: 
+      - main
   push:
     branches:
-      - 'feat-*'
-      - 'feature/*'
+      - main'
 
 jobs:
+  build:
+    uses: 'flowforge/github-actions-workflows/.github/workflows/build_node_package.yml@main'
+
   nrLauncherPackage:
-    permissions:
-      contents: read
-      packages: write
+    needs: build
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-launcher
@@ -22,9 +25,7 @@ jobs:
         @flowforge/nr-persistent-context
   
   nrThemePackage:
-    permissions:
-      contents: read
-      packages: write
+    needs: build
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-theme
