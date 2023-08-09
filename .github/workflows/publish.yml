@@ -13,6 +13,8 @@ on:
 jobs:
   build:
     uses: 'flowforge/github-actions-workflows/.github/workflows/build_node_package.yml@main'
+    with:
+      run_tests: true
 
   nrLauncherPackage:
     needs: build
@@ -32,7 +34,7 @@ jobs:
       package_name: flowforge-nr-theme
       publish_package: true
       working_directory: ./lib/theme
-      publish_ignore_scripts: false
+      disable_ignore_scripts_on_publish: true
 
   dispatch:
     runs-on: ubuntu-latest
