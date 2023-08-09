@@ -16,7 +16,7 @@ jobs:
 
   nrLauncherPackage:
     needs: build
-    uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
+    uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@fix-ignore-scripts'
     with:
       package_name: flowforge-nr-launcher
       publish_package: true
@@ -27,7 +27,7 @@ jobs:
   
   nrThemePackage:
     needs: build
-    uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
+    uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@fix-ignore-scripts'
     with:
       package_name: flowforge-nr-theme
       publish_package: true
