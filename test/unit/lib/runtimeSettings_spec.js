@@ -160,8 +160,8 @@ describe('Runtime Settings', function () {
             settings.editorTheme.should.have.property('codeEditor')
             settings.editorTheme.codeEditor.should.have.property('lib', 'ace')
 
-            // Should have editorTheme.library as it is an EE feature
-            settings.editorTheme.should.have.property('library')
+            // Should not have editorTheme.library as it is an EE feature but the feature flag wasn't set
+            settings.editorTheme.should.not.have.property('library')
 
             settings.should.have.property('nodesExcludes', ['abc', 'def'])
 
@@ -317,5 +317,16 @@ describe('Runtime Settings', function () {
         settings.should.have.property('disableEditor', true)
         settings.flowforge.should.have.property('projectLink')
         settings.flowforge.projectLink.should.have.property('useSharedSubscriptions', true)
+    })
+    it('includes shared library when feature flag set', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            features: {
+                'shared-library': true
+            },
+            settings: {}
+        })
+        const settings = await loadSettings(result)
+        // Should not have editorTheme.library as it is an EE feature but the feature flag wasn't set
+        settings.editorTheme.should.have.property('library')
     })
 })
