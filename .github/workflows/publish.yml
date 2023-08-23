@@ -41,9 +41,9 @@ jobs:
 
   nrLauncherPackage:
     needs: build
-    if: |
-      ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
-      github.event_name == 'schedule'
+    # if: |
+    #   ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
+    #   github.event_name == 'schedule'
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-launcher
@@ -55,9 +55,9 @@ jobs:
   
   nrThemePackage:
     needs: build
-    if: |
-      ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
-      github.event_name == 'schedule'
+    # if: |
+    #   ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
+    #   github.event_name == 'schedule'
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-theme
