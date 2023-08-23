@@ -80,6 +80,6 @@ jobs:
         with:
           workflow: publish.yml
           repo: flowforge/flowforge-driver-localfs
-          ref: main
+          ref: feat-dispatch-flowforge-build
           token: ${{ steps.generate_token.outputs.token }}
           inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ needs.nrLauncherPackage.outputs.release_name }}"}'
