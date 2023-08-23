@@ -1,6 +1,29 @@
 name: Build and push packages
 
 on:
+  workflow_dispatch:
+    inputs:
+      nr_project_nodes_release_name:
+        description: 'nr-project-nodes package version'
+        required: false
+        default: 'nightly'
+      nr_project_nodes_ref:
+        description: 'nr-project-nodes package ref'
+        required: false
+      nr_file_nodes_release_name:
+        description: 'nr-file-nodes package version'
+        required: false
+        default: 'nightly'
+      nr_file_nodes_ref:
+        description: 'nr-file-nodes package ref'
+        required: false
+      nr_persistent_context_release_name:
+        description: 'nr-persistent-context package version'
+        required: false
+        default: 'nightly'
+      nr_persistent_context_ref:
+        description: 'nr-persistent-context package ref'
+        required: false
   schedule:
     - cron: '0 23 * * *'
   pull_request:
