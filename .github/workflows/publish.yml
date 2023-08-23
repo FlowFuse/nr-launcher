@@ -41,9 +41,10 @@ jobs:
 
   nrLauncherPackage:
     needs: build
-    # if: |
-    #   ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
-    #   github.event_name == 'schedule'
+    if: |
+      ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
+      ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' ) ||
+      github.event_name == 'schedule'
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-launcher
@@ -55,9 +56,10 @@ jobs:
   
   nrThemePackage:
     needs: build
-    # if: |
-    #   ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
-    #   github.event_name == 'schedule'
+    if: |
+      ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
+      ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' ) ||
+      github.event_name == 'schedule'
     uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@main'
     with:
       package_name: flowforge-nr-theme
@@ -82,6 +84,6 @@ jobs:
         with:
           workflow: publish.yml
           repo: flowforge/flowforge-driver-localfs
-          ref: feat-dispatch-flowforge-build
+          ref: main
           token: ${{ steps.generate_token.outputs.token }}
           inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ needs.nrLauncherPackage.outputs.release_name }}"}'
