@@ -45,7 +45,6 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     needs: [nrLauncherPackage, nrThemePackage]
-    if: false
     steps:
       - name: Generate a token
         id: generate_token
@@ -53,11 +52,12 @@ jobs:
         with:
           app_id: ${{ secrets.GH_BOT_APP_ID }}
           private_key: ${{ secrets.GH_BOT_APP_KEY }}
-      - name: Trigger localfs package rebuild
+
+      - name: Trigger localfs package build
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: publish.yml
           repo: flowforge/flowforge-driver-localfs
-          ref: feat-publish-pipeline-poc
+          ref: main
           token: ${{ steps.generate_token.outputs.token }}
           inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ needs.nrLauncherPackage.outputs.release_name }}"}'
