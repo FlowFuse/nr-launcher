@@ -160,8 +160,8 @@ describe('Runtime Settings', function () {
             settings.editorTheme.should.have.property('codeEditor')
             settings.editorTheme.codeEditor.should.have.property('lib', 'ace')
 
-            // Should have editorTheme.library as it is an EE feature
-            settings.editorTheme.should.have.property('library')
+            // Should not have editorTheme.library as it is an EE feature but the feature flag wasn't set
+            settings.editorTheme.should.not.have.property('library')
 
             settings.should.have.property('nodesExcludes', ['abc', 'def'])
 
@@ -185,13 +185,9 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.have.property('forgeURL', 'FORGEURL')
             settings.flowforge.should.have.property('teamID', 'TEAMID')
             settings.flowforge.should.have.property('projectID', 'PROJECTID')
-            settings.flowforge.should.have.property('projectLink')
-            settings.flowforge.projectLink.should.have.property('token', 'PROJECTTOKEN')
-            settings.flowforge.projectLink.should.have.property('broker')
-            settings.flowforge.projectLink.broker.should.have.property('url', 'BROKERURL')
-            settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
-            settings.flowforge.projectLink.broker.should.have.property('password', 'BROKERPASSWORD')
-            settings.flowforge.projectLink.should.not.have.property('useSharedSubscriptions')
+
+            // Should not have projectLink as it is an EE feature but the feature flag wasn't set
+            settings.flowforge.should.not.have.property('projectLink')
         })
         it('does not include projectLink if licenseType not ee', async function () {
             const result = runtimeSettings.getSettingsFile({
@@ -307,6 +303,9 @@ describe('Runtime Settings', function () {
                 username: 'BROKERUSERNAME',
                 password: 'BROKERPASSWORD'
             },
+            features: {
+                projectComms: true
+            },
             settings: {
                 ha: {
                     replicas: 2
@@ -317,5 +316,37 @@ describe('Runtime Settings', function () {
         settings.should.have.property('disableEditor', true)
         settings.flowforge.should.have.property('projectLink')
         settings.flowforge.projectLink.should.have.property('useSharedSubscriptions', true)
+    })
+    it('includes shared library when feature flag set', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            features: {
+                'shared-library': true
+            },
+            settings: {}
+        })
+        const settings = await loadSettings(result)
+        settings.editorTheme.should.have.property('library')
+    })
+    it('includes project comms when feature flag set', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            projectToken: 'PROJECTTOKEN',
+            broker: {
+                url: 'BROKERURL',
+                username: 'BROKERUSERNAME',
+                password: 'BROKERPASSWORD'
+            },
+            features: {
+                projectComms: true
+            },
+            settings: {}
+        })
+        const settings = await loadSettings(result)
+        settings.flowforge.should.have.property('projectLink')
+        settings.flowforge.projectLink.should.have.property('token', 'PROJECTTOKEN')
+        settings.flowforge.projectLink.should.have.property('broker')
+        settings.flowforge.projectLink.broker.should.have.property('url', 'BROKERURL')
+        settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
+        settings.flowforge.projectLink.broker.should.have.property('password', 'BROKERPASSWORD')
+        settings.flowforge.projectLink.should.not.have.property('useSharedSubscriptions')
     })
 })
