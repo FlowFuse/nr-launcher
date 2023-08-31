@@ -1,3 +1,17 @@
+#### 1.11.0: Release
+
+github.com
+  ✓ Logged in to github.com as ppawlowski (keyring)
+  ✓ Git operations for github.com configured to use ssh protocol.
+  ✓ Token: gho_************************************
+  ✓ Token scopes: admin:public_key, gist, read:org, repo
+ - Use feature flag to enable shared library (#156) @knolleary
+ - Enable localfs package build dispatcher after package publish (#160) @ppawlowski
+ - Update icon (#158) @Yndira-FlowForge
+ - FIX: Publish package on push to `main` and on schedule (#155) @ppawlowski
+ - Enable tests on build; refactor `ignore-scripts` approach (#154) @ppawlowski
+ - Introduce publish pipeline (#143) @ppawlowski
+
 #### 1.10.0: Release
 
  - Ensure TimeZone is passed to NR (#151) @hardillb
