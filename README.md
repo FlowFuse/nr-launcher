@@ -23,6 +23,6 @@ The following Environment Variables can be used instead of the cmd line args...
 
 NOTE: cmd line args take precedent if both are provided
 
-The suggested enhancement is to enable the transfer of environment variables from the host process to Node-RED. 
-This modification, for example, would allow cloud solutions developed within Node-RED to adopt the web identity 
-configurations set on the hosting machines.
+By default, the launcher does not pass host environment variables through to the Node-RED process; only setting the built-in env vars and those configured in the instance settings.
+
+However, if `FORGE_EXPOSE_HOST_ENV` is set, the launcher will pass through all env vars - except that starting with `FORGE_*`.
