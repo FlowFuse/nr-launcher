@@ -24,8 +24,6 @@ on:
       nr_persistent_context_ref:
         description: 'nr-persistent-context package ref'
         required: false
-  schedule:
-    - cron: '0 23 * * *'
   pull_request:
     branches: 
       - main
