@@ -22,3 +22,7 @@ The following Environment Variables can be used instead of the cmd line args...
 `FORGE_URL`, `FORGE_TEAM_ID`, `FORGE_PROJECT_ID`, `FORGE_PROJECT_TOKEN`, `FORGE_NR_PATH`, `FORGE_NR_NO_TCP_IN`, `FORGE_NR_NO_UDP_IN`
 
 NOTE: cmd line args take precedent if both are provided
+
+By default, the launcher does not pass host environment variables through to the Node-RED process; only setting the built-in env vars and those configured in the instance settings.
+
+However, if `FORGE_EXPOSE_HOST_ENV` is set, the launcher will pass through all env vars - except that starting with `FORGE_*`.
