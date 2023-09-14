@@ -1,3 +1,11 @@
+#### 1.11.1: Release
+
+ - Update dependencies and to node-red-3.1 (#164) @Pezmc
+ - Update npm install command to remove production warning (#166) @knolleary
+ - Pin reusable workflow to commit SHA (#165) @ppawlowski
+ - Editor Node-RED app environment variables: allow controllable propagation of env set to process to Node-RED app (#145) @elenaviter
+ - Disable scheduled package build (#163) @ppawlowski
+
 #### 1.11.0: Release
 
  - Use feature flag to enable shared library (#156) @knolleary
