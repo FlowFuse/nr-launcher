@@ -42,7 +42,7 @@
     "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
     "dependencies": {
         "@flowforge/nr-file-nodes": "^0.0.3",
-        "@flowforge/nr-persistent-context": "^0.0.4",
+        "@flowforge/nr-persistent-context": "^0.0.5",
         "@flowforge/nr-project-nodes": "^0.3.0",
         "body-parser": "^1.20.2",
         "command-line-args": "^5.2.1",
