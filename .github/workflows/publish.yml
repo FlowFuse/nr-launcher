@@ -33,7 +33,7 @@ on:
 
 jobs:
   build:
-    uses: 'flowforge/github-actions-workflows/.github/workflows/build_node_package.yml@e3e734b910af78371b2c9a1c6856446d17421f50'
+    uses: 'flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml@e3e734b910af78371b2c9a1c6856446d17421f50'
     with:
       run_tests: true
 
@@ -42,7 +42,7 @@ jobs:
     if: |
       ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
       ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' )
-    uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@5e57b30ac6ed8478406b3b3f2780241d2f4dcd8f'
+    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@5e57b30ac6ed8478406b3b3f2780241d2f4dcd8f'
     with:
       package_name: flowforge-nr-launcher
       publish_package: true
@@ -58,7 +58,7 @@ jobs:
     if: |
       ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
       ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' )
-    uses: 'flowforge/github-actions-workflows/.github/workflows/publish_node_package.yml@5e57b30ac6ed8478406b3b3f2780241d2f4dcd8f'
+    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@5e57b30ac6ed8478406b3b3f2780241d2f4dcd8f'
     with:
       package_name: flowforge-nr-theme
       publish_package: true
@@ -83,7 +83,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: publish.yml
-          repo: flowforge/flowforge-driver-localfs
+          repo: flowfuse/driver-localfs
           ref: main
           token: ${{ steps.generate_token.outputs.token }}
           inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ needs.nrLauncherPackage.outputs.release_name }}"}'
