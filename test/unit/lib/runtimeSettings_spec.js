@@ -60,7 +60,6 @@ describe('Runtime Settings', function () {
             settings.externalModules.palette.should.have.property('allowUpload', false)
             settings.externalModules.palette.should.have.property('denyList', [])
             settings.externalModules.palette.should.have.property('allowList', ['*'])
-            settings.externalModules.palette.should.have.property('catalogues', ['https://catalogue.nodered.org/catalogue.json'])
             settings.externalModules.should.have.property('modules')
             settings.externalModules.modules.should.have.property('allowInstall', true)
             settings.externalModules.modules.should.have.property('denyList', [])
@@ -116,10 +115,7 @@ describe('Runtime Settings', function () {
                         allowInstall: false,
                         nodesExcludes: 'abc,def',
                         allowList: ['a', 'b', 'c'],
-                        denyList: ['1', '2', '3'],
-                        catalogues: [
-                            'https://foo.bar/list.json', 'https://example.com/catalogue.json'
-                        ]
+                        denyList: ['1', '2', '3']
                     },
                     modules: {
                         allowInstall: false,
@@ -173,7 +169,6 @@ describe('Runtime Settings', function () {
             settings.externalModules.palette.should.have.property('allowUpload', false)
             settings.externalModules.palette.should.have.property('allowList', ['a', 'b', 'c'])
             settings.externalModules.palette.should.have.property('denyList', ['1', '2', '3'])
-            settings.externalModules.palette.should.have.property('catalogues', ['https://foo.bar/list.json', 'https://example.com/catalogue.json'])
 
             settings.externalModules.should.have.property('modules')
             settings.externalModules.modules.should.have.property('allowInstall', false)
@@ -348,5 +343,37 @@ describe('Runtime Settings', function () {
         settings.flowforge.projectLink.broker.should.have.property('username', 'BROKERUSERNAME')
         settings.flowforge.projectLink.broker.should.have.property('password', 'BROKERPASSWORD')
         settings.flowforge.projectLink.should.not.have.property('useSharedSubscriptions')
+    })
+    it('sets catalogue when EE and setting is present', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            licenseType: 'ee',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.editorTheme.should.have.property('palette')
+        settings.editorTheme.palette.should.have.property('catalogues').and.be.an.Array()
+        settings.editorTheme.palette.catalogues.should.have.length(3)
+        settings.editorTheme.palette.catalogues[0].should.eql('foo')
+        settings.editorTheme.palette.catalogues[1].should.eql('bar')
+        settings.editorTheme.palette.catalogues[2].should.eql('baz')
+    })
+    it('ignores catalogue entries when NOT EE and setting is present', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            // licenseType: 'ee', << no license type
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.editorTheme.should.have.property('palette')
+        settings.editorTheme.palette.should.have.property('catalogues').and.be.an.Array()
+        settings.editorTheme.palette.catalogues.should.have.length(1)
+        settings.editorTheme.palette.catalogues[0].should.not.eql('foo') // will be NR default catalogue
     })
 })
