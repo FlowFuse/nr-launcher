@@ -1,3 +1,10 @@
+#### 1.12.0: Release
+
+ - Fix tests on windows - ensure forward slashes on paths (#172) @Steve-Mcl
+ - Bumping version (#170) @hardillb
+ - Add support for custom node catalogues (#162) @hardillb
+ - Publish nightly package to npmjs (#168) @ppawlowski
+
 #### 1.11.0: Release
 
  - Use feature flag to enable shared library (#156) @knolleary
