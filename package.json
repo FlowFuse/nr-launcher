@@ -1,7 +1,7 @@
 {
     "name": "@flowforge/nr-launcher",
     "version": "1.12.0",
-    "description": "FlowForge Launcher for running Node-RED",
+    "description": "FlowFuse Launcher for running Node-RED",
     "exports": {
         "./auditLogger": "./lib/auditLogger/index.js",
         "./adminAuth": "./lib/auth/adminAuth.js",
@@ -23,23 +23,23 @@
         "build-theme": "node lib/theme/scripts/build.js "
     },
     "keywords": [
-        "flowforge"
+        "FlowFuse"
     ],
     "bin": {
         "flowforge-node-red": "./index.js"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/flowforge/flowforge-nr-launcher.git"
+        "url": "git+https://github.com/FlowFuse/nr-launcher.git"
     },
     "author": {
-        "name": "FlowFlow Inc."
+        "name": "FlowFuse Inc."
     },
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/flowforge/flowforge-nr-launcher/issues"
+        "url": "https://github.com/FlowFuse/nr-launcher/issues"
     },
-    "homepage": "https://github.com/flowforge/flowforge-nr-launcher#readme",
+    "homepage": "https://github.com/FlowFuse/nr-launcher#readme",
     "dependencies": {
         "@flowforge/nr-file-nodes": "^0.0.3",
         "@flowforge/nr-persistent-context": "^0.0.5",
