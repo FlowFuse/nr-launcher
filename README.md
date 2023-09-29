@@ -1,6 +1,6 @@
-# FlowForge Launcher for Node-RED
+# FlowFuse Launcher for Node-RED
 
-This is the launcher FlowForge uses to run instances of Node-RED. It dynamically
+This is the launcher FlowFuse uses to run instances of Node-RED. It dynamically
 generates the Node-RED settings based on the associated Project's settings.
 
 The launcher starts its own HTTP service to allow the FlowForge platform to remotely
