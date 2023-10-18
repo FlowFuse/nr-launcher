@@ -1,6 +1,6 @@
-# FlowForge Node-RED Theme
+# FlowFuse Node-RED Theme
 
-A set of custom Node-RED themes used when running inside the FlowForge platform.
+A set of custom Node-RED themes used when running inside the FlowFuse platform.
 
 ## Themes included
 
