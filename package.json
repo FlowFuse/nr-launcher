@@ -13,7 +13,8 @@
             "flowforge-auth": "lib/auth/httpAuthPlugin.js",
             "flowforge-library": "lib/storage/libraryPlugin.js",
             "forge-light": "lib/theme/forge-light/forge-light.js",
-            "forge-dark": "lib/theme/forge-dark/forge-dark.js"
+            "forge-dark": "lib/theme/forge-dark/forge-dark.js",
+            "forge-resources": "lib/resources/resourcePlugin.js"
         }
     },
     "scripts": {
@@ -49,8 +50,10 @@
         "express": "^4.18.2",
         "got": "^11.8.6",
         "oauth": "^0.9.15",
+        "parse-prometheus-text-format": "^1.1.1",
         "passport": "0.6.0",
         "passport-oauth2": "^1.6.1",
+        "prom-client": "^15.0.0",
         "ws": "^8.7.0"
     },
     "devDependencies": {
