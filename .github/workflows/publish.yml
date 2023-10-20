@@ -17,13 +17,6 @@ on:
       nr_file_nodes_ref:
         description: 'nr-file-nodes package ref'
         required: false
-      nr_persistent_context_release_name:
-        description: 'nr-persistent-context package version'
-        required: false
-        default: 'nightly'
-      nr_persistent_context_ref:
-        description: 'nr-persistent-context package ref'
-        required: false
   pull_request:
     branches: 
       - main
@@ -49,7 +42,6 @@ jobs:
       package_dependencies: |
         @flowforge/nr-project-nodes
         @flowforge/nr-file-nodes
-        @flowforge/nr-persistent-context
     secrets:
       npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
   
