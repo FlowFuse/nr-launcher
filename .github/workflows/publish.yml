@@ -40,7 +40,7 @@ jobs:
       package_name: flowforge-nr-launcher
       publish_package: true
       package_dependencies: |
-        @flowforge/nr-project-nodes
+        @flowfuse/nr-project-nodes
         @flowfuse/nr-file-nodes
     secrets:
       npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
