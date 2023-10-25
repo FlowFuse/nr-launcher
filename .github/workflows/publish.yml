@@ -59,6 +59,25 @@ jobs:
     secrets:
       npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
+  dispatch-nr-container:
+    name: Dispatch node-red container build
+    needs: [nrLauncherPackage, nrThemePackage]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.GH_BOT_APP_ID }}
+          private_key: ${{ secrets.GH_BOT_APP_KEY }}
+      - name: Trigger node-red container build
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: nodered-container.yml
+          repo: flowfuse/helm
+          ref: main
+          token: ${{ steps.generate_token.outputs.token }}
+
   dispatch:
     name: Dispatch localfs package build pipeline
     runs-on: ubuntu-latest
