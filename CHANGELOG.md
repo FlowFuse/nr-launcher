@@ -1,3 +1,19 @@
+#### 1.13.0: Release
+
+ - Fixes node path for k8s/docker environments (#186) @knolleary
+ - FIX: Dispatch node-red image rebuild after successful package publish (#185) @ppawlowski
+ - Update project nodes for new org (#183) @knolleary
+ - Pin reusable workflows to v0.1.0 (#184) @ppawlowski
+ - Update to use @flowfuse/nr-file-nodes (#182) @knolleary
+ - Remove unused workflow (#181) @knolleary
+ - Bump build and publish workflow versions (#180) @ppawlowski
+ - Move nr-persistent-context into nr-launcher (#179) @knolleary
+ - Add tests and fix error samples (#178) @hardillb
+ - Resource monitoring and alerts (#176) @hardillb
+ - Update branding in theme menu items (#177) @knolleary
+ - Update ff references in package.json (#174) @knolleary
+ - Change repo references in workflows after github org rename (#169) @ppawlowski
+
 #### 1.12.0: Release
 
  - Fix tests on windows - ensure forward slashes on paths (#172) @Steve-Mcl
