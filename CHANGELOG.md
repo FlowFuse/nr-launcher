@@ -1,3 +1,9 @@
+#### 1.13.3: Release
+
+ - Update path to localfs following org rename (#191) @Steve-Mcl
+ - Update file nodes to latest (#189) @knolleary
+ - Expose user email in session (#188) @hardillb
+
 #### 1.13.0: Release
 
  - Fixes node path for k8s/docker environments (#186) @knolleary
