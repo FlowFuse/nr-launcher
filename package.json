@@ -45,7 +45,7 @@
     "homepage": "https://github.com/FlowFuse/nr-launcher#readme",
     "dependencies": {
         "@flowfuse/nr-file-nodes": "^0.0.5",
-        "@flowfuse/nr-project-nodes": "^0.5.0",
+        "@flowfuse/nr-project-nodes": "^0.6.0",
         "@node-red/util": "^3.1.0",
         "body-parser": "^1.20.2",
         "command-line-args": "^5.2.1",
