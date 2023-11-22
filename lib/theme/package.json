@@ -1,5 +1,5 @@
 {
-    "name": "@flowforge/nr-theme",
+    "name": "@flowfuse/nr-theme",
     "version": "1.8.0",
     "description": "FlowFuse themes for Node-RED",
     "scripts": {
@@ -24,7 +24,7 @@
         "lowcode"
     ],
     "author": {
-        "name": "FlowForge Inc."
+        "name": "FlowFuse Inc."
     },
     "license": "Apache-2.0",
     "bugs": {
