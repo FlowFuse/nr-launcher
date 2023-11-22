@@ -15,13 +15,13 @@ describe('Runtime Settings', function () {
 
     async function loadSettings (content) {
         // Need to fix the node path inside the content to ensure it can find
-        // the @flowforge/nr- modules it tries to load
+        // the @flowfuse/nr- modules it tries to load
         // nmPath - when nr-auth is installed in our local node_modules
         const nmPath = path.normalize(path.join(__dirname, '../../../node_modules')).split(path.sep).join('/')
         // nmPath2 - when running inside flowforge-dev-env, need to go higher in the tree
         const nmPath2 = path.normalize(path.join(__dirname, '../../../../../node_modules')).split(path.sep).join('/')
         // Rewrite any requires for exports of this module
-        content = content.replace(/'(@flowforge\/nr-launcher\/.*)'/g, (match, p1) => {
+        content = content.replace(/'(@flowfuse\/nr-launcher\/.*)'/g, (match, p1) => {
             return `'${require.resolve(p1).split(path.sep).join('/')}'`
         })
         content = `module.paths.unshift('${nmPath}', '${nmPath2}'); ${content}`
@@ -268,7 +268,7 @@ describe('Runtime Settings', function () {
         } catch (err) {
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
-            err.toString().should.match(/Cannot find module '@flowforge\/nr-auth\/middleware'/)
+            err.toString().should.match(/Cannot find module '@flowfuse\/nr-auth\/middleware'/)
         }
     })
     it('includes httpNodeMiddleware if flowforge-user auth type set and dashboard ui set', async function () {
@@ -287,7 +287,7 @@ describe('Runtime Settings', function () {
         } catch (err) {
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
-            err.toString().should.match(/Cannot find module '@flowforge\/nr-auth\/middleware'/)
+            err.toString().should.match(/Cannot find module '@flowfuse\/nr-auth\/middleware'/)
         }
     })
     it('includes HA settings when enabled', async function () {

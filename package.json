@@ -1,5 +1,5 @@
 {
-    "name": "@flowforge/nr-launcher",
+    "name": "@flowfuse/nr-launcher",
     "version": "1.13.0",
     "description": "FlowFuse Launcher for running Node-RED",
     "exports": {
@@ -11,8 +11,8 @@
     },
     "node-red": {
         "plugins": {
-            "flowforge-auth": "lib/auth/httpAuthPlugin.js",
-            "flowforge-library": "lib/storage/libraryPlugin.js",
+            "flowfuse-auth": "lib/auth/httpAuthPlugin.js",
+            "flowfuse-library": "lib/storage/libraryPlugin.js",
             "forge-light": "lib/theme/forge-light/forge-light.js",
             "forge-dark": "lib/theme/forge-dark/forge-dark.js",
             "forge-resources": "lib/resources/resourcePlugin.js"
@@ -28,7 +28,8 @@
         "FlowFuse"
     ],
     "bin": {
-        "flowforge-node-red": "./index.js"
+        "flowforge-node-red": "./index.js",
+        "flowfuse-node-red": "./index.js"
     },
     "repository": {
         "type": "git",
