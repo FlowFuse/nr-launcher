@@ -1,3 +1,10 @@
+#### 1.14.0: Release
+
+ - Bump project nodes to 0.6.1 release (#198) @knolleary
+ - Bump project nodes version (#197) @knolleary
+ - Migrate to @flowfuse npm scope (#196) @knolleary
+ - Fix Node-RED src path for automation build (#193) @Steve-Mcl
+
 #### 1.13.3: Release
  - Update path to localfs following org rename (#191) @Steve-Mcl
  - Update file nodes to latest (#189) @knolleary
