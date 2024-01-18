@@ -1,3 +1,7 @@
+#### 2.0.0: Release
+
+ - Remove console.log (#202) @hardillb
+
 #### 1.15.0: Release
 
 
