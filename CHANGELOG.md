@@ -1,3 +1,7 @@
+#### 2.0.1: Release
+
+ - Run npm install with instance env vars (#204) @hardillb
+
 #### 2.0.0: Release
 
  - Remove console.log (#202) @hardillb
