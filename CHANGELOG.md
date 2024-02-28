@@ -1,3 +1,8 @@
+#### 2.1.1: Release
+
+ - Handle httpAdminRoot being moved away from / (#210) @knolleary
+ - Bump ip from 2.0.0 to 2.0.1 (#209) @app/dependabot
+
 #### 2.1.0: Release
 
  - Log passthrough (#207) @hardillb
