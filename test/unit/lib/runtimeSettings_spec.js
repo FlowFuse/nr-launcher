@@ -260,12 +260,18 @@ describe('Runtime Settings', function () {
             const settings = await loadSettings(result)
             settings.should.not.have.property('httpNodeAuth')
             settings.should.have.property('httpNodeMiddleware')
-            ;(typeof settings.httpNodeMiddleware).should.equal('function')
+            settings.httpNodeMiddleware.should.be.an.Array()
+            ;(typeof settings.httpNodeMiddleware[0]).should.equal('function')
+            ;(typeof settings.httpNodeMiddleware[1]).should.equal('function')
             settings.should.have.property('ui')
             settings.ui.should.not.have.property('path')
             settings.ui.should.have.property('middleware')
-            ;(typeof settings.ui.middleware).should.equal('function')
+            console.log(settings.ui.middleware)
+            settings.ui.middleware.should.be.an.Array()
+            ;(typeof settings.ui.middleware[0]).should.equal('function')
+            ;(typeof settings.ui.middleware[1]).should.equal('function')
         } catch (err) {
+            console.log(err)
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
             err.toString().should.match(/Cannot find module '@flowfuse\/nr-auth\/middleware'/)
@@ -283,7 +289,9 @@ describe('Runtime Settings', function () {
             settings.should.have.property('ui')
             settings.ui.should.have.property('path', '/foo')
             settings.ui.should.have.property('middleware')
-            ;(typeof settings.ui.middleware).should.equal('function')
+            settings.ui.middleware.should.be.an.Array()
+            ;(typeof settings.ui.middleware[0]).should.equal('function')
+            ;(typeof settings.ui.middleware[1]).should.equal('function')
         } catch (err) {
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
