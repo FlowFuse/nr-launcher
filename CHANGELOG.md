@@ -1,3 +1,9 @@
+#### 2.2.0: Release
+
+ - Provide better health check message when waiting for NR to start (#215) @knolleary
+ - Bump jsonata and @node-red/util (#214) @app/dependabot
+ - Http node auth token (#212) @hardillb
+
 #### 2.1.1: Release
 
  - Handle httpAdminRoot being moved away from / (#210) @knolleary
