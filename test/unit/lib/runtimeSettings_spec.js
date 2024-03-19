@@ -77,6 +77,8 @@ describe('Runtime Settings', function () {
 
             settings.should.not.have.property('httpNodeAuth')
             settings.should.not.have.property('httpNodeMiddleware')
+            settings.should.not.have.property('apiMaxLength')
+            settings.should.not.have.property('debugMaxLength')
         })
         it('includes ee-only settings when license applied', async function () {
             const result = runtimeSettings.getSettingsFile({
@@ -103,6 +105,8 @@ describe('Runtime Settings', function () {
                     disableEditor: true,
                     codeEditor: 'ace',
                     theme: 'forge-dark',
+                    apiMaxLength: '123',
+                    debugMaxLength: '456',
                     page: {
                         title: 'PAGE_TITLE',
                         favicon: 'PAGE_FAVICON'
@@ -130,6 +134,8 @@ describe('Runtime Settings', function () {
             settings.should.have.property('httpAdminRoot', '/red')
             settings.should.have.property('ui', { path: '/dash' })
             settings.should.have.property('disableEditor', true)
+            settings.should.have.property('apiMaxLength', '123')
+            settings.should.have.property('debugMaxLength', 456)
 
             settings.should.have.property('httpStorage', {
                 projectID: 'PROJECTID',
