@@ -1,3 +1,7 @@
+#### 2.2.1: Release
+
+ - Add apiMaxLength & debugMaxLength settings (#217) @hardillb
+
 #### 2.2.0: Release
 
  - Provide better health check message when waiting for NR to start (#215) @knolleary
