@@ -1,3 +1,9 @@
+#### 2.2.2: Release
+
+ - Enable multiplayer by default (#221) @knolleary
+ - Bump express from 4.18.2 to 4.19.2 (#220) @app/dependabot
+ - Log exit code and signal if npm errors (#219) @hardillb
+
 #### 2.2.1: Release
 
  - Add apiMaxLength & debugMaxLength settings (#217) @hardillb
