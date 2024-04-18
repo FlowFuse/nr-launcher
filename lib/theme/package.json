@@ -1,6 +1,6 @@
 {
     "name": "@flowfuse/nr-theme",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "FlowFuse themes for Node-RED",
     "scripts": {
         "prepack": "node scripts/prepack.mjs",
