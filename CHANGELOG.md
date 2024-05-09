@@ -1,3 +1,10 @@
+#### 2.4.0: Release
+
+ - User defined health check interval (#228) @Steve-Mcl
+ - Replace url paths that were pointing to deprecated FF endpoints (#229) @cstns
+ - Allow the parent window to configure and manage navigation requests (#224) @cstns
+ - Add shell option to npm spawn command (#226) @knolleary
+
 #### 2.3.0: Release
 
 
