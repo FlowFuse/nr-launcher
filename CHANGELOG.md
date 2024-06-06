@@ -1,3 +1,13 @@
+#### 2.5.0: Release
+
+ - Fix settings file (#241) @knolleary
+ - Add CSP headers (#230) @cstns
+ - Fix auth handling when editor moved from default path (#240) @knolleary
+ - Bump actions/setup-node from 1 to 4 (#238) @app/dependabot
+ - Bump actions/checkout from 1 to 4 (#235) @app/dependabot
+ - Enable dependabot for github actions (#233) @ppawlowski
+ - Make the oauth callback URL relative (#232) @hardillb
+
 #### 2.4.0: Release
 
  - User defined health check interval (#228) @Steve-Mcl
