@@ -1,3 +1,8 @@
+#### 2.5.1: Release
+
+ - Generate absolute callback url ourselves (#245) @knolleary
+ - Revert httpAdminCookieOptions (#243) @knolleary
+
 #### 2.5.0: Release
 
  - Fix settings file (#241) @knolleary
