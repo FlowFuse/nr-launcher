@@ -32,7 +32,10 @@ describe('Runtime Settings', function () {
 
     describe('getSettingsFile', function () {
         it('default settings are valid', async function () {
-            const result = runtimeSettings.getSettingsFile({})
+            const result = runtimeSettings.getSettingsFile({
+                baseURL: 'https://BASEURL',
+                forgeURL: 'https://FORGEURL'
+            })
             const settings = await loadSettings(result)
             settings.should.not.have.property('credentialSecret')
             settings.should.not.have.property('httpAdminRoot')
@@ -85,8 +88,8 @@ describe('Runtime Settings', function () {
                 licenseType: 'ee',
                 credentialSecret: 'foo',
                 nodesDir: ['a', 'b'],
-                baseURL: 'BASEURL',
-                forgeURL: 'FORGEURL',
+                baseURL: 'https://BASEURL',
+                forgeURL: 'https://FORGEURL',
                 auditURL: 'AUDITURL',
                 teamID: 'TEAMID',
                 clientID: 'CLIENTID',
@@ -183,7 +186,7 @@ describe('Runtime Settings', function () {
             settings.should.have.property('functionExternalModules', false)
 
             settings.should.have.property('flowforge')
-            settings.flowforge.should.have.property('forgeURL', 'FORGEURL')
+            settings.flowforge.should.have.property('forgeURL', 'https://FORGEURL')
             settings.flowforge.should.have.property('teamID', 'TEAMID')
             settings.flowforge.should.have.property('projectID', 'PROJECTID')
 
@@ -195,8 +198,8 @@ describe('Runtime Settings', function () {
                 // licenseType: 'ee', << no license type
                 credentialSecret: 'foo',
                 nodesDir: ['a', 'b'],
-                baseURL: 'BASEURL',
-                forgeURL: 'FORGEURL',
+                baseURL: 'https://BASEURL',
+                forgeURL: 'https://FORGEURL',
                 auditURL: 'AUDITURL',
                 teamID: 'TEAMID',
                 clientID: 'CLIENTID',
@@ -239,7 +242,7 @@ describe('Runtime Settings', function () {
             const settings = await loadSettings(result)
 
             settings.should.have.property('flowforge')
-            settings.flowforge.should.have.property('forgeURL', 'FORGEURL')
+            settings.flowforge.should.have.property('forgeURL', 'https://FORGEURL')
             settings.flowforge.should.have.property('teamID', 'TEAMID')
             settings.flowforge.should.have.property('projectID', 'PROJECTID')
             settings.flowforge.should.not.have.property('projectLink')
@@ -247,6 +250,8 @@ describe('Runtime Settings', function () {
     })
     it('includes httpNodeAuth if user/pass provided', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             settings: {
                 httpNodeAuth: { user: 'fred', pass: 'secret' }
             }
@@ -258,6 +263,8 @@ describe('Runtime Settings', function () {
     })
     it('includes httpNodeMiddleware if flowforge-user auth type set', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             settings: {
                 httpNodeAuth: { type: 'flowforge-user' }
             }
@@ -285,6 +292,8 @@ describe('Runtime Settings', function () {
     })
     it('includes httpNodeMiddleware if flowforge-user auth type set and dashboard ui set', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             settings: {
                 dashboardUI: '/foo',
                 httpNodeAuth: { type: 'flowforge-user' }
@@ -306,6 +315,8 @@ describe('Runtime Settings', function () {
     })
     it('includes HA settings when enabled', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             licenseType: 'ee',
             broker: {
                 url: 'BROKERURL',
@@ -328,6 +339,8 @@ describe('Runtime Settings', function () {
     })
     it('includes shared library when feature flag set', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             features: {
                 'shared-library': true
             },
@@ -338,6 +351,8 @@ describe('Runtime Settings', function () {
     })
     it('includes project comms when feature flag set', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             projectToken: 'PROJECTTOKEN',
             broker: {
                 url: 'BROKERURL',
@@ -360,6 +375,8 @@ describe('Runtime Settings', function () {
     })
     it('sets catalogue when EE and setting is present', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             licenseType: 'ee',
             settings: {
                 palette: {
@@ -377,6 +394,8 @@ describe('Runtime Settings', function () {
     })
     it('ignores catalogue entries when NOT EE and setting is present', async function () {
         const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
             // licenseType: 'ee', << no license type
             settings: {
                 palette: {
