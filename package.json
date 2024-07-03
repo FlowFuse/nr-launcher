@@ -65,6 +65,7 @@
         "@flowforge/file-server": "git://github.com/FlowFuse/file-server.git",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-no-only-tests": "^3.1.0",
         "mocha": "^10.2.0",
         "sass": "1.66.1",
         "should": "^13.2.3",
