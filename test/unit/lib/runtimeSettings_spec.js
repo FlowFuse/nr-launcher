@@ -409,4 +409,27 @@ describe('Runtime Settings', function () {
         settings.editorTheme.palette.catalogues.should.have.length(1)
         settings.editorTheme.palette.catalogues[0].should.not.eql('foo') // will be NR default catalogue
     })
+    it('includes assistant settings when enabled', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            assistant: {
+                enabled: true,
+                requestTimeout: 12345
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.have.property('assistant')
+        settings.flowforge.assistant.should.have.property('enabled', true)
+        settings.flowforge.assistant.should.have.property('url', 'https://FORGEURL/api/v1/assistant/')
+        settings.flowforge.assistant.should.have.property('token', 'ffxxx_1234567890')
+        settings.flowforge.assistant.should.have.property('requestTimeout', 12345)
+    })
 })
