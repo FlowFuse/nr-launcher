@@ -14,7 +14,7 @@ jobs:
           node-version: 16
       - run: npm install
       - name: Publish launcher
-        uses: JS-DevTools/npm-publish@v2
+        uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
       - name: Checkout Node-RED
@@ -28,7 +28,7 @@ jobs:
         run: rm -rf node-red
       - name: Publish Theme
         continue-on-error: true
-        uses: JS-DevTools/npm-publish@v2
+        uses: JS-DevTools/npm-publish@v3
         with:
           package: lib/theme
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
