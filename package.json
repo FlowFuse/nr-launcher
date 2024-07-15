@@ -1,6 +1,6 @@
 {
     "name": "@flowfuse/nr-launcher",
-    "version": "2.4.0",
+    "version": "2.6.0",
     "description": "FlowFuse Launcher for running Node-RED",
     "exports": {
         "./auditLogger": "./lib/auditLogger/index.js",
@@ -44,6 +44,7 @@
     },
     "homepage": "https://github.com/FlowFuse/nr-launcher#readme",
     "dependencies": {
+        "@flowfuse/nr-assistant": "^0.1.0",
         "@flowfuse/nr-file-nodes": "^0.0.5",
         "@flowfuse/nr-project-nodes": "^0.6.2",
         "@node-red/util": "^3.1.0",
@@ -65,6 +66,7 @@
         "@flowforge/file-server": "git://github.com/FlowFuse/file-server.git",
         "eslint": "^8.49.0",
         "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-no-only-tests": "^3.1.0",
         "mocha": "^10.2.0",
         "sass": "1.66.1",
         "should": "^13.2.3",

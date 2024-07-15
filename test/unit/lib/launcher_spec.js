@@ -2,7 +2,7 @@ const should = require('should') // eslint-disable-line
 const sinon = require('sinon')
 const launcher = require('../../../lib/launcher.js')
 
-describe.only('Launcher', function () {
+describe('Launcher', function () {
     it('should create a new launcher', async function () {
         const l = new launcher.Launcher({})
         should.exist(l)

@@ -1,3 +1,28 @@
+#### 2.6.0: Release
+
+ - Set CWD to storage dir (#250) @hardillb
+ - ci: Add `nr-assistant` dependency to `build and push` workflow (#260) @ppawlowski
+ - Map runtime settings for nr-assistant (#256) @Steve-Mcl
+ - Fix tests and linting (#258) @Steve-Mcl
+ - Set secure cookie options (#254) @knolleary
+ - Bump braces from 3.0.2 to 3.0.3 (#247) @app/dependabot
+ - ci: Bump build_node_package workflow to 0.14.0 (#248) @ppawlowski
+
+#### 2.5.1: Release
+
+ - Generate absolute callback url ourselves (#245) @knolleary
+ - Revert httpAdminCookieOptions (#243) @knolleary
+
+#### 2.5.0: Release
+
+ - Fix settings file (#241) @knolleary
+ - Add CSP headers (#230) @cstns
+ - Fix auth handling when editor moved from default path (#240) @knolleary
+ - Bump actions/setup-node from 1 to 4 (#238) @app/dependabot
+ - Bump actions/checkout from 1 to 4 (#235) @app/dependabot
+ - Enable dependabot for github actions (#233) @ppawlowski
+ - Make the oauth callback URL relative (#232) @hardillb
+
 #### 2.4.0: Release
 
  - User defined health check interval (#228) @Steve-Mcl
