@@ -1,3 +1,15 @@
+#### 2.7.0: Release
+
+ - Bump dependencies in preparation for release 2.7.0 (#270) @Steve-Mcl
+ - Wrap unguarded HTTP requests in try/catch (#267) @hardillb
+ - nr-launcher was not catching console.error output (#269) @hardillb
+ - Bump tibdex/github-app-token from 1 to 2 (#236) @app/dependabot
+ - Bump ws from 7.5.9 to 8.18.0 (#265) @app/dependabot
+ - Bump ws from 8.14.1 to 8.17.1 (#251) @app/dependabot
+ - Add support for UIBuilder using storage (#263) @hardillb
+ - Update release-publish to nodejs 18 (#264) @hardillb
+ - Bump JS-DevTools/npm-publish from 2 to 3 (#234) @app/dependabot
+
 #### 2.6.0: Release
 
  - Set CWD to storage dir (#250) @hardillb
