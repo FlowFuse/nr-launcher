@@ -11,6 +11,7 @@ if (NODE_MAJOR_VERSION > 14) {
 
 const { Launcher } = require('./lib/launcher')
 const { AdminInterface } = require('./lib/admin')
+const { filesInterface } = require('./lib/files')
 
 const cmdLineOptions = [
     { name: 'port', alias: 'p', type: Number },
@@ -111,6 +112,7 @@ async function main () {
         await launcher.logAuditEvent('start-failed', { error })
     }
 
+    filesInterface(adminInterface.app, launcher.settings)
     // const wss = new ws.Server({ clientTracking: false, noServer: true })
     //
     // server.on('upgrade', (req, socket, head) => {
