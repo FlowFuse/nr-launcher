@@ -20,7 +20,7 @@
     },
     "scripts": {
         "test": "mocha 'test/unit/**/*_spec.js'",
-        "lint": "eslint -c .eslintrc *.js lib/*.js test/**/*.js",
+        "lint": "eslint -c .eslintrc *.js lib/**/*.js test/**/*.js",
         "lint:fix": "eslint -c .eslintrc *.js lib/*.js test/**/*.js --fix",
         "build-theme": "node lib/theme/scripts/build.js "
     },
@@ -55,6 +55,7 @@
         "got": "^11.8.6",
         "json-stringify-safe": "5.0.1",
         "memorystore": "^1.6.7",
+        "multer": "^1.4.5-lts.1",
         "oauth": "^0.9.15",
         "parse-prometheus-text-format": "^1.1.1",
         "passport": "0.6.0",
