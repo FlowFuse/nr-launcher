@@ -1,3 +1,10 @@
+#### 2.8.0: Release
+
+ - Update Project Nodes and File nodes (#279) @hardillb
+ - First pass at file api (#275) @hardillb
+ - Fix HealthCheck errors when editor disabled (#277) @hardillb
+ - Fix flushInterval in context module (#272) @knolleary
+
 #### 2.7.0: Release
 
  - Bump dependencies in preparation for release 2.7.0 (#270) @Steve-Mcl
