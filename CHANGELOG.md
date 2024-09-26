@@ -1,5 +1,8 @@
 #### 2.9.0: Release
 
+
+#### 2.9.0: Release
+
  - Bump flowfuse/github-actions-workflows from 0.29.0 to 0.30.0 (#289) @dependabot
  - intercept logout click and emit logout event when editor is embedded (#288) @cstns
  - Ensure auth middleware applied on httpStatic routes (#286) @knolleary
