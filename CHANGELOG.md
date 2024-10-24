@@ -1,3 +1,11 @@
+#### 2.10.0: Release
+
+ - Bump flowfuse/github-actions-workflows from 0.34.0 to 0.36.0 (#296)
+ - Bump flowfuse/github-actions-workflows from 0.33.0 to 0.34.0 (#294)
+ - Bump flowfuse/github-actions-workflows from 0.30.0 to 0.33.0 (#293)
+ - Update project nodes to latest (#298) @Steve-Mcl
+ - Bump cookie, express, express-session and light-my-request (#295) @app/dependabot
+
 #### 2.9.0: Release
 
  - Bump flowfuse/github-actions-workflows from 0.29.0 to 0.30.0 (#289) @dependabot
