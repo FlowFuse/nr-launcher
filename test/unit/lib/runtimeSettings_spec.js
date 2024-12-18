@@ -135,7 +135,7 @@ describe('Runtime Settings', function () {
             const settings = await loadSettings(result)
             settings.should.have.property('credentialSecret', 'foo')
             settings.should.have.property('httpAdminRoot', '/red')
-            settings.should.have.property('ui', { path: '/dash' })
+            settings.should.have.property('ui', { path: '/dash', maxHttpBufferSize: 123 })
             settings.should.have.property('disableEditor', true)
             settings.should.have.property('apiMaxLength', '123')
             settings.should.have.property('debugMaxLength', 456)
