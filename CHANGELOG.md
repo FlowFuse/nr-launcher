@@ -1,3 +1,15 @@
+#### 2.12.0: Release
+
+ - Bump flowfuse/github-actions-workflows from 0.37.0 to 0.38.0 (#305)
+ - Update nr-file-nodes (#313) @hardillb
+ - Add Dashboard v2 max upload size (#310) @hardillb
+ - include crash detail in audit log transmission (#312) @Steve-Mcl
+ - Add "disable auto safe mode" option (#309) @Steve-Mcl
+ - Ensure restart on done only a running NR instance (#304) @hardillb
+ - Bump express version (#307) @hardillb
+ - Allow Dashboards to be loaded in an iFrame (#306) @hardillb
+ - Add user to flow storage (#287) @hardillb
+
 #### 2.11.0: Release
 
  - Bump flowfuse/github-actions-workflows from 0.36.0 to 0.37.0 (#301)
