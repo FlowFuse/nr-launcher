@@ -1,6 +1,6 @@
 {
     "name": "@flowfuse/nr-launcher",
-    "version": "2.13.0",
+    "version": "2.14.0",
     "description": "FlowFuse Launcher for running Node-RED",
     "exports": {
         "./auditLogger": "./lib/auditLogger/index.js",
