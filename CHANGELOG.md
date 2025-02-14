@@ -1,3 +1,7 @@
+#### 2.14.0: Release
+
+ - Catch errors from prom-client (#316) @hardillb
+
 #### 2.13.0: Release
 
 
