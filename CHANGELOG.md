@@ -1,3 +1,8 @@
+#### 2.14.1: Release
+
+ - Batch requests to flush context to backend (#320) @knolleary
+ - Bump serialize-javascript and mocha (#318) @app/dependabot
+
 #### 2.14.0: Release
 
  - Catch errors from prom-client (#316) @hardillb
