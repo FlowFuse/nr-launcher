@@ -1,3 +1,7 @@
+#### 2.15.0: Release
+
+ - Include user role in profile object when authenticating (#322) @knolleary
+
 #### 2.14.1: Release
 
  - Batch requests to flush context to backend (#320) @knolleary
