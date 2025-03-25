@@ -8,17 +8,17 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           node-version: 18
       - run: npm install
       - name: Publish launcher
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3.1.1
         with:
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
       - name: Checkout Node-RED
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: node-red/node-red
           path: node-red
@@ -28,7 +28,7 @@ jobs:
         run: rm -rf node-red
       - name: Publish Theme
         continue-on-error: true
-        uses: JS-DevTools/npm-publish@v3
+        uses: JS-DevTools/npm-publish@19c28f1ef146469e409470805ea4279d47c3d35c # v3.1.1
         with:
           package: lib/theme
           token: ${{ secrets.NPM_PUBLISH_TOKEN }}
