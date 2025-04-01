@@ -20,8 +20,8 @@
     },
     "scripts": {
         "test": "mocha 'test/unit/**/*_spec.js'",
-        "lint": "eslint -c .eslintrc *.js lib/**/*.js test/**/*.js",
-        "lint:fix": "eslint -c .eslintrc *.js lib/*.js test/**/*.js --fix",
+        "lint": "eslint -c .eslintrc \"*.js\" \"lib/**/*.js\" \"test/**/*.js\"",
+        "lint:fix": "eslint -c .eslintrc \"*.js\" \"lib/*.js\" \"test/**/*.js\" --fix",
         "build-theme": "node lib/theme/scripts/build.js "
     },
     "keywords": [
