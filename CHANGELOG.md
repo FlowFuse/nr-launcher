@@ -1,3 +1,10 @@
+#### 2.16.0: Release
+
+ - fix globs for linux (#331)
+ - Node-RED Logs written to local files (in /storage directory) (#328) @hardillb
+ - Bump @babel/runtime from 7.22.15 to 7.27.0 (#332) @app/dependabot
+ - chore: Pin external actions to commit hash (#327) @ppawlowski
+
 #### 2.15.0: Release
 
  - Include user role in profile object when authenticating (#322) @knolleary
