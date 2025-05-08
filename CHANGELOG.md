@@ -1,3 +1,8 @@
+#### 2.17.0: Release
+
+ - Bump actions/setup-node from 4.3.0 to 4.4.0 (#334)
+ - Add new log api with full cursor-based pagination (#335) @knolleary
+
 #### 2.16.0: Release
 
  - fix globs for linux (#331)
