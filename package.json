@@ -53,6 +53,7 @@
         "command-line-args": "^5.2.1",
         "express": "^4.21.0",
         "express-session": "^1.18.0",
+        "express-ws": "^5.0.2",
         "got": "^11.8.6",
         "json-stringify-safe": "5.0.1",
         "memorystore": "^1.6.7",
