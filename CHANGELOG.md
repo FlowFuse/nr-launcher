@@ -1,3 +1,11 @@
+#### 2.18.0: Release
+
+ - Prevent negative CPU usage on restart of NR (#342) @hardillb
+ - Bump multer from 2.0.0 to 2.0.1 (#341) @app/dependabot
+ - Ensure httpAdminRoot is included when generating metrics path (#340) @knolleary
+ - Add HA instance identifier to resource data and add WS streaming (#337) @hardillb
+ - Bump multer from 1.4.5-lts.1 to 2.0.0 (#338) @app/dependabot
+
 #### 2.17.0: Release
 
  - Bump actions/setup-node from 4.3.0 to 4.4.0 (#334)
