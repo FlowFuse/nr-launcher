@@ -13,6 +13,7 @@
         "plugins": {
             "flowfuse-auth": "lib/auth/httpAuthPlugin.js",
             "flowfuse-library": "lib/storage/libraryPlugin.js",
+            "flowfuse-blueprint-library": "lib/storage/blueprintPlugin.js",
             "forge-light": "lib/theme/forge-light/forge-light.js",
             "forge-dark": "lib/theme/forge-dark/forge-dark.js",
             "forge-resources": "lib/resources/resourcePlugin.js"
