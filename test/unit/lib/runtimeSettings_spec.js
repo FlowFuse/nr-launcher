@@ -166,7 +166,9 @@ describe('Runtime Settings', function () {
             settings.editorTheme.codeEditor.should.have.property('lib', 'ace')
 
             // Should not have editorTheme.library as it is an EE feature but the feature flag wasn't set
-            settings.editorTheme.should.not.have.property('library')
+            settings.editorTheme.should.have.property('library')
+            settings.editorTheme.library.sources.should.have.length(1)
+            settings.editorTheme.library.sources[0].should.have.property('type', 'flowfuse-blueprint-library')
 
             settings.should.have.property('nodesExcludes', ['abc', 'def'])
 
@@ -279,7 +281,6 @@ describe('Runtime Settings', function () {
             settings.should.have.property('ui')
             settings.ui.should.not.have.property('path')
             settings.ui.should.have.property('middleware')
-            console.log(settings.ui.middleware)
             settings.ui.middleware.should.be.an.Array()
             ;(typeof settings.ui.middleware[0]).should.equal('function')
             ;(typeof settings.ui.middleware[1]).should.equal('function')
