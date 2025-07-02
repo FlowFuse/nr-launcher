@@ -4,6 +4,7 @@
     "description": "FlowFuse Launcher for running Node-RED",
     "exports": {
         "./auditLogger": "./lib/auditLogger/index.js",
+        "./metricsLogger": "./lib/metricsLogger/index.js",
         "./adminAuth": "./lib/auth/adminAuth.js",
         "./authMiddleware": "./lib/auth/httpAuthMiddleware.js",
         "./storage": "./lib/storage/index.js",
@@ -58,6 +59,7 @@
         "got": "^11.8.6",
         "json-stringify-safe": "5.0.1",
         "memorystore": "^1.6.7",
+        "mnemonist": "0.40.3",
         "multer": "^2.0.0",
         "oauth": "^0.9.15",
         "parse-prometheus-text-format": "^1.1.1",
