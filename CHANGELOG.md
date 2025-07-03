@@ -1,3 +1,11 @@
+#### 2.19.0: Release
+
+ - Bump flowfuse/github-actions-workflows from 0.39.0 to 0.40.0 (#346)
+ - Update ff module dependencies to latest releases (#349) @knolleary
+ - Enable telemetry by default (#348) @knolleary
+ - Add flow metrics to metrics plugin (#347) @knolleary
+ - Add blueprint library plugin (#345) @knolleary
+
 #### 2.18.0: Release
 
  - Prevent negative CPU usage on restart of NR (#342) @hardillb
