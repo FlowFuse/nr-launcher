@@ -497,5 +497,71 @@ describe('Runtime Settings', function () {
         settings.flowforge.assistant.should.have.property('url', 'https://FORGEURL/api/v1/assistant/')
         settings.flowforge.assistant.should.have.property('token', 'ffxxx_1234567890')
         settings.flowforge.assistant.should.have.property('requestTimeout', 12345)
+        settings.flowforge.assistant.should.have.property('mcp')
+        settings.flowforge.assistant.mcp.should.have.property('enabled', true) // defaults to true when not explicitly set
+        settings.flowforge.assistant.should.have.property('completions')
+        settings.flowforge.assistant.completions.should.have.property('enabled', true) // defaults to true when not explicitly set
+    })
+    it('disables assistant settings when config has disabled it', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            assistant: {
+                enabled: true,
+                requestTimeout: 12345,
+                mcp: {
+                    enabled: false
+                },
+                completions: {
+                    enabled: false
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.have.property('assistant')
+        settings.flowforge.assistant.should.have.property('enabled', true)
+        settings.flowforge.assistant.should.have.property('mcp')
+        settings.flowforge.assistant.mcp.should.have.property('enabled', false)
+        settings.flowforge.assistant.should.have.property('completions')
+        settings.flowforge.assistant.completions.should.have.property('enabled', false)
+    })
+    it('includes assistant completions settings when enabled', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            assistant: {
+                enabled: true,
+                requestTimeout: 12345,
+                mcp: {
+                    enabled: true
+                },
+                completions: {
+                    enabled: true,
+                    modelUrl: 'https://FORGEURL/api/v1/assistant/assets/completions/model.json',
+                    vocabularyUrl: 'https://FORGEURL/api/v1/assistant/assets/completions/vocabulary.json'
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.have.property('assistant')
+        settings.flowforge.assistant.should.have.property('enabled', true)
+        settings.flowforge.assistant.should.have.property('completions')
+        settings.flowforge.assistant.completions.should.have.property('enabled', true)
+        settings.flowforge.assistant.completions.should.have.property('modelUrl', 'https://FORGEURL/api/v1/assistant/assets/completions/model.json')
+        settings.flowforge.assistant.completions.should.have.property('vocabularyUrl', 'https://FORGEURL/api/v1/assistant/assets/completions/vocabulary.json')
     })
 })
