@@ -500,9 +500,9 @@ describe('Runtime Settings', function () {
         settings.flowforge.assistant.should.have.property('mcp')
         settings.flowforge.assistant.mcp.should.have.property('enabled', true) // defaults to true when not explicitly set
         settings.flowforge.assistant.should.have.property('completions')
-        settings.flowforge.assistant.completions.should.have.property('enabled', false) // defaults to false when not explicitly set
+        settings.flowforge.assistant.completions.should.have.property('enabled', true) // defaults to true when not explicitly set
     })
-    it('disables assistant mcp settings when config has disabled it', async function () {
+    it('disables assistant settings when config has disabled it', async function () {
         const result = runtimeSettings.getSettingsFile({
             baseURL: 'https://BASEURL',
             forgeURL: 'https://FORGEURL',
@@ -517,6 +517,9 @@ describe('Runtime Settings', function () {
                 requestTimeout: 12345,
                 mcp: {
                     enabled: false
+                },
+                completions: {
+                    enabled: false
                 }
             }
         })
@@ -526,6 +529,8 @@ describe('Runtime Settings', function () {
         settings.flowforge.assistant.should.have.property('enabled', true)
         settings.flowforge.assistant.should.have.property('mcp')
         settings.flowforge.assistant.mcp.should.have.property('enabled', false)
+        settings.flowforge.assistant.should.have.property('completions')
+        settings.flowforge.assistant.completions.should.have.property('enabled', false)
     })
     it('includes assistant completions settings when enabled', async function () {
         const result = runtimeSettings.getSettingsFile({
@@ -540,6 +545,9 @@ describe('Runtime Settings', function () {
             assistant: {
                 enabled: true,
                 requestTimeout: 12345,
+                mcp: {
+                    enabled: true
+                },
                 completions: {
                     enabled: true,
                     modelUrl: 'https://FORGEURL/api/v1/assistant/assets/completions/model.json',
