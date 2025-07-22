@@ -1,3 +1,9 @@
+#### 2.19.1: Release
+
+ - Bump on-headers and express-session (#357) @app/dependabot
+ - Bump multer from 2.0.1 to 2.0.2 (#356) @app/dependabot
+ - Clear blueprint cache before repopulating (#355) @knolleary
+
 #### 2.19.0: Release
 
  - Bump flowfuse/github-actions-workflows from 0.39.0 to 0.40.0 (#346)
