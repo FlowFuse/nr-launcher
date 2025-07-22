@@ -94,4 +94,35 @@ describe('Launcher', function () {
             l.should.have.property('disableAutoSafeMode', true)
         })
     })
+
+    describe('launcher state', function () {
+        it('should start with a stopped state', () => {
+            const l = new launcher.Launcher({})
+
+            l.should.have.property('state', 'stopped')
+        })
+
+        it('should be changeable', () => {
+            const l = new launcher.Launcher({})
+
+            l.should.have.property('state', 'stopped')
+
+            l.state = 'running'
+
+            l.should.have.property('state', 'running')
+        })
+
+        it('should be reported each time it changes', () => {
+            const l = new launcher.Launcher({})
+            const reportStateStub = sinon.stub(l, 'reportStateChange')
+
+            l.state = 'running'
+            sinon.assert.calledOnce(reportStateStub)
+            sinon.assert.calledWith(reportStateStub, 'running')
+
+            l.state = 'starting'
+            sinon.assert.calledTwice(reportStateStub)
+            sinon.assert.calledWith(reportStateStub, 'starting')
+        })
+    })
 })
