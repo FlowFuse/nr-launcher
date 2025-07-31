@@ -1,3 +1,12 @@
+#### 2.20.0: Release
+
+ - Update project nodes to latest (#365) @knolleary
+ - Log npm run time (#354) @hardillb
+ - Update assistant version in launcher (#364) @knolleary
+ - Add dependency of the new tables nodes (#362) @joepavitt
+ - Add support for pulling FF Tables creds (#361) @hardillb
+ - Runtime entries for assistant mcp/completions config (#352) @Steve-Mcl
+
 #### 2.19.1: Release
 
  - Bump on-headers and express-session (#357) @app/dependabot
