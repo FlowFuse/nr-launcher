@@ -4,7 +4,7 @@ const fs = require('fs/promises')
 const path = require('path')
 const os = require('os')
 
-describe.only('Runtime Settings', function () {
+describe('Runtime Settings', function () {
     let TMPDIR
     before(async function () {
         TMPDIR = await fs.mkdtemp(path.join(os.tmpdir(), 'fflauncher-'))
