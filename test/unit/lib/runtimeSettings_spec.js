@@ -564,4 +564,25 @@ describe('Runtime Settings', function () {
         settings.flowforge.assistant.completions.should.have.property('modelUrl', 'https://FORGEURL/api/v1/assistant/assets/completions/model.json')
         settings.flowforge.assistant.completions.should.have.property('vocabularyUrl', 'https://FORGEURL/api/v1/assistant/assets/completions/vocabulary.json')
     })
+    it('includes httpNodeCors', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            settings: {
+                httpNodeCORS: {
+                    enabled: true,
+                    origin: '*',
+                    GET: true,
+                    POST: true,
+                    PUT: true,
+                    HEAD: true,
+                    DELETE: false
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('httpNodeCors')
+        settings.httpNodeCors.should.have.property('origin', '*')
+        settings.httpNodeCors.should.have.property('methods', 'GET,POST,PUT,HEAD')
+    })
 })
