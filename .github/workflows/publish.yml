@@ -32,7 +32,7 @@ jobs:
               {"version": "18", "tests": true, "lint": true},
             ]'
 
-  nrLauncherPackage:
+  publish-nr-launcher:
     needs: build
     if: |
       ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
@@ -45,10 +45,11 @@ jobs:
         @flowfuse/nr-project-nodes=nightly
         @flowfuse/nr-file-nodes=nightly
         @flowfuse/nr-assistant=nightly
+        @flowfuse/nr-tables-nodes=nightly
     secrets:
       npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
   
-  nrThemePackage:
+  publish-nr-theme:
     needs: build
     if: |
       ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
@@ -64,7 +65,7 @@ jobs:
 
   dispatch-nr-container:
     name: Dispatch node-red container build
-    needs: [nrLauncherPackage, nrThemePackage]
+    needs: [publish-nr-launcher, publish-nr-theme]
     runs-on: ubuntu-latest
     steps:
       - name: Generate a token
@@ -84,7 +85,7 @@ jobs:
   dispatch:
     name: Dispatch localfs package build pipeline
     runs-on: ubuntu-latest
-    needs: [nrLauncherPackage, nrThemePackage]
+    needs: [publish-nr-launcher, publish-nr-theme]
     steps:
       - name: Generate a token
         id: generate_token
@@ -100,4 +101,4 @@ jobs:
           repo: flowfuse/driver-localfs
           ref: main
           token: ${{ steps.generate_token.outputs.token }}
-          inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ needs.nrLauncherPackage.outputs.release_name }}"}'
+          inputs: '{"nr_launcher_ref": "${{ github.ref }}", "nr_launcher_release_name": "${{ needs.publish-nr-launcher.outputs.release_name }}"}'
