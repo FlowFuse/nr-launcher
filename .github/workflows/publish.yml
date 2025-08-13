@@ -17,6 +17,13 @@ on:
       nr_file_nodes_ref:
         description: 'nr-file-nodes package ref'
         required: false
+      nr_tables_nodes_release_name:
+        description: 'nr-tables-nodes package version'
+        required: false
+        default: 'nightly'
+      nr_tables_nodes_ref:
+        description: 'nr-tables-nodes package ref'
+        required: false
   pull_request:
     branches: 
       - main
