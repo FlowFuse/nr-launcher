@@ -24,6 +24,13 @@ on:
       nr_tables_nodes_ref:
         description: 'nr-tables-nodes package ref'
         required: false
+      nr_mqtt_nodes_release_name:
+        description: 'nr-mqtt-nodes package version'
+        required: false
+        default: 'nightly'
+      nr_mqtt_nodes_ref:
+        description: 'nr-mqtt-nodes package ref'
+        required: false
   pull_request:
     branches: 
       - main
@@ -53,6 +60,7 @@ jobs:
         @flowfuse/nr-file-nodes=nightly
         @flowfuse/nr-assistant=nightly
         @flowfuse/nr-tables-nodes=nightly
+        @flowfuse/nr-mqtt-nodes=nightly
     secrets:
       npm_registry_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
   
