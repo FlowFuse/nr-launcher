@@ -585,4 +585,128 @@ describe('Runtime Settings', function () {
         settings.httpNodeCors.should.have.property('origin', '*')
         settings.httpNodeCors.should.have.property('methods', 'GET,POST,PUT,HEAD')
     })
+    it('Does not include mqttNodes settings when teamBroker feature is disabled', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            projectID: 'abcdefgh-1234-abcd-ef12-aa11bb22cc33',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            features: {
+                teamBroker: false
+            },
+            broker: {
+                url: 'BROKERURL',
+                username: 'BROKERUSERNAME',
+                password: 'BROKERPASSWORD'
+            },
+            mqttNodes: {
+                linked: true,
+                username: 'instance:abcdefgh-1234-abcd-ef12-aa11bb22cc33'
+            }
+
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.not.have.property('mqttNodes')
+    })
+    it('Does not include mqttNodes settings when broker settings are not provided', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            projectID: 'abcdefgh-1234-abcd-ef12-aa11bb22cc33',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            features: {
+                teamBroker: true
+            },
+            broker: null,
+            mqttNodes: {
+                linked: true,
+                username: 'instance:abcdefgh-1234-abcd-ef12-aa11bb22cc33'
+            }
+
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.not.have.property('mqttNodes')
+    })
+    it('includes mqttNodes settings when valid settings are provided', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            projectID: 'abcdefgh-1234-abcd-ef12-aa11bb22cc33',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            features: {
+                teamBroker: true
+            },
+            broker: {
+                url: 'BROKERURL',
+                username: 'BROKERUSERNAME',
+                password: 'BROKERPASSWORD'
+            },
+            mqttNodes: {
+                linked: true
+            }
+
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.have.property('mqttNodes')
+        settings.flowforge.mqttNodes.should.have.property('featureEnabled', true)
+        settings.flowforge.mqttNodes.should.have.property('token', 'ffxxx_1234567890')
+        settings.flowforge.mqttNodes.should.have.property('broker').and.be.an.Object()
+        settings.flowforge.mqttNodes.broker.should.have.property('url', 'BROKERURL')
+        settings.flowforge.mqttNodes.broker.should.have.property('username', 'instance:abcdefgh-1234-abcd-ef12-aa11bb22cc33')
+        settings.flowforge.mqttNodes.broker.should.have.property('password', 'BROKERPASSWORD')
+    })
+    it('mqttNodes settings for username and password can be overridden when provided', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectToken: 'ffxxx_1234567890',
+            projectID: 'abcdefgh-1234-abcd-ef12-aa11bb22cc33',
+            settings: {
+                palette: {
+                    catalogue: ['foo', 'bar', 'baz']
+                }
+            },
+            features: {
+                teamBroker: true
+            },
+            broker: {
+                url: 'BROKERURL',
+                username: 'BROKERUSERNAME',
+                password: 'BROKERPASSWORD'
+            },
+            mqttNodes: {
+                linked: true,
+                username: 'instance:xxxx-yyyyy-zzzzz',
+                password: 'different-password'
+            }
+
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge').and.be.an.Object()
+        settings.flowforge.should.have.property('mqttNodes')
+        settings.flowforge.mqttNodes.should.have.property('featureEnabled', true)
+        settings.flowforge.mqttNodes.should.have.property('token', 'ffxxx_1234567890')
+        settings.flowforge.mqttNodes.should.have.property('broker').and.be.an.Object()
+        settings.flowforge.mqttNodes.broker.should.have.property('url', 'BROKERURL')
+        settings.flowforge.mqttNodes.broker.should.have.property('username', 'instance:xxxx-yyyyy-zzzzz')
+        settings.flowforge.mqttNodes.broker.should.have.property('password', 'different-password')
+    })
 })
