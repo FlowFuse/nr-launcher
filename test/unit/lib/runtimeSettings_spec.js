@@ -403,6 +403,31 @@ describe('Runtime Settings', function () {
         settings.flowforge.should.have.property('projectLink')
         settings.flowforge.projectLink.should.have.property('useSharedSubscriptions', true)
     })
+    it('includes include subflow export is enabled', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            licenseType: 'ee',
+            broker: {
+                url: 'BROKERURL',
+                username: 'BROKERUSERNAME',
+                password: 'BROKERPASSWORD'
+            },
+            features: {
+                projectComms: true,
+                teamNPM: true
+            },
+            settings: {
+                ha: {
+                    replicas: 2
+                }
+            }
+        })
+        const settings = await loadSettings(result)
+        settings.should.have.property('flowforge')
+        settings.flowforge.should.have.property('subflowExport')
+        settings.flowforge.subflowExport.should.have.property('enabled', true)
+    })
     it('includes shared library when feature flag set', async function () {
         const result = runtimeSettings.getSettingsFile({
             baseURL: 'https://BASEURL',
