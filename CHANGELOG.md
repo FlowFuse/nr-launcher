@@ -1,3 +1,17 @@
+#### 2.21.0: Release
+
+ - Update publish.yml to support nr-mqtt-nodes (#374)
+ - ci: Add nr-tables-nodes dependency to the publish pipeline  (#371)
+ - Bump flowfuse/github-actions-workflows from 0.40.0 to 0.42.0 (#369)
+ - Bump actions/checkout from 4.2.2 to 5.0.0 (#370)
+ - Update @flowfuse/nr-assistant dependency to version 0.5.0 (#378) @Steve-Mcl
+ - Startup api (#377) @hardillb
+ - Subflow export feature enablement (#375) @hardillb
+ - Add support for nr-mqtt-nodes (#373) @Steve-Mcl
+ - Add httpNodeCors support (#368) @hardillb
+ - Report state change (#359) @cstns
+ - Prevent startup warning logging when editor disabled/moved (#367) @hardillb
+
 #### 2.20.0: Release
 
  - Update project nodes to latest (#365) @knolleary
