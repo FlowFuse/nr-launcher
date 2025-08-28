@@ -1,3 +1,7 @@
+#### 2.21.1: Release
+
+ - Update @flowfuse/nr-mqtt-nodes dependency to version 0.1.1 (#380) @Steve-Mcl
+
 #### 2.21.0: Release
 
  - Update publish.yml to support nr-mqtt-nodes (#374)
