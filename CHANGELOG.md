@@ -1,3 +1,9 @@
+#### 2.21.2: Release
+
+ - Bump actions/setup-node from 4.4.0 to 5.0.0 (#383)
+ - Update plugins to latest (#384) @Steve-Mcl
+ - Bump brace-expansion from 1.1.11 to 1.1.12 (#382) @app/dependabot
+
 #### 2.21.1: Release
 
  - Update @flowfuse/nr-mqtt-nodes dependency to version 0.1.1 (#380) @Steve-Mcl
