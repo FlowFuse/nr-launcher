@@ -1,3 +1,10 @@
+#### 2.22.0: Release
+
+ - Bump JS-DevTools/npm-publish from 4.0.0 to 4.0.1 (#390)
+ - Bump JS-DevTools/npm-publish from 3.1.1 to 4.0.0 (#387)
+ - Expose SAML groups to Dashboard (#389) @hardillb
+ - fix: Ensure the startup metrics endpoint complies with the OpenTelemetry specification (#388) @ppawlowski
+
 #### 2.21.2: Release
 
  - Bump actions/setup-node from 4.4.0 to 5.0.0 (#383)
