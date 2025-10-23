@@ -1,6 +1,12 @@
 #### 2.23.0: Release
 
  - Bump actions/setup-node from 5.0.0 to 6.0.0 (#395)
+ - Release 2.23.0 (#397) @cstns
+ - bump nr-mqtt-nodes to latest (#396) @Steve-Mcl
+
+#### 2.23.0: Release
+
+ - Bump actions/setup-node from 5.0.0 to 6.0.0 (#395)
  - bump nr-mqtt-nodes to latest (#396) @Steve-Mcl
 
 #### 2.22.1: Release
