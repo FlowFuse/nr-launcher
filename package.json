@@ -50,7 +50,7 @@
         "@flowfuse/nr-file-nodes": "^0.0.8",
         "@flowfuse/nr-project-nodes": "^0.7.7",
         "@flowfuse/nr-tables-nodes": "^0.1.0",
-        "@flowfuse/nr-mqtt-nodes": "^0.1.1",
+        "@flowfuse/nr-mqtt-nodes": "^0.2.0",
         "@flowfuse/nr-subflow-export": "^1.0.1",
         "@node-red/util": "^3.1.0",
         "body-parser": "^1.20.2",
