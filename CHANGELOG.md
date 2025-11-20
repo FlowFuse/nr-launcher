@@ -1,3 +1,12 @@
+#### 2.24.0: Release
+
+ - Bump actions/checkout from 5.0.0 to 5.0.1 (#404)
+ - Bump flowfuse/github-actions-workflows from 0.42.0 to 0.43.0 (#400)
+ - Bump dep versions for 2.24 release (#406) @hardillb
+ - feat: Introduce HTTP endpoint that indicates if dependencies installation has completed (#405) @ppawlowski
+ - Bump js-yaml from 4.1.0 to 4.1.1 (#403) @app/dependabot
+ - Bump validator from 13.11.0 to 13.15.20 (#401) @app/dependabot
+
 #### 2.23.1: Release
 
 
