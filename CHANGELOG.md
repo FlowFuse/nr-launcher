@@ -1,3 +1,12 @@
+#### 2.24.5: Release
+
+ - Bump @modelcontextprotocol/sdk from 1.17.0 to 1.24.0 (#414) @app/dependabot
+ - Bump actions/setup-node from 6.0.0 to 6.1.0 (#418) @app/dependabot
+ - Bump actions/checkout from 6.0.0 to 6.0.1 (#417) @app/dependabot
+ - Update FF icon in the NR editor (#416) @cstns
+ - Bump validator from 13.15.20 to 13.15.23 (#415) @app/dependabot
+ - Bump express (#413) @app/dependabot
+
 #### 2.24.4: Release
 
 
