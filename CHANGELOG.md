@@ -1,3 +1,10 @@
+#### 2.25.0: Release
+
+ - Update assistant and proj nodes (#423) @knolleary
+ - Update dependencies: bump FlowFuse node packages versions (#422) @cstns
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml from 0.43.0 to 0.44.0 (#421) @app/dependabot
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml from 0.43.0 to 0.44.0 (#420) @app/dependabot
+
 #### 2.24.5: Release
 
  - Bump @modelcontextprotocol/sdk from 1.17.0 to 1.24.0 (#414) @app/dependabot
