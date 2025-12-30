@@ -76,8 +76,8 @@ if (!options.execPath) {
 }
 
 if (!options.execPath) {
-    console.log(require.main.paths)
-    console.log('executable not found')
+    console.info(require.main.paths)
+    console.info('executable not found')
     process.exit(1)
 }
 

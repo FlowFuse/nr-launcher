@@ -1,4 +1,4 @@
-const should = require('should') // eslint-disable-line no-unused-vars
+const should = require('should')
 const util = require('util')
 const setup = require('./setup')
 const FFContextPlugin = require('@flowfuse/nr-launcher/context')

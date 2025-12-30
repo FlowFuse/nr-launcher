@@ -285,7 +285,7 @@ describe('Runtime Settings', function () {
             ;(typeof settings.ui.middleware[0]).should.equal('function')
             ;(typeof settings.ui.middleware[1]).should.equal('function')
         } catch (err) {
-            console.log(err)
+            console.error(err)
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
             err.toString().should.match(/Cannot find module '@flowfuse\/nr-auth\/middleware'/)
