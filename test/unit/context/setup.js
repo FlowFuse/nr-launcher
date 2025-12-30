@@ -16,17 +16,17 @@ function authServer (config = {}) {
             const projectId = urlParts.pop()
             const route = urlParts.join('/')
             switch (route) {
-            case '/account/check/project':
-                authToken = authConfig.find(auth => auth.projectId === projectId)
-                if (req.headers.authorization === ('Bearer ' + authToken.token)) {
-                    res.writeHead(200)
-                    res.end('{}')
-                    return
-                }
-                throw new Error('Unknown request')
-            default:
-                res.writeHead(404)
-                res.end(JSON.stringify({ error: 'Resource not found' }))
+                case '/account/check/project':
+                    authToken = authConfig.find(auth => auth.projectId === projectId)
+                    if (req.headers.authorization === ('Bearer ' + authToken.token)) {
+                        res.writeHead(200)
+                        res.end('{}')
+                        return
+                    }
+                    throw new Error('Unknown request')
+                default:
+                    res.writeHead(404)
+                    res.end(JSON.stringify({ error: 'Resource not found' }))
             }
         } catch (error) {
             res.writeHead(401)

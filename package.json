@@ -22,8 +22,8 @@
     },
     "scripts": {
         "test": "mocha 'test/unit/**/*_spec.js'",
-        "lint": "eslint -c .eslintrc \"*.js\" \"lib/**/*.js\" \"test/**/*.js\"",
-        "lint:fix": "eslint -c .eslintrc \"*.js\" \"lib/*.js\" \"test/**/*.js\" --fix",
+        "lint": "eslint -c eslint.config.mjs",
+        "lint:fix": "eslint -c eslint.config.mjs --fix",
         "build-theme": "node lib/theme/scripts/build.js "
     },
     "keywords": [
@@ -48,10 +48,10 @@
     "dependencies": {
         "@flowfuse/nr-assistant": "^0.7.0",
         "@flowfuse/nr-file-nodes": "^0.0.8",
-        "@flowfuse/nr-project-nodes": "^0.7.8",
-        "@flowfuse/nr-tables-nodes": "^0.2.1",
         "@flowfuse/nr-mqtt-nodes": "^0.2.2",
+        "@flowfuse/nr-project-nodes": "^0.7.8",
         "@flowfuse/nr-subflow-export": "^1.0.2",
+        "@flowfuse/nr-tables-nodes": "^0.2.1",
         "@node-red/util": "^3.1.0",
         "body-parser": "^1.20.2",
         "bytes": "^3.1.2",
@@ -72,11 +72,13 @@
         "ws": "^8.7.0"
     },
     "devDependencies": {
+        "@eslint/js": "^9.39.2",
         "@flowforge/file-server": "git://github.com/FlowFuse/file-server.git",
-        "eslint": "^8.49.0",
-        "eslint-config-standard": "^17.1.0",
-        "eslint-plugin-no-only-tests": "^3.1.0",
+        "eslint": "^9.39.2",
+        "eslint-plugin-no-only-tests": "^3.3.0",
+        "globals": "^16.5.0",
         "mocha": "^10.2.0",
+        "neostandard": "^0.12.2",
         "sass": "1.66.1",
         "should": "^13.2.3",
         "sinon": "^17.0.1",

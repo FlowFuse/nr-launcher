@@ -1,4 +1,4 @@
-const should = require('should') // eslint-disable-line
+const should = require('should')
 const sinon = require('sinon')
 const got = require('got')
 const fs = require('fs')
