@@ -38,7 +38,7 @@ export default [
         },
         rules: {
             // built-in
-            eqeqeq: 'off',
+            eqeqeq: 'error',
             'object-shorthand': ['error'],
             'no-console': ['error', { allow: ['debug', 'info', 'warn', 'error'] }],
             quotes: ['off', 'error', 'single', { avoidEscape: true }],
