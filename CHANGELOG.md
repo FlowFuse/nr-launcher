@@ -1,3 +1,12 @@
+#### 2.26.0: Release
+
+ - Bump JS-DevTools/npm-publish from 4.1.1 to 4.1.3 (#433)
+ - Update dependencies (#436) @knolleary
+ - Add eqeqeq and quotes rules (#429) @hardillb
+ - Convert to eslint v9 (#428) @hardillb
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml from 0.44.0 to 0.45.0 (#426) @app/dependabot
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml from 0.44.0 to 0.45.0 (#425) @app/dependabot
+
 #### 2.25.0: Release
 
  - Update assistant and proj nodes (#423) @knolleary
