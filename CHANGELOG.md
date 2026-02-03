@@ -1,3 +1,10 @@
+#### 2.26.2: Release
+
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml (#444)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml (#445)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/sast_scan.yaml (#446)
+ - Remove sqlite 3 (#449) @Steve-Mcl
+
 #### 2.26.1: Release
 
  - Bump JS-DevTools/npm-publish from 4.1.3 to 4.1.4 (#438)
