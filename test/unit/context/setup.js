@@ -84,7 +84,7 @@ async function setupFileServerApp (config = {}) {
         FF_FS_TEST_CONFIG.context.options.storage = { ...config.context?.options }
     }
     process.env.FF_FS_TEST_CONFIG = YAML.stringify(FF_FS_TEST_CONFIG)
-    const app = await require('@flowforge/file-server')
+    const app = await require('@flowfuse/file-server')
     return app
 }
 
