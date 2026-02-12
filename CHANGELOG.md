@@ -1,3 +1,14 @@
+#### 2.27.0: Release
+
+ - Bump JS-DevTools/npm-publish from 4.1.4 to 4.1.5 (#451)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml (#457)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/sast_scan.yaml (#458)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml (#459)
+ - Bump @modelcontextprotocol/sdk from 1.25.3 to 1.26.0 (#456) @app/dependabot
+ - Update flowfuse packages ready for release process (#460) @Steve-Mcl
+ - Add null check for logo element in interceptLogoClick function (#454) @cstns
+ - Convert to FlowFuse/file-server for tests (#455) @hardillb
+
 #### 2.26.2: Release
 
  - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml (#444)
