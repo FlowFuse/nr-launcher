@@ -51,7 +51,7 @@ jobs:
     if: |
       ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
       ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' )
-    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@v0.48.0'
+    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@v0.49.0'
     with:
       package_name: flowfuse-nr-launcher
       publish_package: true
@@ -69,7 +69,7 @@ jobs:
     if: |
       ( github.event_name == 'push' && github.ref == 'refs/heads/main' ) ||
       ( github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' )
-    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@v0.48.0'
+    uses: 'flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml@v0.49.0'
     with:
       package_name: flowfuse-nr-theme
       publish_package: true
