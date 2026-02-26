@@ -46,7 +46,7 @@
     },
     "homepage": "https://github.com/FlowFuse/nr-launcher#readme",
     "dependencies": {
-        "@flowfuse/nr-assistant": "^0.10.2",
+        "@flowfuse/nr-assistant": "^0.11.0",
         "@flowfuse/nr-file-nodes": "^0.0.9",
         "@flowfuse/nr-mqtt-nodes": "^0.3.0",
         "@flowfuse/nr-project-nodes": "^0.7.8",
