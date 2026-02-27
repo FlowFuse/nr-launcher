@@ -1,3 +1,17 @@
+#### 2.27.1: Release
+
+ - Bump flowfuse/github-actions-workflows/.github/workflows/sast_scan.yaml (#465)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml (#466)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml (#467)
+ - Bump dottie from 2.0.6 to 2.0.7 (#475) @app/dependabot
+ - Bump minimatch (#474) @app/dependabot
+ - Bump ajv from 6.12.6 to 6.14.0 (#470) @app/dependabot
+ - Bump @flowfuse/nr-assistant (#473) @Steve-Mcl
+ - Bump fast-xml-parser and @aws-sdk/xml-builder (#468) @app/dependabot
+ - Bump fastify from 5.6.2 to 5.7.4 (#464) @app/dependabot
+ - Bump fast-xml-parser and @aws-sdk/client-s3 (#461) @app/dependabot
+ - Bump qs from 6.14.1 to 6.14.2 (#463) @app/dependabot
+
 #### 2.27.0: Release
 
  - Bump JS-DevTools/npm-publish from 4.1.4 to 4.1.5 (#451)
