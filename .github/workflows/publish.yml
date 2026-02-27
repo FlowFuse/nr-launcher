@@ -90,7 +90,7 @@ jobs:
           app_id: ${{ secrets.GH_BOT_APP_ID }}
           private_key: ${{ secrets.GH_BOT_APP_KEY }}
       - name: Trigger node-red container build
-        uses: benc-uk/workflow-dispatch@e2e5e9a103e331dad343f381a29e654aea3cf8fc # v1.2.41
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1.2.41
         with:
           workflow: nodered-container.yml
           repo: flowfuse/helm
@@ -110,7 +110,7 @@ jobs:
           private_key: ${{ secrets.GH_BOT_APP_KEY }}
 
       - name: Trigger localfs package build
-        uses: benc-uk/workflow-dispatch@e2e5e9a103e331dad343f381a29e654aea3cf8fc # v1.2.4
+        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1.3.1
         with:
           workflow: publish.yml
           repo: flowfuse/driver-localfs
