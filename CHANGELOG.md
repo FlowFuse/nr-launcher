@@ -1,3 +1,20 @@
+#### 2.28.0: Release
+
+ - Bump actions/setup-node from 6.2.0 to 6.3.0 (#487)
+ - Bump benc-uk/workflow-dispatch from 1.2.4 to 1.3.1 (#471)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/sast_scan.yaml (#477)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml (#478)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml (#479)
+ - Update dependencies for release (#490) @hardillb
+ - Bump sequelize from 6.37.7 to 6.37.8 (#489) @app/dependabot
+ - Bump express-rate-limit from 8.2.1 to 8.3.0 (#486) @app/dependabot
+ - Bump fast-xml-parser and @aws-sdk/xml-builder (#485) @app/dependabot
+ - Bump multer from 2.1.0 to 2.1.1 (#484) @app/dependabot
+ - Bump immutable from 4.3.7 to 4.3.8 (#483) @app/dependabot
+ - Bump @hono/node-server from 1.19.9 to 1.19.10 (#482) @app/dependabot
+ - Bump hono from 4.12.3 to 4.12.5 (#481) @app/dependabot
+ - Bump multer from 2.0.2 to 2.1.0 (#480) @app/dependabot
+
 #### 2.27.1: Release
 
  - Bump flowfuse/github-actions-workflows/.github/workflows/sast_scan.yaml (#465)
