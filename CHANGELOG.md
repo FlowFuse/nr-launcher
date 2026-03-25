@@ -1,3 +1,13 @@
+#### 2.28.1: Release
+
+ - Bump actions/create-github-app-token from 2.2.1 to 3.0.0 (#494)
+ - ci: Use NodeJS v24 to build package (#498) @ppawlowski
+ - ci: Use NodeJS v24 as a default GitHub Actions runtime (#497) @ppawlowski
+ - Bump flatted from 3.3.3 to 3.4.2 (#495) @app/dependabot
+ - Bump hono from 4.12.5 to 4.12.7 (#488) @app/dependabot
+ - ci: replace `tibdex/github-app-token` with `actions/create-github-app-token` (#493) @ppawlowski
+ - ci: add concurrency to publish workflow (#492) @ppawlowski
+
 #### 2.28.0: Release
 
  - Bump actions/setup-node from 6.2.0 to 6.3.0 (#487)
