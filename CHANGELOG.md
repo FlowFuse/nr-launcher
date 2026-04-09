@@ -1,3 +1,16 @@
+#### 2.29.0: Release
+
+ - Update dependencies: bump @flowfuse/nr-file-nodes to v0.0.10 (#514) @cstns
+ - Bump lodash from 4.17.23 to 4.18.1 (#513) @app/dependabot
+ - Bump hono from 4.12.7 to 4.12.12 (#512) @app/dependabot
+ - Bump @hono/node-server from 1.19.10 to 1.19.13 (#511) @app/dependabot
+ - Upgrade neostandard for dependencies (#507) @hardillb
+ - Bump brace-expansion (#503) @app/dependabot
+ - Bump path-to-regexp (#502) @app/dependabot
+ - Bump picomatch (#501) @app/dependabot
+ - Bump fastify from 5.7.4 to 5.8.4 (#500) @app/dependabot
+ - Bump fast-xml-parser and @aws-sdk/xml-builder (#496) @app/dependabot
+
 #### 2.28.1: Release
 
  - Bump actions/create-github-app-token from 2.2.1 to 3.0.0 (#494)
