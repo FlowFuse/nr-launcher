@@ -1,3 +1,7 @@
+#### 2.29.1: Release
+
+ - Update FlowFuse dependencies (#516) @Steve-Mcl
+
 #### 2.29.0: Release
 
  - Update dependencies: bump @flowfuse/nr-file-nodes to v0.0.10 (#514) @cstns
