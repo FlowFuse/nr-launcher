@@ -1,0 +1,16 @@
+:root {
+    --red-ui-header-height: 45px;
+}
+
+#red-ui-header .red-ui-header-logo span {
+    font-weight: 600;
+}
+
+#usermenu-item-fflv > a {
+    cursor: default;
+    opacity: 0.7;
+}
+
+#usermenu-item-fflv > a:hover {
+    background: transparent;
+}
