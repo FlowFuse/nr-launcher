@@ -1,6 +1,6 @@
 {
     "name": "@flowfuse/nr-theme",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "description": "FlowFuse themes for Node-RED",
     "scripts": {
         "prepack": "node scripts/prepack.mjs",
@@ -35,7 +35,8 @@
         "version": ">=2.2.0",
         "plugins": {
             "forge-light": "lib/theme/forge-light/forge-light.js",
-            "forge-dark": "lib/theme/forge-dark/forge-dark.js"
+            "forge-dark": "lib/theme/forge-dark/forge-dark.js",
+            "forge": "lib/theme/forge/forge.js"
         }
     },
     "engines": {
