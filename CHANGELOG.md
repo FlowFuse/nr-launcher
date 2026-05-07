@@ -1,3 +1,20 @@
+#### 2.30.0: Release
+
+ - chore: bump @flowfuse/nr-assistant to ^0.14.0 (#535)
+ - Bump actions/setup-node from 6.3.0 to 6.4.0 (#527)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/publish_node_package.yml (#529)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/build_node_package.yml (#528)
+ - Bump flowfuse/github-actions-workflows/.github/workflows/sast_scan.yaml (#526)
+ - Bump actions/create-github-app-token from 3.0.0 to 3.1.1 (#521)
+ - Bump hono from 4.12.14 to 4.12.18 (#536) @app/dependabot
+ - Bump ip-address and express-rate-limit (#534) @app/dependabot
+ - [7100] Update FF theme to align with Node-RED 5.0.0-beta-5 (#533) @n-lark
+ - ci: Use new project-automation workflow (#531) @ppawlowski
+ - Bump fast-xml-parser and @aws-sdk/xml-builder (#530) @app/dependabot
+ - Bump protobufjs from 7.5.4 to 7.5.5 (#525) @app/dependabot
+ - Bump hono from 4.12.12 to 4.12.14 (#524) @app/dependabot
+ - Bump fastify from 5.8.4 to 5.8.5 (#523) @app/dependabot
+
 #### 2.29.1: Release
 
  - Update FlowFuse dependencies (#516) @Steve-Mcl
