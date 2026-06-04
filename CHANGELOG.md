@@ -1,3 +1,18 @@
+#### 2.31.0: Release
+
+ - chore: bump @flowfuse/nr-assistant to ^0.16.0 (#541)
+ - Conditionally load nr-assistant plugin based on platform AI settings (#549)
+ - Bump qs, express and body-parser (#550)
+ - Bump benc-uk/workflow-dispatch from 1.3.1 to 1.3.2 (#548)
+ - Switch internal reusable workflows to new tagging approach (#546)
+ - Bump actions/create-github-app-token from 3.1.1 to 3.2.0 (#545) @app/dependabot
+ - Bump ws from 8.19.0 to 8.20.1 (#547) @app/dependabot
+ - Bump protobufjs from 7.5.5 to 7.5.8 (#544) @app/dependabot
+ - Bump @protobufjs/utf8 from 1.1.0 to 1.1.1 (#543) @app/dependabot
+ - ci: enable dependabot cooldown (#542) @ppawlowski
+ - Bump fast-uri from 3.1.0 to 3.1.2 (#540) @app/dependabot
+ - Bump fast-xml-builder from 1.1.5 to 1.2.0 (#539) @app/dependabot
+
 #### 2.30.1: Release
 
 
