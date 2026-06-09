@@ -1,3 +1,7 @@
+#### 2.31.1: Release
+
+ - Bump hono from 4.12.18 to 4.12.23 (#555)
+
 #### 2.31.0: Release
 
  - chore: bump @flowfuse/nr-assistant to ^0.16.0 (#541)
