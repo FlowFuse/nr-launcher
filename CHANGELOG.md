@@ -1,3 +1,7 @@
+#### 2.31.2: Release
+
+ - Fix issue with @media and @support tags being improperly flattened  (#557)
+
 #### 2.31.1: Release
 
  - Bump hono from 4.12.18 to 4.12.23 (#555)
