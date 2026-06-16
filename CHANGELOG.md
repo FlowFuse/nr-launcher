@@ -1,3 +1,7 @@
+#### 2.31.3: Release
+
+ - Disable visual notification of new NR version in the editor (#560)
+
 #### 2.31.2: Release
 
  - Fix issue with @media and @support tags being improperly flattened  (#557)
