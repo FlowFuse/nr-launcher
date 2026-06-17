@@ -250,6 +250,35 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.not.have.property('projectLink')
         })
     })
+    describe('forge-common editor scripts', function () {
+        const baseConfig = (theme) => ({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectID: 'PROJECTID',
+            launcherVersion: '1.2.3',
+            settings: theme === undefined ? {} : { theme }
+        })
+        const scriptNames = (settings) => (settings.editorTheme.page.scripts || []).map(s => path.basename(s))
+
+        it('loads platform and branding scripts for a FlowFuse theme', async function () {
+            const settings = await loadSettings(runtimeSettings.getSettingsFile(baseConfig('forge-light')))
+            scriptNames(settings).should.eql(['forge-platform.js', 'forge-branding.js'])
+        })
+        it('loads platform and branding scripts when no theme is set (theme: None)', async function () {
+            const settings = await loadSettings(runtimeSettings.getSettingsFile(baseConfig('')))
+            scriptNames(settings).should.eql(['forge-platform.js', 'forge-branding.js'])
+        })
+        it('loads only the platform script for a non-FlowFuse (OEM) theme', async function () {
+            const settings = await loadSettings(runtimeSettings.getSettingsFile(baseConfig('oem-custom-theme')))
+            scriptNames(settings).should.eql(['forge-platform.js'])
+        })
+        it('exposes flowfuse-common settings to the editor regardless of theme', async function () {
+            const settings = await loadSettings(runtimeSettings.getSettingsFile(baseConfig('oem-custom-theme')))
+            settings.should.have.property('flowfuse-common')
+            settings['flowfuse-common'].should.have.property('launcherVersion', '1.2.3')
+            settings['flowfuse-common'].should.have.property('projectURL', 'https://FORGEURL/instance/PROJECTID')
+        })
+    })
     it('includes httpNodeAuth if user/pass provided', async function () {
         const result = runtimeSettings.getSettingsFile({
             baseURL: 'https://BASEURL',
