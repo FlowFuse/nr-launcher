@@ -34,6 +34,7 @@
     "node-red": {
         "version": ">=2.2.0",
         "plugins": {
+            "flowfuse-common": "lib/theme/common/flowfuse-common.js",
             "forge-light": "lib/theme/forge-light/forge-light.js",
             "forge-dark": "lib/theme/forge-dark/forge-dark.js",
             "forge": "lib/theme/forge/forge.js"
