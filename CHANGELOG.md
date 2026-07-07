@@ -1,3 +1,20 @@
+#### 2.32.0: Release
+
+ - chore: bump @flowfuse/nr-assistant to ^0.17.0 (#574)
+ - Add support for insights via launcher (#571)
+ - Bump actions/checkout from 6.0.3 to 7.0.0 (#570)
+ - [7606] Failed restarts get stuck on restarting (live status) due to nr-launcher swallowing the start error   (#573)
+ - Only generate forge-l/d themes against v4.x css (#572)
+ - Update nr-theme version to 1.11.0 (#569)
+ - [7553]  Load FlowFuse editor behavior regardless of theme  (#567)
+ - Bump js-yaml from 4.1.1 to 4.2.0 (#564)
+ - Bump actions/checkout from 6.0.2 to 6.0.3 (#553)
+ - ci: set dependabot pull request limit to 30 (#565)
+ - Bump ws (#562)
+ - Bump tar from 7.5.13 to 7.5.16 (#563)
+ - Bump hono from 4.12.23 to 4.12.25 (#566)
+ - Move publish to after all build steps (#559)
+
 #### 2.31.3: Release
 
  - Disable visual notification of new NR version in the editor (#560)
