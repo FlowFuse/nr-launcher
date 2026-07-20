@@ -1,3 +1,10 @@
+#### 2.32.1: Release
+
+ - fix: Ensure MCP server-side sessions are terminated (#580)
+ - ci: Add slack notification to the release pipeline (#578)
+ - Replace @node-red/util dependency with local red_util module (#577)
+ - Bump multer from 2.1.1 to 2.2.0 (#568)
+
 #### 2.32.0: Release
 
  - chore: bump @flowfuse/nr-assistant to ^0.17.0 (#574)
