@@ -135,7 +135,12 @@ describe('Runtime Settings', function () {
             const settings = await loadSettings(result)
             settings.should.have.property('credentialSecret', 'foo')
             settings.should.have.property('httpAdminRoot', '/red')
-            settings.should.have.property('ui', { path: '/dash', maxHttpBufferSize: 123 })
+            settings.should.have.property('ui')
+            settings.ui.should.have.property('path', '/dash')
+            settings.ui.should.have.property('maxHttpBufferSize', 123)
+            settings.ui.should.have.property('middleware')
+            settings.ui.middleware.should.be.an.Array().and.have.length(1)
+            ;(typeof settings.ui.middleware[0]).should.equal('function')
             settings.should.have.property('disableEditor', true)
             settings.should.have.property('apiMaxLength', '123')
             settings.should.have.property('debugMaxLength', 456)
@@ -310,9 +315,24 @@ describe('Runtime Settings', function () {
             settings.should.have.property('ui')
             settings.ui.should.not.have.property('path')
             settings.ui.should.have.property('middleware')
-            settings.ui.middleware.should.be.an.Array()
+            settings.ui.middleware.should.be.an.Array().and.have.length(3)
             ;(typeof settings.ui.middleware[0]).should.equal('function')
             ;(typeof settings.ui.middleware[1]).should.equal('function')
+            ;(typeof settings.ui.middleware[2]).should.equal('function') // CSP middleware
+            // calling the CSP middleware function should add the baseline CSP header & call next
+            const headers = {}
+            let nextCalled = false
+            const res = {
+                set: function (header, value) {
+                    headers[header] = value
+                }
+            }
+            const next = function () {
+                nextCalled = true
+            }
+            settings.ui.middleware[2]({}, res, next)
+            headers.should.have.property('Content-Security-Policy', 'frame-ancestors \'self\' https://FORGEURL')
+            nextCalled.should.equal(true)
         } catch (err) {
             console.error(err)
             // Temporary fix as this module will not be found when running in CI
@@ -334,9 +354,24 @@ describe('Runtime Settings', function () {
             settings.should.have.property('ui')
             settings.ui.should.have.property('path', '/foo')
             settings.ui.should.have.property('middleware')
-            settings.ui.middleware.should.be.an.Array()
+            settings.ui.middleware.should.be.an.Array().and.have.length(3)
             ;(typeof settings.ui.middleware[0]).should.equal('function')
             ;(typeof settings.ui.middleware[1]).should.equal('function')
+            ;(typeof settings.ui.middleware[2]).should.equal('function') // CSP middleware
+            // calling the CSP middleware function should add the baseline CSP header & call next
+            const headers = {}
+            let nextCalled = false
+            const res = {
+                set: function (header, value) {
+                    headers[header] = value
+                }
+            }
+            const next = function () {
+                nextCalled = true
+            }
+            settings.ui.middleware[2]({}, res, next)
+            headers.should.have.property('Content-Security-Policy', 'frame-ancestors \'self\' https://FORGEURL')
+            nextCalled.should.equal(true)
         } catch (err) {
             // Temporary fix as this module will not be found when running in CI
             // until we publish the release of the new nr-auth module.
@@ -406,6 +441,36 @@ describe('Runtime Settings', function () {
         }
         settings.ui.middleware[0]({}, res, next)
         headers.should.have.property('Content-Security-Policy', 'frame-ancestors *')
+        nextCalled.should.equal(true)
+    })
+    it('includes baseline CSP middleware when dashboardUI is set without auth or iFrame', async function () {
+        const result = runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            settings: {
+                dashboardUI: '/foo'
+            }
+        })
+
+        const settings = await loadSettings(result)
+        settings.should.have.property('ui')
+        settings.ui.should.have.property('path', '/foo')
+        settings.ui.should.have.property('middleware')
+        settings.ui.middleware.should.be.an.Array().and.have.length(1)
+        ;(typeof settings.ui.middleware[0]).should.equal('function') // CSP middleware
+        // calling the middleware function should add the baseline CSP header & call next
+        const headers = {}
+        let nextCalled = false
+        const res = {
+            set: function (header, value) {
+                headers[header] = value
+            }
+        }
+        const next = function () {
+            nextCalled = true
+        }
+        settings.ui.middleware[0]({}, res, next)
+        headers.should.have.property('Content-Security-Policy', 'frame-ancestors \'self\' https://FORGEURL')
         nextCalled.should.equal(true)
     })
     it('includes HA settings when enabled', async function () {
