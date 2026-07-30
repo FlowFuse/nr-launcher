@@ -1,3 +1,16 @@
+#### 2.33.0: Release
+
+ - chore: bump @flowfuse/nr-assistant to ^0.18.1 (#591)
+ - [7935] Forbidden error when clicking between dashboards (#585)
+ - Bump actions/checkout from 7.0.0 to 7.0.1 (#584)
+ - Bump actions/setup-node from 6.4.0 to 7.0.0 (#581)
+ - Bump body-parser from 1.20.5 to 1.20.6 (#590)
+ - Bump find-my-way from 9.4.0 to 9.7.0 (#589)
+ - Bump tar from 7.5.16 to 7.5.22 (#588)
+ - Bump immutable from 4.3.8 to 4.3.9 (#587)
+ - Bump fast-uri from 3.1.2 to 3.1.4 (#586)
+ - Always include forgeURL in dashboard CSP frame-ancestors (#583)
+
 #### 2.32.1: Release
 
  - fix: Ensure MCP server-side sessions are terminated (#580)
