@@ -1,3 +1,6 @@
+#### 2.33.1: Release
+
+
 #### 2.33.0: Release
 
  - chore: bump @flowfuse/nr-assistant to ^0.18.1 (#591)
