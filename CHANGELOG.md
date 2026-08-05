@@ -1,3 +1,9 @@
+#### 2.33.2: Release
+
+ - Bump brace-expansion (#597)
+ - Bump fast-uri from 3.1.4 to 3.1.5 (#596)
+ - Bump ip-address from 10.2.0 to 10.4.0 (#594)
+
 #### 2.33.1: Release
 
 
