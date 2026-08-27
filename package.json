@@ -50,7 +50,7 @@
     "dependencies": {
         "@flowfuse/nr-assistant": "^0.18.1",
         "@flowfuse/nr-file-nodes": "^0.0.10",
-        "@flowfuse/nr-mqtt-nodes": "^0.3.0",
+        "@flowfuse/nr-mqtt-nodes": "^0.4.0",
         "@flowfuse/nr-project-nodes": "^0.7.8",
         "@flowfuse/nr-subflow-export": "^1.0.2",
         "@flowfuse/nr-tables-nodes": "^0.2.2",
