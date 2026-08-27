@@ -50,3 +50,23 @@ describe('httpAuthMiddleware handshake session cookie', function () {
         cookie.should.not.match(/Partitioned/i)
     })
 })
+
+describe('httpAuthMiddleware session secret', function () {
+    it('is stable across restarts for the same instance', function () {
+        httpAuth.deriveSessionSecret('cred-secret-1').should.equal(httpAuth.deriveSessionSecret('cred-secret-1'))
+    })
+
+    it('differs between instances', function () {
+        httpAuth.deriveSessionSecret('cred-secret-1').should.not.equal(httpAuth.deriveSessionSecret('cred-secret-2'))
+    })
+
+    it('produces a 64-char hex digest, not the raw credentialSecret', function () {
+        const secret = httpAuth.deriveSessionSecret('cred-secret-1')
+        secret.should.match(/^[0-9a-f]{64}$/)
+        secret.should.not.equal('cred-secret-1')
+    })
+
+    it('falls back to a random secret when credentialSecret is absent', function () {
+        httpAuth.deriveSessionSecret('').should.not.equal(httpAuth.deriveSessionSecret(''))
+    })
+})
