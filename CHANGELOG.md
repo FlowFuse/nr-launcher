@@ -1,3 +1,19 @@
+#### 3.1.0: Release
+
+ - Update launcher to assistant@0.20 (#622)
+ - Bump git file-server version (#620)
+ - Bump protobufjs from 7.6.4 to 7.6.6 (#619)
+ - bump @flowfuse/file-server to pick up changes (#618)
+ - Bump qs, express and body-parser (#610)
+ - Bump serialize-javascript and mocha (#617)
+ - Bump js-yaml from 4.3.1 to 4.3.2 (#615)
+ - Bump benc-uk/workflow-dispatch from 1.3.2 to 1.3.3 (#616)
+ - Bump hono from 4.13.0 to 4.13.7 (#614)
+ - Bump @humanfs/node from 0.16.7 to 0.16.8 (#611)
+ - Bump multer from 2.2.0 to 2.3.0 (#612)
+ - Bump fast-uri from 3.1.5 to 3.1.7 (#609)
+ - Bump fastify from 5.8.5 to 5.12.1 (#608)
+
 #### 3.0.2: Release
 
 
