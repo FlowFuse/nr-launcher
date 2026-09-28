@@ -50,10 +50,10 @@
     "dependencies": {
         "@flowfuse/nr-assistant": "^0.20.0",
         "@flowfuse/nr-file-nodes": "^0.0.10",
-        "@flowfuse/nr-mqtt-nodes": "^0.4.0",
+        "@flowfuse/nr-mqtt-nodes": "^0.4.1",
         "@flowfuse/nr-project-nodes": "^0.7.9",
         "@flowfuse/nr-subflow-export": "^1.0.2",
-        "@flowfuse/nr-tables-nodes": "^0.3.0",
+        "@flowfuse/nr-tables-nodes": "^0.3.1",
         "body-parser": "^1.20.2",
         "bytes": "^3.1.2",
         "command-line-args": "^5.2.1",
@@ -74,7 +74,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.39.2",
-        "@flowfuse/file-server": "github:FlowFuse/file-server",
+        "@flowfuse/file-server": "^3.1.0",
         "eslint": "^9.39.2",
         "eslint-plugin-no-only-tests": "^3.3.0",
         "globals": "^16.5.0",
