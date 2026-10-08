@@ -1,3 +1,17 @@
+#### 3.1.1: Release
+
+ - fix: Refuse deleting the file store root and sibling paths that share its prefix (#634)
+ - chore: Override moment (#633)
+ - chore: Override uuid@8 to 11.1.1 (#632)
+ - Bump brace-expansion (#629)
+ - Bump serialize-javascript from 7.1.1 to 7.1.2 (#631)
+ - Bump fastify from 5.12.1 to 5.12.5 (#630)
+ - Bump fast-uri (#628)
+ - Bump ip-address from 10.4.0 to 10.7.2 (#627)
+ - Bump multer from 2.3.0 to 2.4.0 (#626)
+ - Update versions of  nr-mqtt & nr-tables (#625)
+ - Update File-Server reference (#624)
+
 #### 3.1.0: Release
 
  - Update launcher to assistant@0.20 (#622)
