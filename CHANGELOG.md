@@ -1,3 +1,13 @@
+#### 3.2.0: Release
+
+ - chore: bump @flowfuse/nr-assistant to ^0.21.0 (#643)
+ - Recheck accepted HTTP bearer tokens after 60 seconds instead of 5 minutes (#642)
+ - Bump actions/create-github-app-token from 3.2.0 to 3.3.0 (#639)
+ - Bump actions/setup-node from 7.0.0 to 7.1.0 (#640)
+ - Bump @modelcontextprotocol/sdk from 1.29.0 to 1.32.1 (#638)
+ - Bump source-map-js from 1.2.1 to 1.2.2 (#637)
+ - Bump proxy-addr from 2.0.7 to 2.0.8 (#636)
+
 #### 3.1.1: Release
 
  - fix: Refuse deleting the file store root and sibling paths that share its prefix (#634)
