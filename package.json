@@ -73,7 +73,7 @@
         "ws": "^8.7.0"
     },
     "devDependencies": {
-        "@eslint/js": "^9.39.2",
+        "@eslint/js": "^10.0.1",
         "@flowfuse/file-server": "^3.1.0",
         "eslint": "^9.39.2",
         "eslint-plugin-no-only-tests": "^3.3.0",
