@@ -67,7 +67,7 @@
         "multer": "^2.0.0",
         "oauth": "^0.9.15",
         "parse-prometheus-text-format": "^1.1.1",
-        "passport": "0.6.0",
+        "passport": "0.7.0",
         "passport-oauth2": "^1.6.1",
         "prom-client": "^15.0.0",
         "ws": "^8.7.0"
