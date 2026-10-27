@@ -65,7 +65,7 @@
         "memorystore": "^1.6.7",
         "mnemonist": "0.40.3",
         "multer": "^2.0.0",
-        "oauth": "^0.9.15",
+        "oauth": "^0.10.2",
         "parse-prometheus-text-format": "^1.1.1",
         "passport": "0.7.0",
         "passport-oauth2": "^1.6.1",
