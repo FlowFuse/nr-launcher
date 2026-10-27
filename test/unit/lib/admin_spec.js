@@ -49,4 +49,11 @@ describe('AdminInterface command endpoint', function () {
             res.statusCode.should.equal(200)
         })
     })
+
+    describe('request without a body', function () {
+        it('responds 404', async function () {
+            const res = await got.post(`${baseURL}/flowforge/command`, { throwHttpErrors: false })
+            res.statusCode.should.equal(404)
+        })
+    })
 })
