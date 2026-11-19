@@ -51,7 +51,7 @@
         "@flowfuse/nr-assistant": "^0.22.0",
         "@flowfuse/nr-file-nodes": "^0.0.10",
         "@flowfuse/nr-mqtt-nodes": "^0.4.1",
-        "@flowfuse/nr-project-nodes": "^0.7.9",
+        "@flowfuse/nr-project-nodes": "^1.0.0",
         "@flowfuse/nr-subflow-export": "^1.0.2",
         "@flowfuse/nr-tables-nodes": "^0.3.1",
         "body-parser": "^2.4.0",
