@@ -200,6 +200,23 @@ describe('Runtime Settings', function () {
             // Should not have projectLink as it is an EE feature but the feature flag wasn't set
             settings.flowforge.should.not.have.property('projectLink')
         })
+        it('passes the instance token to the time-series nodes only when the feature is on', async function () {
+            const withFeature = await loadSettings(runtimeSettings.getSettingsFile({
+                baseURL: 'https://BASEURL',
+                forgeURL: 'https://FORGEURL',
+                projectToken: 'PROJECTTOKEN',
+                features: { timeseries: true }
+            }))
+            withFeature.flowforge.should.have.property('timeseries', { token: 'PROJECTTOKEN' })
+            const withoutFeature = await loadSettings(runtimeSettings.getSettingsFile({
+                baseURL: 'https://BASEURL',
+                forgeURL: 'https://FORGEURL',
+                projectToken: 'PROJECTTOKEN',
+                features: {}
+            }))
+            withoutFeature.flowforge.should.not.have.property('timeseries')
+        })
+
         it('does not include projectLink if licenseType not ee', async function () {
             const result = runtimeSettings.getSettingsFile({
                 // licenseType: 'ee', << no license type
