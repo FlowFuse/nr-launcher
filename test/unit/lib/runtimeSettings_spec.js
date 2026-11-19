@@ -116,7 +116,7 @@ describe('Runtime Settings', function () {
                     },
                     header: {
                         title: 'HEADER_TITLE',
-                        url: 'url: "HEADER_URL",'
+                        url: 'HEADER_URL'
                     },
                     palette: {
                         allowInstall: false,
@@ -230,7 +230,7 @@ describe('Runtime Settings', function () {
                     },
                     header: {
                         title: 'HEADER_TITLE',
-                        url: 'url: "HEADER_URL",'
+                        url: 'HEADER_URL'
                     },
                     palette: {
                         allowInstall: false,
@@ -253,6 +253,81 @@ describe('Runtime Settings', function () {
             settings.flowforge.should.have.property('teamID', 'TEAMID')
             settings.flowforge.should.have.property('projectID', 'PROJECTID')
             settings.flowforge.should.not.have.property('projectLink')
+        })
+    })
+    describe('settings values are written as data', function () {
+        const keys = []
+        const inject = (key) => {
+            keys.push(key)
+            return `x' + (globalThis.__inj_${key} = 1) + '" + (globalThis.__inj_${key} = 1) + "`
+        }
+        const build = (settings) => runtimeSettings.getSettingsFile({
+            baseURL: 'https://BASEURL',
+            forgeURL: 'https://FORGEURL',
+            projectID: 'PROJECTID',
+            nodeRedVersion: '4.0.0',
+            settings
+        })
+        const injected = () => keys.filter(k => globalThis[`__inj_${k}`] !== undefined)
+
+        afterEach(function () {
+            keys.forEach(k => { delete globalThis[`__inj_${k}`] })
+            keys.length = 0
+        })
+
+        it('string settings are not evaluated', async function () {
+            const values = {
+                httpAdminRoot: inject('adminRoot'),
+                dashboardUI: inject('dashboard'),
+                codeEditor: inject('codeEditor'),
+                apiMaxLength: inject('apiMax'),
+                page: { title: inject('pageTitle'), favicon: inject('favicon') },
+                header: { title: inject('headerTitle'), url: inject('headerUrl') },
+                httpNodeCORS: { enabled: true, origin: inject('origin'), GET: true }
+            }
+            const settings = await loadSettings(build(values))
+            injected().should.eql([])
+            settings.should.have.property('httpAdminRoot', values.httpAdminRoot)
+            settings.ui.should.have.property('path', values.dashboardUI)
+            settings.should.have.property('apiMaxLength', values.apiMaxLength)
+            settings.httpNodeCors.should.have.property('origin', values.httpNodeCORS.origin)
+            settings.editorTheme.codeEditor.should.have.property('lib', values.codeEditor)
+            settings.editorTheme.page.should.have.property('title', values.page.title)
+            settings.editorTheme.page.should.have.property('favicon', values.page.favicon)
+            settings.editorTheme.header.should.have.property('title', values.header.title)
+            settings.editorTheme.header.should.have.property('url', values.header.url)
+        })
+
+        it('theme is not evaluated', async function () {
+            const theme = inject('theme')
+            const settings = await loadSettings(build({ theme }))
+            injected().should.eql([])
+            settings.editorTheme.should.have.property('theme', theme)
+        })
+
+        it('boolean settings are not evaluated', async function () {
+            keys.push('bool')
+            const value = '(globalThis.__inj_bool = 1, true)'
+            const settings = await loadSettings(build({
+                disableEditor: value,
+                palette: { allowInstall: value },
+                modules: { allowInstall: value }
+            }))
+            injected().should.eql([])
+            settings.should.have.property('disableEditor', false)
+            settings.externalModules.palette.should.have.property('allowInstall', false)
+            settings.externalModules.modules.should.have.property('allowInstall', false)
+            settings.should.have.property('functionExternalModules', false)
+        })
+
+        it('debugMaxLength is only written as a number', async function () {
+            keys.push('dbg')
+            const settings = await loadSettings(build({ debugMaxLength: '1000 + ((globalThis.__inj_dbg = 1), 0)' }))
+            injected().should.eql([])
+            settings.should.not.have.property('debugMaxLength')
+
+            const valid = await loadSettings(build({ debugMaxLength: '456' }))
+            valid.should.have.property('debugMaxLength', 456)
         })
     })
     describe('forge-common editor scripts', function () {
