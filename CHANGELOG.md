@@ -1,3 +1,6 @@
+#### 3.3.1: Release
+
+
 #### 3.3.0: Release
 
  - chore: bump @flowfuse/nr-mqtt-nodes to ^0.4.2 (#683)
