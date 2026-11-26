@@ -1,3 +1,8 @@
+#### 3.3.2: Release
+
+ - Bump @flowfuse/file-server from 3.2.0 to 3.3.1 in the dev-dependencies group (#688)
+ - Bump actions/create-github-app-token from 3.3.0 to 3.4.0 (#687)
+
 #### 3.3.1: Release
 
 
